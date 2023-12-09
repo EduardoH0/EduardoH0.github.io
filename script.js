@@ -1,8 +1,8 @@
-// const newCheck = document.getElementById('newCheck');
+// const layout-check = document.getElementById('layout-check');
 // const logoText = document.querySelector('.hover-logo');
 
 // // DARK MODE
-// newCheck.addEventListener('change', function() {
+// layout-check.addEventListener('change', function() {
 //   if (this.checked) {
 //     logoText.style.color = 'white'; // Change to the color you desire
 //   } else {
@@ -146,9 +146,9 @@ function showNextImage() {
   textElement.style.display = 'block';
 }
 
-// Watch for changes in the newCheck checkbox
-const newCheck = document.getElementById('newCheck');
-newCheck.addEventListener('change', function() {
+// Watch for changes in the layout-check checkbox
+const layoutcheck = document.getElementById('layout-check');
+layoutcheck.addEventListener('change', function() {
   if (this.checked) {
     // Remove the event listeners when unchecked
     images.forEach(image => {
@@ -169,9 +169,9 @@ newCheck.addEventListener('change', function() {
   }
 });
 
-// // Watch for changes in the newCheck checkbox
-// const newCheck = document.getElementById('newCheck');
-// newCheck.addEventListener('change', function() {
+// // Watch for changes in the layout-check checkbox
+// const layout-check = document.getElementById('layout-check');
+// layout-check.addEventListener('change', function() {
 //   modalActive = this.checked;
 //   if (!modalActive) {
 //     closeModal();
