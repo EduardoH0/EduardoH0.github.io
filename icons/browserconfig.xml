@@ -3,8 +3,8 @@
     <msapplication>
         <tile>
             <!-- <square512x512logo src="icons/square512x512logo.png"/> -->
-            <square256x256logo src="square256x256logo.png?3"/>
-            <square512x512logo src="square512x512logo.png?3"/>
+            <square256x256logo src="square256x256logo.png"/>
+            <square512x512logo src="square512x512logo.png"/>
             <TileColor>#ffffff</TileColor>
         </tile>
     </msapplication>
