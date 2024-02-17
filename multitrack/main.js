@@ -22,11 +22,11 @@ buttons.forEach((button) => {
 });
 
 const dynamicMusicStems = [
-    { url: '../music/INeedYouRemastered2009_320kbps-vocals.mp3'},
-    { url: '../music/INeedYouRemastered2009_320kbps-other.mp3'},
-    { url: '../music/INeedYouRemastered2009_320kbps-drums.mp3'},
+    { url: 'music/INeedYouRemastered2009_320kbps-vocals.mp3'},
+    { url: 'music/INeedYouRemastered2009_320kbps-other.mp3'},
+    { url: 'music/INeedYouRemastered2009_320kbps-drums.mp3'},
     // { url: '../music/INeedYouRemastered2009_320kbps-drums.mp3'},
-    { url: '../music/INeedYouRemastered2009_320kbps-bass.mp3'},
+    { url: 'music/INeedYouRemastered2009_320kbps-bass.mp3'},
 ];
   
 // Create an array to hold the track objects
