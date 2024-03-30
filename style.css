@@ -593,12 +593,17 @@ scrollbar-width: none; /* Hide scrollbar for Firefox */
 	}
 	.main-sub-container-work{
 		height: 300px;
+		top: 40px;
 	}
 	.main-sub-container-text{
 		top: 350px;
 	}
+	.colection-container {
+		margin-bottom: 100px;
+	}
 	.prev,
-	.next {
+	.next,
+	.toggle-colection {
 		top: 360px;
 	}
 
