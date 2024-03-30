@@ -526,7 +526,7 @@ scrollbar-width: none; /* Hide scrollbar for Firefox */
 /* _______________________________________ */
 .main-container-work{
 	position: fixed;
-	z-index: 3;
+	z-index: 0;
 	margin-top: var(--height-nav-bar);
 	height: calc(100% - var(--height-nav-bar));
 	width: 100%;
@@ -554,7 +554,7 @@ scrollbar-width: none; /* Hide scrollbar for Firefox */
 }
 
 .image-transition {
-    transform: translateY(100%); /* Initially translate the image down */
+    transform: translateY(120%); /* Initially translate the image down */
 }
 
 .main-sub-container-text{

@@ -27,15 +27,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
     imgWrapper.classList.toggle('image-transition');
     setTimeout(() => {
-        loadImage(currentImageIndex[currentColection]);
+        loadImage(currentImageIndex[currentColection])
+        .then(() => {
+          imgWrapper.classList.toggle('image-transition');
+        })
     }, 600); // 0.5 seconds delay (500 milliseconds)
-    setTimeout(() => {
-        imgWrapper.classList.toggle('image-transition');
-    }, 800)
   })
 })
 
-function loadImage(index) {
+async function loadImage(index) {
     // Load image to the container
     const img = new Image();
     img.src = folderPath + `/${index}${workColection[currentColection]}.jpg`
