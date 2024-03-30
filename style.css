@@ -538,7 +538,7 @@ scrollbar-width: none; /* Hide scrollbar for Firefox */
 	display: flex;
 	align-items: center;
 	justify-content: left;
-	font-size: 26px;
+	font-size: 29px;
 }
 .colection-name {
 	margin-left: 30px;
@@ -585,6 +585,11 @@ scrollbar-width: none; /* Hide scrollbar for Firefox */
 @media (max-width: 1000px) {
 	.main-sub-container-work{
 		width: 80%;
+	}
+}
+@media (max-width: 952px){
+	.colection-container {
+		font-size: 26px;
 	}
 }
 @media (max-height: 500px) {
