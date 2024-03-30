@@ -3,6 +3,7 @@ const nextBtn = document.getElementsByClassName('next')[0];
 // const totalImages = images.length;
 const imgWrapper = document.getElementById('img-wrapper');
 const textWrapper = document.getElementById('main-sub-container-text');
+const colectionWrapper = document.getElementById('colection-name');
 const folderPath = `images-light`
 
 let numberColections = 2
@@ -10,6 +11,7 @@ let currentColection = 0;
 let workColection = ['', 'p'];
 let currentImageIndex = [1, 1];
 let lenColection = [16, 8];
+let colectionName = ['Metacrilato', 'Papel']
 
 
 
@@ -41,6 +43,9 @@ async function loadImage(index) {
     img.src = folderPath + `/${index}${workColection[currentColection]}.jpg`
     await img.decode(); // wait for the image to be loaded
     imgWrapper.src = img.src
+
+    // Load colection name
+    colectionWrapper.textContent = colectionName[currentColection]; 
 
     // Load text to the container
     fetchTextContent(index);
