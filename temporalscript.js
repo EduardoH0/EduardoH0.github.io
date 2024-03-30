@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(() => {
           imgWrapper.classList.toggle('image-transition');
         })
-    }, 600); // 0.5 seconds delay (500 milliseconds)
+    }, 600);
   })
 })
 
@@ -39,6 +39,7 @@ async function loadImage(index) {
     // Load image to the container
     const img = new Image();
     img.src = folderPath + `/${index}${workColection[currentColection]}.jpg`
+    await img.decode(); // wait for the image to be loaded
     imgWrapper.src = img.src
 
     // Load text to the container
