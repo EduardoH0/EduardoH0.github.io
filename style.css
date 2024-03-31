@@ -525,10 +525,10 @@ scrollbar-width: none; /* Hide scrollbar for Firefox */
 	display: flex;
 	align-items: center;
 	justify-content: left;
-	font-size: 29px;
 }
 .colection-name {
 	margin-left: 10px;
+	font-size: 22px;
 }
 
 .main-sub-container-work{

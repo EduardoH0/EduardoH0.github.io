@@ -10,8 +10,8 @@ let numberColections = 2
 let currentColection = 0;
 let workColection = ['', 'p'];
 let currentImageIndex = [1, 1];
-let lenColection = [16, 8];
-let colectionName = ['Cristal Acrílico', 'Papel']
+let lenColection = [16, 14];
+let colectionName = ['CRISTAL ACRÍLICO', 'PAPEL']
 
 
 
