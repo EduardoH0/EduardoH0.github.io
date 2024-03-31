@@ -11,7 +11,7 @@ let currentColection = 0;
 let workColection = ['', 'p'];
 let currentImageIndex = [1, 1];
 let lenColection = [16, 8];
-let colectionName = ['Metacrilato', 'Papel']
+let colectionName = ['Cristal Acrílico', 'Papel']
 
 
 

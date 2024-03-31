@@ -560,12 +560,13 @@ scrollbar-width: none; /* Hide scrollbar for Firefox */
 .main-sub-container-text{
 	position: absolute;
 	top: 82%;
-	height: 70px;
+	/* height: 70px; */
 	left: 50%;
 	transform: translate(-50%, 0);
 	text-align: center;
 	font-size: 14px;
 	overflow: hidden;
+	padding-bottom: 10px;
 }
 
 .toggle-colection{
@@ -581,6 +582,7 @@ scrollbar-width: none; /* Hide scrollbar for Firefox */
 	height: 40px;
 	margin-left: 30px;
 	background-color: #e9e8e8;
+	border-radius: 3px;
 }
 
 
