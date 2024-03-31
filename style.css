@@ -474,8 +474,7 @@ scrollbar-width: none; /* Hide scrollbar for Firefox */
 	stroke-width: 35; /* Specify stroke width */
 }
 .prev,
-.next,
-.toggle-colection {
+.next{
 	/* background-color: lightblue; */
   	position: absolute;
 	top: 85%;
@@ -496,22 +495,10 @@ scrollbar-width: none; /* Hide scrollbar for Firefox */
 	stroke-width: 35; /* Specify stroke width */
   }
 .prev {
-	margin-left: -110px;
+	margin-left: -120px;
 }
 .next {
-	margin-left: 110px;
-}
-.toggle-colection{
-	appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    padding: 0; /* Remove default padding */
-    margin: 0; /* Remove default margin */
-    border: none;
-    cursor: pointer;
-	color: black;
-	background-color: rgb(255, 255, 255);
-	margin-left: -160px;
+	margin-left: 120px;
 }
 
 /* Control the max width of sub-container-img */
@@ -541,7 +528,7 @@ scrollbar-width: none; /* Hide scrollbar for Firefox */
 	font-size: 29px;
 }
 .colection-name {
-	margin-left: 30px;
+	margin-left: 10px;
 }
 
 .main-sub-container-work{
@@ -579,6 +566,21 @@ scrollbar-width: none; /* Hide scrollbar for Firefox */
 	text-align: center;
 	font-size: 14px;
 	overflow: hidden;
+}
+
+.toggle-colection{
+	appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    border: none;
+    cursor: pointer;
+	color: black;
+	width: 40px;
+	height: 40px;
+	margin-left: 30px;
+	background-color: #e9e8e8;
 }
 
 
