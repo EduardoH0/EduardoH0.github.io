@@ -592,8 +592,8 @@ scrollbar-width: none; /* Hide scrollbar for Firefox */
 	}
 }
 @media (max-width: 952px){
-	.colection-container {
-		font-size: 26px;
+	.colection-name {
+		font-size: 19px;
 	}
 }
 @media (max-height: 500px) {
