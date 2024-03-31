@@ -44,7 +44,7 @@
 /* _____________ NAVIGATION MENU _____________ */
 nav{
 	position: fixed;
-	background: #ffffffda;
+	background: linear-gradient(to top, #ffffff00 0%, #ffffffda 20%, #ffffffda 20%);
 	width: 100%;
 	height: var(--height-nav-bar);
 	z-index: 1;

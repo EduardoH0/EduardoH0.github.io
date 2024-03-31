@@ -8,10 +8,10 @@ const folderPath = `images-light`
 
 let numberColections = 2
 let currentColection = 0;
-let workColection = ['', 'p'];
+let workColection = ['p', ''];
 let currentImageIndex = [1, 1];
-let lenColection = [16, 14];
-let colectionName = ['CRISTAL ACRÍLICO', 'PAPEL']
+let lenColection = [14, 16];
+let colectionName = ['PAPEL', 'CRISTAL ACRÍLICO']
 
 
 
