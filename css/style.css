@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    color: inherit;
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body,
+html {
+    scrollbar-width: thin;
+}
+
+button {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 0;
+    margin: 0;
+    border: none;
+    cursor: pointer;
+}
+
+.lanes-container {
+    position: absolute;
+    width: 100%;
+    height: 700px;
+    padding: 80px 20px 20px 20px;
+    background-color: rgb(9, 9, 9);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.lanes-container svg {
+    position: absolute;
+    width: 100%;
+}
+
+.lane {
+    width: 100%;
+    height: 40px;
+
+    /* clip-path: polygon( 20px 0, 100% 0, calc(100% - 20px) 100%, 0 100%); */
+    display: flex;
+    align-items: center;
+    overflow-y: visible;
+}
+
+.car {
+    position: absolute;
+    left: 2%;
+    width: 120px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.car img {
+    object-fit: contain;
+    width: 100%;
+}
+
+
+.lobby-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgb(97, 157, 221);
+}
+
+.race-host-controls {
+    display: none;
+    width: 100%;
+    z-index: 10;
+
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.start-race,
+.pause-race,
+.stop-race {
+    height: 50px;
+    border-radius: 5px;
+    padding: 10px;
+}
+.start-race {
+    background-color: greenyellow;
+}
+.pause-race {
+    background-color: yellow;
+}
+.stop-race {
+    background-color: red;
+}
+
+.move-car {
+    height: 50px;
+    z-index: 10;
+}
