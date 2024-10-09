@@ -233,6 +233,7 @@ button {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    padding-top: 5px;
 }
 
 .start-race,
@@ -457,6 +458,7 @@ button {
     z-index: 200000;
 
     display: none;
+    /* display: flex; */
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -502,4 +504,52 @@ button {
     position: relative;
     width: 160px;
     object-fit: cover;
+}
+
+.race-started-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 200000;
+
+    display: none;
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.race-started-active {
+    display: flex;
+}
+.speedometer{
+    width: 60px;
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0.797);
+    border-radius: 10px;
+}
+.speedometer-text {
+    color: white;
+}
+.speedometer svg {
+    stroke: white;
+    stroke-width: 15;
+}
+.speedometer-hand {
+    fill: red;
+    stroke: red;
+    stroke-width: 30;
+    transform-origin: center;
+    animation: speedometer_hand_rotation 2s linear infinite;
+}
+@keyframes speedometer_hand_rotation {
+    0% {transform: rotateZ(0deg);}
+    15% {transform: rotateZ(30deg);}
+    19% {transform: rotateZ(25deg);}
+    24% {transform: rotateZ(30deg);}
+    29% {transform: rotateZ(25deg);}
+    34% {transform: rotateZ(30deg);}
+    60% {transform: rotateZ(-45deg);}
+    75% {transform: rotateZ(40deg);}
+    90% {transform: rotateZ(-70deg);}
 }

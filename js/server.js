@@ -43,7 +43,11 @@ export class Server {
 
         this.islive = false;
         this.intervalId = null;
+        this.raceStartedFlag = false;
 
+        this.all_pos = {};
+        this.binFiles.forEach(key => {this.all_pos[key] = -1});
+        
         this.showHostButtons();
         // setInterval(() => {this.updateLanes();}, this.refresh_rate);
     }
@@ -72,13 +76,18 @@ export class Server {
     startRace() {
         this.modifyRaceStatus(this.raceStarted);
         this.results_uploaded = false;
+        this.raceStartedFlag = true;
     }
     
-    pauseRace() {this.modifyRaceStatus(this.racePaused);}
+    pauseRace() {
+        this.modifyRaceStatus(this.racePaused);
+        this.raceStartedFlag = false;
+    }
 
     stopRace() {
         this.modifyRaceStatus(this.raceStopped);
         this.results_container.style.display = 'none';
+        this.raceStartedFlag = false;
     }
 
     endRace() {this.modifyRaceStatus(this.raceEnded);}
@@ -87,6 +96,9 @@ export class Server {
         const buffer = this._number2bin(this.client_reseted);
         this.updatePosition(this.binFiles, buffer);
         this.clearLanes();
+
+        this.raceStartedFlag = false;
+        this.binFiles.forEach(key => {this.all_pos[key] = -1});
     }
 
     liveRace() {
@@ -142,7 +154,10 @@ export class Server {
     updateLanes() {
         let dictPos = {};
         this.n_players = 0;
-        this.readAllBinFiles(this.binFiles).then(results => {
+        // Filter by connected players when the game started
+        const clients = this.raceStartedFlag ? this.binFiles.filter(key => this.all_pos[key] > -1) : this.binFiles;
+
+        this.readAllBinFiles(clients).then(results => {
             results.forEach(result => {
                 // console.log(`Client: ${result.fileName}, Position: ${result.number}`);
 
@@ -159,6 +174,7 @@ export class Server {
 
                     // STORE POSITIONS
                     dictPos[result.fileName] = result.number;
+                    this.all_pos[result.fileName] = result.number;
 
                 } 
             });

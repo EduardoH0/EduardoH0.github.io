@@ -61,6 +61,9 @@ export class Client {
         
         const car = load_car_w(this.clientName);
         this.finish_car.appendChild(car)
+
+        this.just_spawned = true;
+        this.race_started_container = document.getElementById('race-started-container');
     
         // Move client car to start line
         this.updatePosition();
@@ -105,29 +108,40 @@ export class Client {
     handleRaceStatus(raceStatus) {
         this.racestate = raceStatus;
         if (raceStatus == this.raceStarted) {
-            console.log('Race Started');
-            this.QH.showquiz();
-            this.results_container.style.display = 'none';
-            this.results_downloaded = false;
-            this.loading_container.classList.remove('loading-container-active');
-            this.hideMyFinish()
+            if (this.just_spawned) {
+                this.race_started_container.style.display = 'flex';
+            }
+            else {
+                console.log('Race Started');
+                this.QH.showquiz();
+                this.results_container.style.display = 'none';
+                this.results_downloaded = false;
+                this.loading_container.classList.remove('loading-container-active');
+                this.hideMyFinish()
+            }
         }
         else if (raceStatus == this.racePaused) {
             console.log('Race Paused');
+            this.just_spawned = false;
             this.results_container.style.display = 'none';
+            this.race_started_container.style.display = 'none';
             this.results_downloaded = false;
             this.hideMyFinish()
         }
         else if (raceStatus == this.raceStopped) {
             console.log('Race Stopped');
+            this.just_spawned = false;
             this.QH.hidequiz();
             this.results_container.style.display = 'none';
+            this.race_started_container.style.display = 'none';
             this.results_downloaded = false;
             this.loading_container.classList.add('loading-container-active');
             this.hideMyFinish()
         }
         else if (raceStatus == this.raceEnded) {
             console.log('Race Ended');
+            this.just_spawned = false;
+            this.race_started_container.style.display = 'none';
             if (!this.results_downloaded) {
                 // this.getResults().then(results => {
                     // this.showWinners(results.results)
