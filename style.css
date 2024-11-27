@@ -99,6 +99,7 @@ body {
     /* box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.215); */
     box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.321) inset;
 
+
     /* background-image: url('images/tiles6.jpg');
     background-repeat: repeat;
     background-size: 5em 5em; */
@@ -300,35 +301,59 @@ body {
     transform: translateZ(calc(var(--obj-ratio) * 0.15));
 }
 
+
 #easel-1-front .cube > *,
 #easel-1-back .cube > * {
     /* background-color: rgb(150, 107, 75); */
     /* background-color: #aa746a; */
     background-image: url('images/tiles6.jpg');
-    background-repeat: repeat;
     background-size: 1em 1em;
+
+
 }
 #easel-2-l .cube > *,
 #easel-2-r .cube > * {
     /* background-color: rgb(149, 107, 77); */
     /* background-color: burlywood; */
     background-image: url('images/m1l.jpg');
-    background-repeat: repeat;
     background-size: 1em 1em;
+
 }
 
 #box-parcel-1 .cube > *,
 #box-parcel-1 .flap  {
     /* background-color: rgb(196, 160, 113); */
     background-image: url('images/cbl4.jpg');
-    background-repeat: repeat;
     background-size: 1.5em 1em;
+
 }
 
 #easel-1-painting > *,
 #easel-2-painting > * {
     background: white !important;
 }
+
+/* #easel-1-painting > *,
+#easel-2-painting > *,
+#box-painting > *,
+#ceiling-p-painting > * {
+    box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.215) !important;
+    filter: drop-shadow(0 0 0.11em rgba(0, 0, 0, 0.215)) !important;
+} */
+
+#easel-1-painting > .front,
+#easel-2-painting > .top,
+#box-painting > .front,
+#ceiling-p-painting > .front {
+    box-shadow: 0 0 0.11em rgba(0, 0, 0, 0.215) !important;
+    /* filter: drop-shadow(0 0 0.11em rgba(0, 0, 0, 0.215)) !important; */
+}
+/* #easel-1-painting > :not(.back),
+#easel-2-painting > :not(.bottom),
+#box-painting > :not(.back),
+#ceiling-p-painting > :not(.back) {
+    box-shadow: 0 0 0.11em rgba(0, 0, 0, 0.215) !important;
+} */
 
 #easel-1-painting .front {
     object-fit: contain;
