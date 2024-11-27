@@ -1,0 +1,568 @@
+:root {
+    --ballColor: lightblue;
+    --cubeColor: #0ff7;
+    --rotateSpeed: 30s;
+    --bounceSpeed: 2s;
+
+    --scene-height: 1em;
+
+    --obj-ratio: 1em;
+    --obj-bottom: 0em;
+    --obj-left: 0em;
+
+    --plane-left: 0;
+
+    --cube-height: 4em;
+    --cube-width: 0.2em;
+    --cube-depth: 0.1em;
+    --cube-left: 0;
+    --cube-bottom: 0;
+    --cube-rotate-x: 0;
+    --cube-rotate-y: 0;
+    --cube-rotate-z: 0;
+}
+
+
+body {
+    /* background-color: #000; */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 75px;
+    perspective: 10em;
+    perspective-origin: 50% calc(50% - 2em);
+    transition: perspective-origin 0.5s ease; /* Smooth transition */
+    /* perspective-origin: 50% top; */
+
+    padding: 0;
+    margin: 0;
+    overflow-y: hidden;
+}
+
+.scene {
+    position: relative;
+    transform-style: preserve-3d;
+    /* animation: sceneRotate var(--rotateSpeed) infinite linear; */
+
+    /* transform: rotateY(0deg);
+    transition: transform 0.1s linear;
+    cursor: grab; */
+}
+
+.scene-obj {
+    transform-style: preserve-3d;
+    position: absolute;
+    
+    height: var(--obj-ratio);
+    width: var(--obj-ratio);
+
+    /* Object centered at the middle of the plane */
+    left: calc(-1 * var(--obj-ratio) / 2);
+    bottom: calc(-1 * var(--obj-ratio) / 2 - var(--scene-height));
+}
+
+.cube-group {
+    position: absolute;
+    transform-style: preserve-3d;
+    height: 100%;
+    width: 100%;
+}
+
+@keyframes sceneRotate {
+    to {transform: rotateY(360deg)}
+}
+
+.cube {
+    transform-style: preserve-3d;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: calc(var(--cube-left) * var(--obj-ratio) + var(--obj-left));
+    bottom: calc((var(--cube-height) / 2 + var(--cube-bottom)) * var(--obj-ratio) + var(--obj-bottom));
+    transform: rotateX(var(--cube-rotate-x)) rotateY(var(--cube-rotate-y)) rotateZ(var(--cube-rotate-z));
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cube .left,
+.cube .right,
+.cube .front,
+.cube .back,
+.cube .top,
+.cube .bottom {
+    position: absolute;
+    background: var(--cubeColor);
+    /* box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.215); */
+    box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.321) inset;
+
+    /* background-image: url('images/tiles6.jpg');
+    background-repeat: repeat;
+    background-size: 5em 5em; */
+
+    /* background: transparent;
+    border: 1px solid black; */
+}
+
+.cube .left,
+.cube .right {
+    height: calc(var(--cube-height) * var(--obj-ratio));
+    width: calc(var(--cube-depth)  * var(--obj-ratio));
+}
+
+.cube .front,
+.cube .back {
+    height: calc(var(--cube-height) * var(--obj-ratio));
+    width: calc(var(--cube-width) * var(--obj-ratio));
+}
+
+.cube .top,
+.cube .bottom {
+    height: calc(var(--cube-depth) * var(--obj-ratio));
+    width: calc(var(--cube-width) * var(--obj-ratio));
+}
+
+
+.cube .front { transform: translateZ(calc(var(--cube-depth) * var(--obj-ratio) / 2)); }
+.cube .right { transform: rotateY(270deg) translateZ(calc(var(--cube-width) * var(--obj-ratio) / 2)); }
+.cube .back { transform: rotateY(180deg) translateZ(calc(var(--cube-depth) * var(--obj-ratio) / 2)); }
+.cube .left { transform: rotateY(90deg) translateZ(calc(var(--cube-width) * var(--obj-ratio) / 2));}
+.cube .top { transform: rotateX(90deg) translateZ(calc(var(--cube-height) * var(--obj-ratio) / 2))}
+.cube .bottom { transform: rotateX(90deg) translateZ(calc(-1 * var(--cube-height) * var(--obj-ratio) / 2))}
+
+
+
+#easel-1 {
+    --obj-ratio: 0.7em;
+    /* --obj-ratio: 1em; */
+    /* background-color: red; */
+    transform: translateZ(2em);
+}
+
+#ceiling-p {
+    --obj-ratio: 0.7em;
+    /* --obj-ratio: 1em; */
+    /* background-color: red; */
+    transform: translateZ(-2em) rotateY(180deg);
+}
+
+
+#easel-2-l {
+    --obj-ratio: 0.69em;
+    /* --obj-ratio: 1em; */
+    /* background-color: red; */
+    transform: rotateY(90deg) translateZ(2.2em) translateX(calc(var(--obj-ratio) * 1));
+}
+#easel-2-r {
+    --obj-ratio: 0.69em;
+    /* --obj-ratio: 1em; */
+    /* background-color: red; */
+    transform: rotateY(90deg) translateZ(2.2em) translateX(calc(var(--obj-ratio) * -1));
+}
+
+#box-parcel {
+    --obj-ratio: 0.7em;
+    /* --obj-ratio: 1em; */
+    transform: rotateY(-90deg) translateZ(2.2em);
+}
+
+#easel-1-front { 
+    transform: translateZ(calc(var(--obj-ratio) * 1)) rotateX(10deg);
+}
+
+#easel-1-back { transform: translateZ(calc(var(--obj-ratio) * -1)) rotateX(-24.5deg);}
+
+
+#ceiling-p-front { 
+    transform: translateZ(calc(var(--obj-ratio) * 1));
+}
+
+#easel-2-left {
+    left: calc(var(--obj-ratio) * -0.4);
+    transform: rotateY(90deg) rotateX(-10deg);
+}
+#easel-2-right {
+    left: calc(var(--obj-ratio) * 0.4);
+    transform: rotateY(-90deg) rotateX(-10deg);
+}
+#easel-2-bottom {
+    transform: rotateX(90deg) rotateZ(90deg) translateZ(calc(var(--obj-ratio) * 0.2));
+}
+#easel-2-top {
+    /* transform: rotateX(90deg); */
+}
+
+#box-parcel-1 {
+    transform: rotateY(-10deg);
+}
+#painting-parcel-1 {
+    left: calc(var(--obj-ratio) * -1.8);
+    transform: translateZ(calc(var(--obj-ratio) * 1.12)) rotateY(-10deg) rotateX(25deg);
+}
+
+#ceiling-p-painting {
+    --cube-height: 2;
+    --cube-width: 3;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cubeColor: rgb(255, 255, 255);
+}
+#string1, #string2 {
+    --cube-height: 5;
+    --cube-width: 0.01;
+    --cube-depth: 0.01;
+    --cube-bottom: 4;
+}
+#string1 {
+    --cube-left: 1;
+    --cubeColor: rgb(0, 0, 0);
+}
+#string2 {
+    --cube-left: -1;
+    --cubeColor: rgb(0, 0, 0);
+}
+
+#ceiling-p-painting .front {
+    object-fit: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: red !important; */
+}
+#ceiling-p-painting .front img {
+    width: 98%;
+    height: 98%;
+}
+
+
+#leg-left {
+    --cube-height: 4;
+    --cube-width: 0.2;
+    --cube-depth: 0.1;
+    --cube-left: -0.8;
+    --cube-rotate-z: 7deg;
+}
+
+#leg-right {
+    --cube-height: 4;
+    --cube-width: 0.2;
+    --cube-depth: 0.1;
+    --cube-left: 0.8;
+    --cube-rotate-z: -7deg;
+}
+
+#column-middle {
+    --cube-height: 4;
+    --cube-width: 0.2;
+    --cube-depth: 0.1;
+    --cube-bottom: 1.25;
+}
+
+#bottom-bar {
+    --cube-height: 0.25;
+    --cube-width: 1.8;
+    --cube-depth: 0.08;
+    --cube-bottom: 1;
+    --cube-left: 0;
+}
+
+#holder-bar {
+    --cube-height: 0.1;
+    --cube-width: 1.8;
+    --cube-depth: 0.3;
+    --cube-bottom: 1.5;
+    --cube-left: 0;
+    transform: translateZ(calc(var(--obj-ratio) * 0.15));
+}
+
+#top-bar {
+    --cube-height: 0.25;
+    --cube-width: 1.3;
+    --cube-depth: 0.08;
+    --cube-bottom: 3;
+    --cube-left: 0;
+}
+
+#leg-back {
+    --cube-height: 3.4;
+    --cube-width: 0.2;
+    --cube-depth: 0.1;
+}
+
+#easel-1-painting {
+    --cube-height: 3;
+    --cube-width: 3;
+    --cube-depth: 0.1;
+    --cube-bottom: 1.6;
+    transform: translateZ(calc(var(--obj-ratio) * 0.15));
+}
+
+#easel-1-front .cube > *,
+#easel-1-back .cube > * {
+    /* background-color: rgb(150, 107, 75); */
+    /* background-color: #aa746a; */
+    background-image: url('images/tiles6.jpg');
+    background-repeat: repeat;
+    background-size: 1em 1em;
+}
+#easel-2-l .cube > *,
+#easel-2-r .cube > * {
+    /* background-color: rgb(149, 107, 77); */
+    /* background-color: burlywood; */
+    background-image: url('images/m1l.jpg');
+    background-repeat: repeat;
+    background-size: 1em 1em;
+}
+
+#box-parcel-1 .cube > *,
+#box-parcel-1 .flap  {
+    /* background-color: rgb(196, 160, 113); */
+    background-image: url('images/cbl4.jpg');
+    background-repeat: repeat;
+    background-size: 1.5em 1em;
+}
+
+#easel-1-painting > *,
+#easel-2-painting > * {
+    background: white !important;
+}
+
+#easel-1-painting .front {
+    object-fit: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: red !important; */
+}
+#easel-1-painting .front img {
+    width: 98%;
+    height: 98%;
+}
+
+
+#easel-2-front-leg-left {
+    --cube-height: 1.4;
+    --cube-width: 0.2;
+    --cube-depth: 0.1;
+    --cube-left: -0.8;
+    --cube-rotate-z: 7deg;
+}
+#easel-2-back-leg-left {
+    --cube-height: 1.4;
+    --cube-width: 0.2;
+    --cube-depth: 0.1;
+    --cube-left: 0.8;
+    --cube-rotate-z: -7deg;
+}
+#easel-2-front-bottom {
+    --cube-height: 0.8;
+    --cube-width: 0.1;
+    --cube-depth: 0.13;
+    --cube-left: 0.85;
+    --cube-bottom: -0.4;
+}
+#easel-2-back-bottom {
+    --cube-height: 0.8;
+    --cube-width: 0.1;
+    --cube-depth: 0.13;
+    --cube-left: -0.85;
+    --cube-bottom: -0.4;
+}
+#easel-2-top-left {
+    --cube-height: 0.2;
+    --cube-width: 0.09;
+    --cube-depth: 2;
+    --cube-left: -0.1;
+    --cube-bottom: 1.2;
+}
+#easel-2-top-right {
+    --cube-height: 0.2;
+    --cube-width: 0.09;
+    --cube-depth: 2;
+    --cube-left: 0.1;
+    --cube-bottom: 1.2;
+}
+#easel-2-top-front {
+    --cube-height: 1;
+    --cube-width: 0.08;
+    --cube-depth: 0.1;
+    --cube-bottom: 0.6;
+    transform: translateZ(calc(var(--obj-ratio) * 0.7)) rotateX(-10deg);
+}
+#easel-2-top-back {
+    --cube-height: 1;
+    --cube-width: 0.08;
+    --cube-depth: 0.1;
+    --cube-bottom: 0.9;
+    transform: translateZ(calc(var(--obj-ratio) * -0.7)) rotateX(-10deg);
+}
+#easel-2-top-top {
+    --cube-height: 0.1;
+    --cube-width: 0.2;
+    --cube-depth: 2;
+    --cube-bottom: 1.75;
+    --cube-rotate-x: -12deg;
+}
+#easel-2-painting {
+    --cube-height: 0.1;
+    --cube-width: 4;
+    --cube-depth: 2;
+    --cube-bottom: 1.9;
+    --cube-left: 1;
+    --cube-rotate-x: -12deg;
+    object-fit: contain;
+}
+#easel-2-painting .top {
+    object-fit: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: red !important; */
+}
+#easel-2-painting .top img {
+    width: 98%;
+    height: 98%;
+}
+
+#big-box {
+    --cube-height: 1.4;
+    --cube-width: 2;
+    --cube-depth: 1.4;
+    --cube-left: -0.8;
+    /* --cube-rotate-z: 7deg; */
+}
+
+
+#box-painting {
+    --cube-height: 2;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    /* --cube-left: -0.8; */
+    --cubeColor: white;
+}
+#box-painting .front {
+    object-fit: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#box-painting .front img {
+    width: 98%;
+    height: 98%;
+}
+
+#big-box .top {
+    transform-style: preserve-3d;
+    background: transparent;
+    /* clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%); */
+    transform: 
+        rotateX(90deg)
+        translateZ(calc(var(--cube-height) * var(--obj-ratio) / 2))
+        /* rotateX(30deg) */
+        /* translateZ(calc(var(--obj-ratio) * 1)) */
+}
+
+.flap {
+    position: absolute;
+    box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.321) inset;
+}
+
+#big-box .front,
+#big-box .back,
+#big-box .left,
+#big-box .right {
+    transform-style: preserve-3d;
+
+}
+#big-box .fragile {
+    position: absolute;
+    width: 100%;
+    height: 15%;
+    top: 4%;
+    background-color: rgba(255, 0, 0, 0.616);
+    transform: translateZ(0.001em);
+}
+
+#big-box .top #left-flap {
+    height: 50%;
+    width: 100%;
+    transform-origin: top;
+    transform: rotateX(40deg);
+}
+#big-box .top #right-flap {
+    height: 100%;
+    width: 100%;
+    clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+    transform-origin: bottom;
+    transform: rotateX(-10deg);
+}
+
+.parcel-icons {
+    transform-style: preserve-3d;
+    transform: translateZ(0.001em);
+    position: absolute;
+    height: 20%;
+    right: 5%;
+    top: 20%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.parcel-icons > * {
+    height: 100%;
+    display: flex;
+    object-fit: contain;
+}
+.parcel-icons > * img {
+    height: 100%;
+}
+
+
+/* #bottom-bar {
+    --cube-height: 4em;
+    --cube-width: 0.2em;
+    --cube-depth: 0.1em;
+    --cubeColor: blue;
+    --cube-rotate-z: -7deg;
+    left: 0.8em;
+} */
+
+/* clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0); */
+
+
+.floor {
+    width: 15em;
+    height: 15em;
+    /* background-image: 
+        radial-gradient(#0000, #000 75%),
+        repeating-conic-gradient(from 45deg, #111 0deg 90deg, #222 90deg 180deg);
+    background-size: 100%, 1em 1em;
+
+    background-image: 
+        radial-gradient(#0000, #000 75%),
+        url('images/tiles5.jpg');
+    background-repeat: repeat;
+    background-size: 100%, 4em 4em; */
+
+
+    position: absolute;
+    top: var(--scene-height);
+    transform: 
+        translate(-50%, -50%)
+        rotateX(90deg);
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center-reference {
+    height: 2em;
+    width: 2em;
+    /* background: red; */
+}
