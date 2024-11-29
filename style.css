@@ -558,6 +558,139 @@ body {
 
 /* clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0); */
 
+#container {
+    --obj-ratio: 0.5em;
+    --obj-left: 0.5em;
+    transform: translateX(-1.3em) translatez(1em) rotateX(-90deg) rotateZ(-55deg);
+}
+.cilinder-group {
+    transform-style: preserve-3d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateZ(-0.25em);
+}
+
+.strips {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* transform: translateZ(0.25em); */
+}
+.strips > * {
+    position: absolute;
+    background: rgb(166, 166, 166);
+    box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.321) inset;
+    /* background-image: url('images/assets/al1l.jpg');
+    background-size: 1em 3em; */
+
+    height: 0.5em;
+    width: 0.06em;
+}
+
+.strips .bottom {
+    height: 0.4em;
+    width: 0.4em;
+    background: rgb(166, 166, 166);
+    box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.321) inset;
+    transform: rotateX(90deg) translateZ(-0.25em);
+    border-radius: 50%;
+    box-shadow: 0 0 0em rgba(0, 0, 0, 0.321) inset;
+}
+.strips .paint-bottom {
+    height: 0.39em;
+    width: 0.39em;
+    background: rgb(10, 110, 255);
+    transform: rotateX(90deg) translateZ(0em);
+    border-radius: 50%;
+}
+.strips .paint-top {
+    height: 0.39em;
+    width: 0.39em;
+    background: rgb(10, 110, 255);
+    transform: rotateX(90deg) rotateX(40deg);
+    border-radius: 50%;
+    clip-path: polygon(0 50%, 0 100%, 100% 100%, 100% 50%);
+}
+.strips .paint-top-top {
+    height: 0.25em;
+    width: 0.25em;
+    background: rgb(10, 110, 255);
+    transform: rotateX(90deg) translateZ(0.1em) translateY(0.1em) rotateX(40deg);
+    border-radius: 50%;
+    clip-path: polygon(0 50%, 0 100%, 100% 100%, 100% 50%);
+}
+
+
+.strips .paint-line {
+    height: 0.5em;
+    width: 0.1em;
+    transform: translateZ(0.19em);
+    background: rgb(10, 110, 255);
+}
+
+.strips .paint {
+    background: rgba(10, 110, 255);
+    transform: translateZ(0.19em) translateY(-0.8em);
+    border-radius: 50%; /* Rounded base of the spill */
+    box-shadow: 
+      20px 10px 0 -8px rgb(10, 110, 255), /* Drip 1 */
+      -25px 15px 0 -10px rgb(10, 110, 255), /* Drip 2 */
+      10px 20px 0 -15px rgb(10, 110, 255);
+      /* 0 0 1em rgba(54, 61, 110, 0.849); */
+    /* clip-path: polygon(0 0, 0 20%, 10% 30%, 20% 40%, 50% 100%, 100% 0); */
+    width: 1em;
+    height: 1em;
+}
+
+
+.strip-1 { transform: rotateY(0deg) translateZ(0.2em); }
+.strip-2 { transform: rotateY(15deg) translateZ(0.2em); }
+.strip-3 { transform: rotateY(30deg) translateZ(0.2em); }
+.strip-4 { transform: rotateY(45deg) translateZ(0.2em); }
+.strip-5 { transform: rotateY(60deg) translateZ(0.2em); }
+.strip-6 { transform: rotateY(75deg) translateZ(0.2em); }
+.strip-7 { transform: rotateY(90deg) translateZ(0.2em); }
+.strip-8 { transform: rotateY(105deg) translateZ(0.2em); }
+.strip-9 { transform: rotateY(120deg) translateZ(0.2em); }
+.strip-10 { transform: rotateY(135deg) translateZ(0.2em); }
+.strip-11 { transform: rotateY(150deg) translateZ(0.2em); }
+.strip-12 { transform: rotateY(165deg) translateZ(0.2em); }
+.strip-13 { transform: rotateY(180deg) translateZ(0.2em); }
+.strip-14 { transform: rotateY(195deg) translateZ(0.2em); }
+.strip-15 { transform: rotateY(210deg) translateZ(0.2em); }
+.strip-16 { transform: rotateY(225deg) translateZ(0.2em); }
+.strip-17 { transform: rotateY(240deg) translateZ(0.2em); }
+.strip-18 { transform: rotateY(255deg) translateZ(0.2em); }
+.strip-19 { transform: rotateY(270deg) translateZ(0.2em); }
+.strip-20 { transform: rotateY(285deg) translateZ(0.2em); }
+.strip-21 { transform: rotateY(300deg) translateZ(0.2em); }
+.strip-22 { transform: rotateY(315deg) translateZ(0.2em); }
+.strip-23 { transform: rotateY(330deg) translateZ(0.2em); }
+.strip-24 { transform: rotateY(345deg) translateZ(0.2em); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .floor {
     width: 15em;
@@ -587,7 +720,7 @@ body {
 }
 
 .center-reference {
-    height: 2em;
-    width: 2em;
+    height: 1em;
+    width: 1em;
     /* background: red; */
 }
