@@ -678,7 +678,7 @@ body {
 
 #container .strips {
     transform: translateX(0) rotateY(0deg); /* Initial state */
-    transition: transform 2s ease-out; /* Smooth transition */
+    transition: transform 2s; /* Smooth transition */
   }
   
   #container .strips:hover:not(.paint) {
