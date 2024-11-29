@@ -593,6 +593,33 @@ body {
     width: 0.06em;
 }
 
+.strip-8, .strip-9, .strip-12 {
+    background: linear-gradient(
+        to bottom, 
+        rgb(166, 166, 166) 0%,   /* Gray at the start */
+        rgb(166, 166, 166) 55%, /* Gray till 50% */
+        white 55%,              /* Transition to white at 50% */
+        white 80%,              /* White till 70% */
+        rgb(166, 166, 166) 80%, /* Transition back to gray at 70% */
+        rgb(166, 166, 166) 100% /* Gray till the end */
+      );
+}
+.strip-10, .strip-11  {
+    background: linear-gradient(
+        to bottom, 
+        rgb(166, 166, 166) 0%,   /* Gray at the start */
+        rgb(166, 166, 166) 55%, /* Gray till 50% */
+        white 55%,              /* Transition to white at 50% */
+        white 60%,
+        rgb(10, 110, 255) 60%, /* Gray till 50% */
+        rgb(10, 110, 255) 75%, /* Gray till 50% */
+        white 75%,              /* White till 70% */
+        white 80%,              /* White till 70% */
+        rgb(166, 166, 166) 80%, /* Transition back to gray at 70% */
+        rgb(166, 166, 166) 100% /* Gray till the end */
+      );
+}
+
 .strips .bottom {
     height: 0.4em;
     width: 0.4em;
