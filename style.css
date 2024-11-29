@@ -661,7 +661,8 @@ body {
     background: rgb(10, 110, 255);
 }
 
-.strips .paint {
+.cilinder-group .paint {
+    position: absolute;
     background: rgba(10, 110, 255);
     transform: translateZ(0.19em) translateY(-0.8em);
     border-radius: 50%; /* Rounded base of the spill */
@@ -674,6 +675,16 @@ body {
     width: 1em;
     height: 1em;
 }
+
+#container .strips {
+    transform: translateX(0) rotateY(0deg); /* Initial state */
+    transition: transform 2s ease-out; /* Smooth transition */
+  }
+  
+  #container .strips:hover:not(.paint) {
+    transform: translateX(0.4em) rotateY(-360deg); /* Transform when hovered */
+  }
+
 
 
 .strip-1 { transform: rotateY(0deg) translateZ(0.2em); }
