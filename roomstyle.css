@@ -1,0 +1,314 @@
+:root {
+    --scene-height: 1em;
+    --scene-font-size: 120px;
+
+    --obj-ratio: 1em;
+    --obj-bottom: 0em;
+    --obj-left: 0em;
+
+    --cube-height: 4em;
+    --cube-width: 0.2em;
+    --cube-depth: 0.1em;
+    --cube-left: 0;
+    --cube-bottom: 0;
+    --cube-rotate-x: 0;
+    --cube-rotate-y: 0;
+    --cube-rotate-z: 0;
+}
+
+body {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (max-height: 900px) {
+    :root { --scene-font-size: 75px; }
+}
+@media screen and (max-height: 700px) {
+    :root { --scene-font-size: 70px; }
+}
+
+.map {
+    position: absolute;
+    z-index: 2;
+    width: 10em;
+    height: 5em;
+    background-color: rgba(224, 224, 224, 0.632);
+    bottom: 0.5em;
+    left: 0.5em;
+}
+
+.map-position {
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background-color: blue;
+    bottom: 0%;
+    left: 0%;
+}
+
+
+.scene-container {
+    /* background-color: rgb(31, 31, 31); */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: var(--scene-font-size);
+    perspective: 10em;
+    perspective-origin: 50% calc(50% - 2em);
+
+    padding: 0;
+    margin: 0;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.scene {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s linear;
+    pointer-events: none;
+}
+
+.scene-obj {
+    transform-style: preserve-3d;
+    position: absolute;
+    
+    height: var(--obj-ratio);
+    width: var(--obj-ratio);
+
+    /* Object centered at the middle of the plane */
+    left: calc(-1 * var(--obj-ratio) / 2);
+    bottom: calc(-1 * var(--obj-ratio) / 2 - var(--scene-height));
+}
+
+.cube-group {
+    position: absolute;
+    transform-style: preserve-3d;
+    height: 100%;
+    width: 100%;
+}
+
+@keyframes sceneRotate {
+    to {transform: rotateY(360deg)}
+}
+
+.cube {
+    transform-style: preserve-3d;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: calc(var(--cube-left) * var(--obj-ratio) + var(--obj-left));
+    bottom: calc((var(--cube-height) / 2 + var(--cube-bottom)) * var(--obj-ratio) + var(--obj-bottom));
+    transform: rotateX(var(--cube-rotate-x)) rotateY(var(--cube-rotate-y)) rotateZ(var(--cube-rotate-z));
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cube .left,
+.cube .right,
+.cube .front,
+.cube .back,
+.cube .top,
+.cube .bottom {
+    position: absolute;
+    background: var(--cubeColor);
+}
+
+.cube .left,
+.cube .right {
+    height: calc(var(--cube-height) * var(--obj-ratio));
+    width: calc(var(--cube-depth)  * var(--obj-ratio));
+}
+
+.cube .front,
+.cube .back {
+    height: calc(var(--cube-height) * var(--obj-ratio));
+    width: calc(var(--cube-width) * var(--obj-ratio));
+}
+
+.cube .top,
+.cube .bottom {
+    height: calc(var(--cube-depth) * var(--obj-ratio));
+    width: calc(var(--cube-width) * var(--obj-ratio));
+}
+
+
+.cube .front { transform: translateZ(calc(var(--cube-depth) * var(--obj-ratio) / 2)); }
+.cube .right { transform: rotateY(270deg) translateZ(calc(var(--cube-width) * var(--obj-ratio) / 2)); }
+.cube .back { transform: rotateY(180deg) translateZ(calc(var(--cube-depth) * var(--obj-ratio) / 2)); }
+.cube .left { transform: rotateY(90deg) translateZ(calc(var(--cube-width) * var(--obj-ratio) / 2));}
+.cube .top { transform: rotateX(90deg) translateZ(calc(var(--cube-height) * var(--obj-ratio) / 2))}
+.cube .bottom { transform: rotateX(90deg) translateZ(calc(-1 * var(--cube-height) * var(--obj-ratio) / 2))}
+
+/* WALLS */
+[id^="wallobj"] {
+    --obj-ratio: 1em;
+}
+[id*="wall-"] {
+    --cube-height: 5;
+    --cube-depth: 0.5;
+    --cubeColor: white;
+}
+[id^="wall-"] > *{
+    box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.321) inset;
+}
+
+/*WALL 1*/
+#wallobj-1-1 { transform: translateZ(2em); background-color: red; }
+#wall-1-1 {
+    --cube-width: 9;
+    --cube-left: calc(var(--cube-width) / 2); }
+
+#wall-1-1-painting-1 {
+    --cube-height: 2;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 1.5);
+    --cubeColor: white;
+    transform: translateZ(calc(var(--obj-ratio) * 0.29));
+}
+
+#wall-1-1-painting-2 {
+    --cube-height: 3.2;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    --cube-bottom: 1;
+    --cube-left: calc(var(--cube-width)/2 + 5);
+    --cubeColor: white;
+    transform: translateZ(calc(var(--obj-ratio) * 0.29));
+}
+
+/*WALL 2*/
+#wallobj-1-2 { transform: translateX(8.5em); }
+#wall-1-2 {
+    --cube-width: 8;
+    --cube-left: calc(var(--cube-width) / 2); 
+}
+
+#wall-1-2-painting {
+    --cube-height: 1.3;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    --cube-bottom: 2.2;
+    --cube-left: calc(var(--cube-width)/2 + 1.8);
+    --cubeColor: white;
+    transform: translateZ(calc(var(--obj-ratio) * 0.29));
+}
+
+/*WALL 3*/
+#wallobj-1-3 { transform: translateZ(2em) translateX(12em); background-color: green;}
+#wall-1-3 { --cube-width: 1; --cube-left: 0.5}
+
+
+
+/*WALL 4*/
+#wallobj-1-4 { 
+    background-color: blue;
+    transform: translateZ(2.25em) rotateY(-90deg) translateZ(-13.25em); 
+}
+#wall-1-4 {
+    --cube-width: 14;
+    --cube-left: calc(var(--cube-width) / 2); 
+}
+
+#wall-1-4-painting-1 {
+    --cube-height: 1;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 2);
+    --cubeColor: white;
+
+    transform: translateZ(calc(var(--obj-ratio) * 0.29));
+}
+#wall-1-4-painting-2 {
+    --cube-height: 2;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 5);
+    --cubeColor: white;
+
+    transform: translateZ(calc(var(--obj-ratio) * 0.29));
+}
+#wall-1-4-painting-3 {
+    --cube-height: 2;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 7.25);
+    --cubeColor: white;
+
+    transform: translateZ(calc(var(--obj-ratio) * 0.29));
+}
+#wall-1-4-painting-4 {
+    --cube-height: 1;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2.85;
+    --cube-left: calc(var(--cube-width)/2 + 10);
+    --cubeColor: white;
+
+    transform: translateZ(calc(var(--obj-ratio) * 0.29));
+}
+#wall-1-4-painting-5 {
+    --cube-height: 1;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 1.6;
+    --cube-left: calc(var(--cube-width)/2 + 10);
+    --cubeColor: white;
+
+    transform: translateZ(calc(var(--obj-ratio) * 0.29));
+}
+
+
+
+
+
+
+
+
+#painting {
+    object-fit: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 0 0.02em rgba(0, 0, 0, 0.328);
+}
+
+#painting .painting-description {
+    position: absolute;
+    width: 0.3em;
+    height: 0.13em;
+    background-color: rgb(255, 255, 255);
+    bottom: 0;
+    left: calc(100% + 0.2em);
+
+    text-align: left;
+    padding: 0.02em;
+    box-shadow: 0 0 0.02em rgba(0, 0, 0, 0.215);
+}
+.painting-description p {
+    font-size: 0.02em;
+    line-height: 1em;
+}
+
+#painting img{
+    --border-painting: 0.04em;
+    width: calc(100% - var(--border-painting));
+    height: calc(100% - var(--border-painting));
+
+    pointer-events: fill;
+    cursor: pointer;
+}
