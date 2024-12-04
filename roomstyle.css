@@ -160,31 +160,33 @@ body {
 [id^="wall-"] > *{
     box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.321) inset;
 }
+[id*="painting-frame"] {
+    --cubeColor: white;
+    transform: translateZ(calc(var(--obj-ratio) * 0.3));
+}
 
 /*WALL 1*/
-#wallobj-1-1 { transform: translateZ(2em); background-color: red; }
+#wallobj-1-1 {
+    transform: translateZ(2em);
+}
 #wall-1-1 {
     --cube-width: 9;
     --cube-left: calc(var(--cube-width) / 2); }
 
-#wall-1-1-painting-1 {
+#wall-1-1-painting-frame-1 {
     --cube-height: 2;
     --cube-width: 2;
     --cube-depth: 0.1;
     --cube-bottom: 2;
     --cube-left: calc(var(--cube-width)/2 + 1.5);
-    --cubeColor: white;
-    transform: translateZ(calc(var(--obj-ratio) * 0.29));
 }
 
-#wall-1-1-painting-2 {
+#wall-1-1-painting-frame-2 {
     --cube-height: 3.2;
     --cube-width: 2;
     --cube-depth: 0.1;
     --cube-bottom: 1;
     --cube-left: calc(var(--cube-width)/2 + 5);
-    --cubeColor: white;
-    transform: translateZ(calc(var(--obj-ratio) * 0.29));
 }
 
 /*WALL 2*/
@@ -194,91 +196,183 @@ body {
     --cube-left: calc(var(--cube-width) / 2); 
 }
 
-#wall-1-2-painting {
+#wall-1-2-painting-frame-1-out {
     --cube-height: 1.3;
     --cube-width: 2;
     --cube-depth: 0.1;
     --cube-bottom: 2.2;
     --cube-left: calc(var(--cube-width)/2 + 1.8);
-    --cubeColor: white;
-    transform: translateZ(calc(var(--obj-ratio) * 0.29));
 }
 
 /*WALL 3*/
-#wallobj-1-3 { transform: translateZ(2em) translateX(12em); background-color: green;}
-#wall-1-3 { --cube-width: 1; --cube-left: 0.5}
+#wallobj-1-3 {
+    transform: translateZ(2em) translateX(12em);
+}
+#wall-1-3 { 
+    --cube-width: 1;
+    --cube-left: 0.5
+}
 
 
 
 /*WALL 4*/
 #wallobj-1-4 { 
-    background-color: blue;
     transform: translateZ(2.25em) rotateY(-90deg) translateZ(-13.25em); 
 }
 #wall-1-4 {
-    --cube-width: 14;
+    --cube-width: 10;
     --cube-left: calc(var(--cube-width) / 2); 
 }
 
-#wall-1-4-painting-1 {
+#wall-1-4-painting-frame-3 {
     --cube-height: 1;
     --cube-width: 1.5;
     --cube-depth: 0.1;
     --cube-bottom: 2.5;
     --cube-left: calc(var(--cube-width)/2 + 2);
-    --cubeColor: white;
-
-    transform: translateZ(calc(var(--obj-ratio) * 0.29));
 }
-#wall-1-4-painting-2 {
+#wall-1-4-painting-frame-4 {
     --cube-height: 2;
     --cube-width: 1.5;
     --cube-depth: 0.1;
     --cube-bottom: 2;
     --cube-left: calc(var(--cube-width)/2 + 5);
-    --cubeColor: white;
-
-    transform: translateZ(calc(var(--obj-ratio) * 0.29));
 }
-#wall-1-4-painting-3 {
+#wall-1-4-painting-frame-5 {
     --cube-height: 2;
     --cube-width: 1.5;
     --cube-depth: 0.1;
     --cube-bottom: 2;
     --cube-left: calc(var(--cube-width)/2 + 7.25);
-    --cubeColor: white;
-
-    transform: translateZ(calc(var(--obj-ratio) * 0.29));
 }
-#wall-1-4-painting-4 {
+
+
+
+/* WALL 5 */
+#wallobj-1-5 { 
+    transform: translateZ(12em) translateX(13em); 
+}
+#wall-1-5 {
+    --cube-width: 6;
+    --cube-left: calc(var(--cube-width) / 2); 
+}
+
+/* WALL 6*/
+#wallobj-1-6 { 
+    transform: translateZ(12.25em) rotateY(-90deg) translateZ(-15.25em); 
+}
+#wall-1-6 {
+    --cube-width: 8.5;
+    --cube-left: calc(var(--cube-width) / 2); 
+}
+#wall-1-6-painting-frame-6 {
     --cube-height: 1;
     --cube-width: 1.5;
     --cube-depth: 0.1;
-    --cube-bottom: 2.85;
-    --cube-left: calc(var(--cube-width)/2 + 10);
-    --cubeColor: white;
-
-    transform: translateZ(calc(var(--obj-ratio) * 0.29));
+    --cube-bottom: 3;
+    --cube-left: calc(var(--cube-width)/2 + 1.5);
 }
-#wall-1-4-painting-5 {
+#wall-1-6-painting-frame-7 {
     --cube-height: 1;
     --cube-width: 1.5;
     --cube-depth: 0.1;
     --cube-bottom: 1.6;
-    --cube-left: calc(var(--cube-width)/2 + 10);
-    --cubeColor: white;
+    --cube-left: calc(var(--cube-width)/2 + 1.5);
+}
+#wall-1-6-painting-frame-8 {
+    --cube-height: 2;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 4.5);
+}
 
-    transform: translateZ(calc(var(--obj-ratio) * 0.29));
+/* WALL 7 */
+#wallobj-1-7 { 
+    transform: translateZ(2em) rotateY(180deg) translateZ(-19em) translateX(-15em); 
+}
+#wall-1-7 {
+    --cube-width: 15;
+    --cube-left: calc(var(--cube-width) / 2); 
+}
+
+#wall-1-7-painting-frame-9 {
+    --cube-height: 3.2;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    --cube-bottom: 1;
+    --cube-left: calc(var(--cube-width)/2 + 2.5);
+}
+#wall-1-7-painting-frame-10 {
+    --cube-height: 2;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    --cube-bottom: 1.75;
+    --cube-left: calc(var(--cube-width)/2 + 6.5);
+}
+#wall-1-7-painting-frame-11 {
+    --cube-height: 3.2;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    --cube-bottom: 1;
+    --cube-left: calc(var(--cube-width)/2 + 10.5);
+}
+
+/* WALL 8 */
+#wallobj-1-8 { 
+    transform: translateZ(2em) rotateY(90deg) translateX(-18.75em) translateZ(-0.25em); 
+}
+#wall-1-8 {
+    --cube-width: 18.5;
+    --cube-left: calc(var(--cube-width) / 2); 
+}
+
+#wall-1-8-painting-frame-12 {
+    --cube-height: 1;
+    --cube-width: 1;
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 1.5);
+}
+#wall-1-8-painting-frame-13 {
+    --cube-height: 1;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 3.5);
+}
+#wall-1-8-painting-frame-14 {
+    --cube-height: 2;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 6.5);
+}
+#wall-1-8-painting-frame-15 {
+    --cube-height: 2;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 10);
+}
+#wall-1-8-painting-frame-16 {
+    --cube-height: 2;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 12.25);
+}
+#wall-1-8-painting-frame-17 {
+    --cube-height: 1;
+    --cube-width: 2.2;
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 15);
 }
 
 
-
-
-
-
-
-
 #painting {
+    transform-style: preserve-3d;
     object-fit: contain;
     display: flex;
     align-items: center;
@@ -294,6 +388,7 @@ body {
     background-color: rgb(255, 255, 255);
     bottom: 0;
     left: calc(100% + 0.2em);
+    transform: translateZ(-0.07em);
 
     text-align: left;
     padding: 0.02em;

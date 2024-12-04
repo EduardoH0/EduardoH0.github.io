@@ -29,10 +29,26 @@ function animateWalk() {
     // Apply rotation to the scene
     console.log(`CurrentWalk: ${currentWalk}`)
 
-    if (currentWalk<-10) {
+    if (currentWalk <-31) {
+        currentRotation = 270;
+        scene.style.transform = `rotateY(${currentRotation}deg) translateZ(${-18 -currentWalk -31}em) translateX(2.25em)`;
+        mapPosition.style.left = `${Math.max((-currentWalk-10)  * 100 / 15.25 , 0)}%`;
+    }
+    else if (currentWalk<-23) {
+        currentRotation = 180;
+        scene.style.transform = `rotateY(${currentRotation}deg) translateZ(${-23.5}em) translateX(${-currentWalk - 23    - 10}em)`;
+        mapPosition.style.left = `${Math.max((-currentWalk-10)  * 100 / 15.25 , 0)}%`;
+    }
+
+    else if (currentWalk<-16) {
+        currentRotation = 90;
+        scene.style.transform = `rotateY(${currentRotation}deg) translateZ(${currentWalk + 4}em) translateX(-17.25em)`;
+        mapPosition.style.left = `${Math.max((-currentWalk-10)  * 100 / 15.25 , 0)}%`;
+    }
+    else if (currentWalk<-10) {
         currentRotation = 90;
         scene.style.transform = `rotateY(${currentRotation}deg) translateZ(${currentWalk + 4}em) translateX(-15.25em)`;
-        mapPosition.style.left = `${Math.max((-currentWalk-10)  * 80 / 10, 0)}%`;
+        mapPosition.style.left = `${Math.max((-currentWalk-10)  * 100 / 15.25 , 0)}%`;
     }
     else {
         scene.style.transform = `translateX(${currentWalk}em)`;
