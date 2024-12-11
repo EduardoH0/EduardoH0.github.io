@@ -22,13 +22,22 @@
         </svg>
     </div>
 
-    <div class="a-main-container-work" id="a-main-container-work">
-        <div class="a-main-sub-container-work" id="a-main-sub-container-work">
+    <div class="container-zoom-work" id="container-zoom-work">
+        <div class="sub-container-zoom-work" id="sub-container-zoom-work">
             <img class="img-wrapper" id="img-wrapper">
         </div>
         <button class="close-img-wrapper" id="close-img-wrapper">
             <svg widht="100%" height="100%" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M100 100 L400 400 M100 400 L400 100"/></svg>
         </button>
+        <div class="container-zoom-work-bottom">
+            <div class="container-zoom-work-prev" id="container-zoom-work-prev">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M328 112L184 256l144 144"/></svg>
+            </div>
+            <div class="container-zoom-work-next" id="container-zoom-work-next">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M184 112l144 144-144 144"/></svg>
+            </div>
+        </div>
+        <div class="sub-container-zoom-text" id="sub-container-zoom-text"></div>
     </div>
 
     <div class="scene-container">
@@ -36,18 +45,28 @@
             <div class="scene-obj" id="wallobj-1-1">
                 <div class="cube-group">
                     <div class="cube" id="wall-1-1">
-                        <div class="front"></div>
+                        <div class="front">
+                            <a href="index.html" class="room-invisible-screen" id="wall-1-1-invisible-screen"></a>
+                            <div class="room-sign" id="wall-1-1-room2-sign">
+                                <div class="room-sign-arrow">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <path fill="none" stroke="currentColor" stroke-linecap="butt" stroke-linejoin="butt" stroke-width="56" d="M268 112l144 144-144 144M392 256H100"/>
+                                    </svg>
+                                </div>
+                                <p>ROOM 2</p>
+                            </div>
+                        </div>
                         <div class="left"></div>
                         <!-- <div class="right"></div> -->
                     </div>
                     <div class="cube" id="wall-1-1-painting-frame-1">
                         <div class="front" id="painting">
                             <div class="painting-description">
-                                <p>Materia y Sueño N.11, 2020</p>
+                                <p>Materia y Sueño N.1, 2020</p>
                                 <p>Mixta sobre cristal acrilico</p>
                                 <p>100 x 100 cm</p>
                             </div>
-                            <img class="room-img" src="images/room1//1.jpg" alt="">
+                            <img class="room-img" src="images/room1//1.jpg" id="work-1" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -57,11 +76,11 @@
                     <div class="cube" id="wall-1-1-painting-frame-2">
                         <div class="front" id="painting">
                             <div class="painting-description">
-                                <p>Materia y Sueño N.11, 2020</p>
+                                <p>Materia y Sueño N.2, 2020</p>
                                 <p>Mixta sobre cristal acrilico</p>
-                                <p>100 x 100 cm</p>
+                                <p>150 x 100 cm</p>
                             </div>
-                            <img class="room-img" src="images/room1/2.jpg" alt="">
+                            <img class="room-img" src="images/room1/2.jpg" id="work-2" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -84,7 +103,7 @@
                                 <p>Mixta sobre cristal acrilico</p>
                                 <p>100 x 100 cm</p>
                             </div>
-                            <img class="room-img" src="images/room1/1p.jpg" alt="">
+                            <img class="room-img-out" src="images/room1/1p.jpg" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -113,11 +132,11 @@
                     <div class="cube" id="wall-1-4-painting-frame-3">
                         <div class="front" id="painting">
                             <div class="painting-description">
-                                <p>Materia y Sueño N.11, 2020</p>
+                                <p>Materia y Sueño N.3, 2020</p>
                                 <p>Mixta sobre cristal acrilico</p>
-                                <p>100 x 100 cm</p>
+                                <p>50 x 75 cm</p>
                             </div>
-                            <img class="room-img" src="images/room1/3.jpg" alt="">
+                            <img class="room-img" src="images/room1/3.jpg" id="work-3" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -127,11 +146,11 @@
                     <div class="cube" id="wall-1-4-painting-frame-4">
                         <div class="front" id="painting">
                             <div class="painting-description">
-                                <p>Materia y Sueño N.11, 2020</p>
+                                <p>Materia y Sueño N.4, 2020</p>
                                 <p>Mixta sobre cristal acrilico</p>
-                                <p>100 x 100 cm</p>
+                                <p>100 x 75 cm</p>
                             </div>
-                            <img class="room-img" src="images/room1/4.jpg" alt="">
+                            <img class="room-img" src="images/room1/4.jpg" id="work-4"  alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -141,11 +160,11 @@
                     <div class="cube" id="wall-1-4-painting-frame-5">
                         <div class="front" id="painting">
                             <div class="painting-description">
-                                <p>Materia y Sueño N.11, 2020</p>
+                                <p>Materia y Sueño N.5, 2020</p>
                                 <p>Mixta sobre cristal acrilico</p>
-                                <p>100 x 100 cm</p>
+                                <p>100 x 75 cm</p>
                             </div>
-                            <img class="room-img" src="images/room1/5.jpg" alt="">
+                            <img class="room-img" src="images/room1/5.jpg" id="work-5" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -174,11 +193,11 @@
                     <div class="cube" id="wall-1-6-painting-frame-6">
                         <div class="front" id="painting">
                             <div class="painting-description">
-                                <p>Materia y Sueño N.11, 2020</p>
+                                <p>Materia y Sueño N.6, 2020</p>
                                 <p>Mixta sobre cristal acrilico</p>
-                                <p>100 x 100 cm</p>
+                                <p>50 x 75 cm</p>
                             </div>
-                            <img class="room-img" src="images/room1/6.jpg" alt="">
+                            <img class="room-img" src="images/room1/6.jpg" id="work-6" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -188,11 +207,11 @@
                     <div class="cube" id="wall-1-6-painting-frame-7">
                         <div class="front" id="painting">
                             <div class="painting-description">
-                                <p>Materia y Sueño N.11, 2020</p>
+                                <p>Materia y Sueño N.7, 2020</p>
                                 <p>Mixta sobre cristal acrilico</p>
-                                <p>100 x 100 cm</p>
+                                <p>50 x 75 cm</p>
                             </div>
-                            <img class="room-img" src="images/room1/7.jpg" alt="">
+                            <img class="room-img" src="images/room1/7.jpg" id="work-7" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -202,11 +221,11 @@
                     <div class="cube" id="wall-1-6-painting-frame-8">
                         <div class="front" id="painting">
                             <div class="painting-description">
-                                <p>Materia y Sueño N.11, 2020</p>
+                                <p>Materia y Sueño N.8, 2020</p>
                                 <p>Mixta sobre cristal acrilico</p>
                                 <p>100 x 100 cm</p>
                             </div>
-                            <img class="room-img" src="images/room1/8.jpg" alt="">
+                            <img class="room-img" src="images/room1/8.jpg" id="work-8" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -225,11 +244,11 @@
                     <div class="cube" id="wall-1-7-painting-frame-9">
                         <div class="front" id="painting">
                             <div class="painting-description">
-                                <p>Materia y Sueño N.11, 2020</p>
+                                <p>Materia y Sueño N.9, 2020</p>
                                 <p>Mixta sobre cristal acrilico</p>
-                                <p>100 x 100 cm</p>
+                                <p>150 x 100 cm</p>
                             </div>
-                            <img class="room-img" src="images/room1/9.jpg" alt="">
+                            <img class="room-img" src="images/room1/9.jpg" id="work-9" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -239,11 +258,11 @@
                     <div class="cube" id="wall-1-7-painting-frame-10">
                         <div class="front" id="painting">
                             <div class="painting-description">
-                                <p>Materia y Sueño N.11, 2020</p>
+                                <p>Materia y Sueño N.10, 2020</p>
                                 <p>Mixta sobre cristal acrilico</p>
                                 <p>100 x 100 cm</p>
                             </div>
-                            <img class="room-img" src="images/room1/10.jpg" alt="">
+                            <img class="room-img" src="images/room1/10.jpg" id="work-10" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -255,9 +274,9 @@
                             <div class="painting-description">
                                 <p>Materia y Sueño N.11, 2020</p>
                                 <p>Mixta sobre cristal acrilico</p>
-                                <p>100 x 100 cm</p>
+                                <p>150 x 100 cm</p>
                             </div>
-                            <img class="room-img" src="images/room1/11.jpg" alt="">
+                            <img class="room-img" src="images/room1/11.jpg" id="work-11" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -276,11 +295,11 @@
                     <div class="cube" id="wall-1-8-painting-frame-12">
                         <div class="front" id="painting">
                             <div class="painting-description">
-                                <p>Materia y Sueño N.11, 2020</p>
+                                <p>Materia y Sueño N.12, 2020</p>
                                 <p>Mixta sobre cristal acrilico</p>
-                                <p>100 x 100 cm</p>
+                                <p>50 x 50 cm</p>
                             </div>
-                            <img class="room-img" src="images/room1/12.jpg" alt="">
+                            <img class="room-img" src="images/room1/12.jpg" id="work-12" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -290,11 +309,11 @@
                     <div class="cube" id="wall-1-8-painting-frame-13">
                         <div class="front" id="painting">
                             <div class="painting-description">
-                                <p>Materia y Sueño N.11, 2020</p>
+                                <p>Materia y Sueño N.13, 2020</p>
                                 <p>Mixta sobre cristal acrilico</p>
-                                <p>100 x 100 cm</p>
+                                <p>50 x 75 cm</p>
                             </div>
-                            <img class="room-img" src="images/room1/13.jpg" alt="">
+                            <img class="room-img" src="images/room1/13.jpg" id="work-13" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -304,11 +323,11 @@
                     <div class="cube" id="wall-1-8-painting-frame-14">
                         <div class="front" id="painting">
                             <div class="painting-description">
-                                <p>Materia y Sueño N.11, 2020</p>
+                                <p>Materia y Sueño N.14, 2020</p>
                                 <p>Mixta sobre cristal acrilico</p>
                                 <p>100 x 100 cm</p>
                             </div>
-                            <img class="room-img" src="images/room1/14.jpg" alt="">
+                            <img class="room-img" src="images/room1/14.jpg" id="work-14" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -318,11 +337,11 @@
                     <div class="cube" id="wall-1-8-painting-frame-15">
                         <div class="front" id="painting">
                             <div class="painting-description">
-                                <p>Materia y Sueño N.11, 2020</p>
+                                <p>Materia y Sueño N.15, 2020</p>
                                 <p>Mixta sobre cristal acrilico</p>
-                                <p>100 x 100 cm</p>
+                                <p>100 x 75 cm</p>
                             </div>
-                            <img class="room-img" src="images/room1/15.jpg" alt="">
+                            <img class="room-img" src="images/room1/15.jpg" id="work-15" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -332,11 +351,11 @@
                     <div class="cube" id="wall-1-8-painting-frame-16">
                         <div class="front" id="painting">
                             <div class="painting-description">
-                                <p>Materia y Sueño N.11, 2020</p>
+                                <p>Materia y Sueño N.16, 2020</p>
                                 <p>Mixta sobre cristal acrilico</p>
-                                <p>100 x 100 cm</p>
+                                <p>100 x 75 cm</p>
                             </div>
-                            <img class="room-img" src="images/room1/16.jpg" alt="">
+                            <img class="room-img" src="images/room1/16.jpg" id="work-16" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -346,11 +365,11 @@
                     <div class="cube" id="wall-1-8-painting-frame-17">
                         <div class="front" id="painting">
                             <div class="painting-description">
-                                <p>Materia y Sueño N.11, 2020</p>
+                                <p>Materia y Sueño N.17, 2020</p>
                                 <p>Mixta sobre cristal acrilico</p>
-                                <p>100 x 100 cm</p>
+                                <p>50 x 100 cm</p>
                             </div>
-                            <img class="room-img" src="images/room1/17.jpg" alt="">
+                            <img class="room-img" src="images/room1/17.jpg" id="work-17" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>

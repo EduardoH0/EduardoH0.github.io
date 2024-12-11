@@ -15,6 +15,7 @@ export class AnimationController {
 
         // Configuration
         this.walkStep = config.walkStep || 0.3;
+        this.walkStepKey = config.walkStepKey || 0.05;
         this.smoothnessFactor = config.smoothnessFactor || 0.05;
         this.touchSmoothness = config.touchSmoothness || 0.02;
         this.cumulativeRoom = config.cumulativeRoom;
@@ -33,6 +34,7 @@ export class AnimationController {
         document.addEventListener('touchstart', (event) => this.onTouchStart(event));
         document.addEventListener('touchmove', (event) => this.onTouchMove(event));
         document.addEventListener('touchend', () => this.onTouchEnd());
+        document.addEventListener('keydown', (event) => {this.onKey(event)});
     }
 
     startAnimation() {
@@ -57,7 +59,7 @@ export class AnimationController {
         this.mapPosition.style.inset = this.forwardMap(newPos, this.cumulativeRoom)[index];
 
         // Continue animation loop
-        if (Math.abs(this.targetWalk - this.currentWalk) > 0.1) {
+        if (Math.abs(this.targetWalk - this.currentWalk) > 0.05) {
             requestAnimationFrame(() => this.animateWalk());
         } else {
             this.currentWalk = this.targetWalk;
@@ -67,6 +69,17 @@ export class AnimationController {
 
     onWheel(event) {
         this.targetWalk += (event.deltaY > 0 ? 1 : -1) * this.walkStep;
+        this.startAnimation();
+    }
+
+    onKey(event) {
+        this.smoothnessFactor = 1
+        if (event.key == 'ArrowRight') {
+            this.targetWalk += -1 * this.walkStepKey;
+        }
+        else if (event.key == 'ArrowLeft') {
+            this.targetWalk += 1 * this.walkStepKey;
+        }
         this.startAnimation();
     }
 

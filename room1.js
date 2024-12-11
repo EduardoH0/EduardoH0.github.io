@@ -1,5 +1,5 @@
 import { AnimationController } from './animationController.js';
-import { aa } from './imageZoom.js';
+import { WorkZoom } from './imageZoom.js';
 
 const scene = document.getElementById('scene');
 const mapPosition = document.getElementById('map-position');
@@ -49,5 +49,5 @@ const animationController = new AnimationController(scene, mapPosition, {
     forwardMap: forwardMap,
 });
 
-
-aa();
+const workData = "images/room1/room1database.json"
+const workZoom = new WorkZoom(workData);

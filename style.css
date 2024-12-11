@@ -22,7 +22,11 @@
     --cube-rotate-z: 0;
 }
 
-html { overflow-x: hidden; }
+html {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
 body {
     /* background-color: #000; */
     min-height: 100vh;
@@ -33,17 +37,17 @@ body {
     font-size: 75px;
     perspective: 10em;
     perspective-origin: 50% calc(50% - 2em);
-    transition: perspective-origin 0.5s ease; /* Smooth transition */
+    transition: perspective-origin 0.5s ease;
     /* perspective-origin: 50% top; */
 
     padding: 0;
     margin: 0;
-    overflow-x: hidden;
     overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .scene {
-    position: relative;
+    position: fixed;
     transform-style: preserve-3d;
     /* animation: sceneRotate var(--rotateSpeed) infinite linear; */
 
@@ -366,6 +370,29 @@ body {
 #easel-1-painting .front img {
     width: 98%;
     height: 98%;
+}
+
+#easel-1-painting:hover > :nth-child(-n+4) {
+    animation: cubeHeight 0.25s forwards ease-in-out;
+}
+
+/* Apply the second animation to the remaining 2 children */
+#easel-1-painting:hover > :nth-child(n+5) {
+    animation: cubeShrink 0.25s forwards ease-in-out;
+}
+
+/* Define the animations */
+@keyframes cubeHeight {
+    100% { box-shadow: 0 0 1em rgb(255, 255, 255);}
+}
+
+@keyframes cubeShrink {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.8);
+    }
 }
 
 

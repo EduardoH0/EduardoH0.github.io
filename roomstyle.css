@@ -196,6 +196,57 @@ button {
     --cube-left: calc(var(--cube-width)/2 + 5);
 }
 
+#wall-1-1-invisible-screen {
+    position: absolute;
+    height: 100%;
+    --width: 3em;
+    width: var(--width);
+    right: calc(-1 * (var(--width)));
+
+    pointer-events: all;
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+}
+
+.room-sign > * {
+    box-shadow: none;
+}
+
+#wall-1-1-room2-sign {
+    position: absolute;
+    height: 1em;
+    right: 1em;
+    top: 7em;
+    
+    font-size: 0.18em;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    /* font-family:Arial, Helvetica, sans-serif; */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 0.2em;
+}
+.room-sign-arrow { height: 100%; }
+.room-sign-arrow svg { height: 100%; }
+
+#wall-1-1 .front #wall-1-1-invisible-screen:hover {
+    background-color: rgba(215, 221, 225, 0.308);
+}
+#wall-1-1 .front #wall-1-1-invisible-screen:hover ~ .room-sign {
+    animation: RotateRoomSign 0.7s ease-in-out;
+}
+
+@keyframes RotateRoomSign {
+    0% {transform: rotatez(0deg);}
+    25% {transform: rotatez(-10deg);}
+    75% {transform: rotatez(8deg);}
+    100% {transform: rotatez(0deg);}
+}
+
+
 /*WALL 2*/
 #wallobj-1-2 { transform: translateX(8.5em); }
 #wall-1-2 {
@@ -416,7 +467,7 @@ button {
 }
 
 
-.a-main-container-work{
+.container-zoom-work{
 	position: fixed;
 	display: none;
 	z-index: 100;
@@ -424,10 +475,12 @@ button {
 	/* height: calc(100% - var(--height-nav-bar)); */
 	height: 100%;
 	width: 100%;
-	background-color: rgba(255, 255, 255, 0.932);
+	/* background-color: rgba(255, 255, 255, 0.932); */
+    backdrop-filter: blur(1em) saturate(80%);
+    -webkit-backdrop-filter: blur(1em) saturate(80%);
 }
 
-.a-main-sub-container-work{
+.sub-container-zoom-work{
 	position: absolute;
 	top: 10%;
 	height: 70%;
@@ -444,22 +497,16 @@ button {
 	align-items: center;
 	justify-content: center;
 }
-.a-main-sub-container-work img{
+.sub-container-zoom-work img{
 	width: 99%;
 	height: 99%;
 	object-fit: contain;
-
-	/* flex-shrink: 1; */
-	/* flex: 0 0 auto; */
-
-	/* margin-left: 60px; */
-	/* position: absolute; */
 }
 
 .close-img-wrapper {
 	position: absolute;
-	height: 50px;
-	width: 50px;
+	height: 45px;
+	width: 45px;
 	top: 10px;
 	right: 10px;
 	display: flex;
@@ -481,4 +528,86 @@ button {
 	stroke-linecap: round;
 	stroke-linejoin: round;
 	stroke-width: 1.5em;
+}
+
+.container-zoom-work-bottom {
+	position: absolute;
+	top: 85%;
+	left: 50%;
+	transform: translate(-50%, 0);
+	height: 40px;
+	width: 260px;
+}
+
+
+.container-zoom-work-prev,
+.container-zoom-work-next{
+  	position: absolute;
+	height: 40px;
+	width: 40px;
+	cursor: pointer;
+  	user-select: none;
+  	z-index: 10;
+
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color .3s ease-in;
+    
+    transform: none;
+}
+.container-zoom-work-prev:hover,
+.container-zoom-work-next:hover {
+	background-color:#e9e8e8;
+}
+@media only screen and (hover: none) {
+    .container-zoom-work-prev:hover,
+    .container-zoom-work-next:hover {
+        background-color: transparent;
+    }
+}
+
+.click-animation-right { animation: clickArrowRight 0.3s ease-out; }
+.click-animation-left { animation: clickArrowLeft 0.3s ease-out; }
+
+@keyframes clickArrowRight {
+    0% { transform: translateX(0em); }
+    40% { transform: translateX(0.5em); }
+    100% { transform: translateX(0em); }
+}
+@keyframes clickArrowLeft {
+    0% { transform: translateX(0em); }
+    40% { transform: translateX(-0.5em); }
+    100% { transform: translateX(0em); }
+}
+
+.container-zoom-work-prev {
+	left: 0;
+}
+.container-zoom-work-next {
+	right: 0;
+}
+
+.container-zoom-work-prev path, .container-zoom-work-next path {
+	fill: none; /* Specify fill color */
+	stroke: rgb(0, 0, 0); /* Specify stroke color */
+	stroke-linecap: round; /* Specify stroke linecap */
+	stroke-linejoin: round; /* Specify stroke linejoin */
+	stroke-width: 15px;
+}
+
+.sub-container-zoom-text{
+	position: absolute;
+	top: 82%;
+	/* height: 70px; */
+	left: 50%;
+	transform: translate(-50%, 0);
+	text-align: center;
+	font-size: 14px;
+	overflow: hidden;   
+	padding-bottom: 10px;
+
+    line-height: 0.3;
+    /* background-color: red; */
 }
