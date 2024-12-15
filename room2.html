@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0 minimum-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <link rel="stylesheet" href="roomstyle.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="map">
+        <div class="map-position" id="map-position-2"></div>
+        <svg  viewbox="0 0 21 22" xmlns="http://www.w3.org/2000/svg">
+            <line x1="1" y1="21" x2="1" y2="1" stroke="black" stroke-width="0.2"/>
+            <line x1="1" y1="1" x2="6" y2="1" stroke="black" stroke-width="0.2"/>
+            <line x1="9" y1="1" x2="20" y2="1" stroke="black" stroke-width="0.2"/>
+            <line x1="20" y1="1" x2="20" y2="2" stroke="black" stroke-width="0.2"/>
+            <line x1="20" y1="5" x2="20" y2="9" stroke="black" stroke-width="0.2"/>
+            <line x1="10" y1="9" x2="20" y2="9" stroke="black" stroke-width="0.2"/>
+            <line x1="10" y1="9" x2="10" y2="10" stroke="black" stroke-width="0.2"/>
+            <line x1="10" y1="13" x2="10" y2="21" stroke="black" stroke-width="0.2"/>
+            <line x1="1" y1="21" x2="10" y2="21" stroke="black" stroke-width="0.2"/>
+            <!-- <line x1="19.5" y1="16" x2="1" y2="16" stroke="black" stroke-width="0.2"/> -->
+        </svg>
+    </div>
+
+    <div class="container-zoom-work" id="container-zoom-work">
+        <div class="sub-container-zoom-work" id="sub-container-zoom-work">
+            <img class="img-wrapper" id="img-wrapper">
+        </div>
+        <button class="close-img-wrapper" id="close-img-wrapper">
+            <svg widht="100%" height="100%" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M100 100 L400 400 M100 400 L400 100"/></svg>
+        </button>
+        <div class="sub-container-zoom-text" id="sub-container-zoom-text"></div>
+        <div class="container-zoom-work-bottom">
+            <div class="container-zoom-work-prev" id="container-zoom-work-prev">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M328 112L184 256l144 144"/></svg>
+            </div>
+            <div class="container-zoom-work-next" id="container-zoom-work-next">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M184 112l144 144-144 144"/></svg>
+            </div>
+        </div>
+        <div class="sub-container-coverflow-work" id="sub-container-coverflow-work"></div>
+        <button class="activate-coverflow-work" id="activate-coverflow-work">
+            <svg viewBox="0 0 100 100">
+                <rect class="square top right"
+                    width="35" height="45" fill="transparent" stroke="black" stroke-width="0.2em"
+                    x="10" y="25" ry="5" rx="5">
+                </rect>
+                <rect class="square top right"
+                    width="35" height="45" fill="transparent" stroke="black" stroke-width="0.2em"
+                    x="55" y="25" ry="5" rx="5">
+                </rect>
+                <rect class="square top right"
+                    width="50" height="50" fill="white" stroke="black" stroke-width="0.2em"
+                    x="25" y="30" ry="5" rx="5">
+                </rect>
+            </svg>
+        </button>
+    </div>
+
+    <div class="scene-container" id="scene-container">
+        <div class="scene" id="scene">
+            <div class="scene-obj" id="wallobj-2-1">
+                <div class="cube-group">
+                    <div class="cube" id="wall-2-1">
+                        <div class="front"></div>
+                    </div>
+                    <div class="cube" id="wall-2-1-painting-frame-1">
+                        <div class="front" id="painting">
+                            <div class="painting-description">
+                                <p>Continuidad del Tres sobre el Cuatro N.1, 2023</p>
+                                <p>Técnica mixta sobre papel</p>
+                                <p>50 x 70 cm</p>
+                            </div>
+                            <img class="room-img" src="images/room2/wb/1.jpg" id="work-1" alt="">
+                        </div>
+                        <div class="left"></div>
+                        <div class="right"></div>
+                        <div class="top"></div>
+                        <div class="bottom"></div>
+                    </div>
+                    <div class="cube" id="wall-2-1-painting-frame-2">
+                        <div class="front" id="painting">
+                            <div class="painting-description">
+                                <p>Continuidad del Tres sobre el Cuatro N.2, 2023</p>
+                                <p>T</p>
+                                <p>50 x 70 cm</p>
+                            </div>
+                            <img class="room-img" src="images/room2/wb/2.jpg" id="work-2" alt="">
+                        </div>
+                        <div class="left"></div>
+                        <div class="right"></div>
+                        <div class="top"></div>
+                        <div class="bottom"></div>
+                    </div>
+                    <div class="cube" id="wall-2-1-painting-frame-3">
+                        <div class="front" id="painting">
+                            <div class="painting-description">
+                                <p>Continuidad del Tres sobre el Cuatro N.3, 2023</p>
+                                <p>Técnica mixta sobre papel</p>
+                                <p>50 x 70 cm</p>
+                            </div>
+                            <img class="room-img" src="images/room2/wb/3.jpg" id="work-3 alt="">
+                        </div>
+                        <div class="left"></div>
+                        <div class="right"></div>
+                        <div class="top"></div>
+                        <div class="bottom"></div>
+                    </div>
+                    <div class="cube" id="wall-2-1-painting-frame-4">
+                        <div class="front" id="painting">
+                            <div class="painting-description">
+                                <p>Continuidad del Tres sobre el Cuatro N.4, 2023</p>
+                                <p>Técnica mixta sobre papel</p>
+                                <p>50 x 70 cm</p>
+                            </div>
+                            <img class="room-img" src="images/room2/wb/4.jpg" id="work-4" alt="">
+                        </div>
+                        <div class="left"></div>
+                        <div class="right"></div>
+                        <div class="top"></div>
+                        <div class="bottom"></div>
+                    </div>
+                    <div class="cube" id="wall-2-1-painting-frame-5">
+                        <div class="front" id="painting">
+                            <div class="painting-description">
+                                <p>Continuidad del Tres sobre el Cuatro N.5, 2023</p>
+                                <p>Técnica mixta sobre papel</p>
+                                <p>50 x 70 cm</p>
+                            </div>
+                            <img class="room-img" src="images/room2/wb/5.jpg" id="work-5" alt="">
+                        </div>
+                        <div class="left"></div>
+                        <div class="right"></div>
+                        <div class="top"></div>
+                        <div class="bottom"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scene-obj" id="wallobj-2-2">
+                <div class="cube-group">
+                    <div class="cube" id="wall-2-2">
+                        <div class="front"></div>
+                        <div class="left"></div>
+                    </div>
+                    <div class="cube" id="wall-2-2-painting-frame-6">
+                        <div class="front" id="painting">
+                            <div class="painting-description">
+                                <p>Continuidad del Tres sobre el Cuatro N.6, 2023</p>
+                                <p>Técnica mixta sobre papel</p>
+                                <p>50 x 70 cm</p>
+                            </div>
+                            <img class="room-img" src="images/room2/wb/6.jpg" id="work-6" alt="">
+                        </div>
+                        <div class="left"></div>
+                        <div class="right"></div>
+                        <div class="top"></div>
+                        <div class="bottom"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="scene-obj" id="wallobj-2-3">
+                <div class="cube-group">
+                    <div class="cube" id="wall-2-3">
+                        <div class="front"></div>
+                        <div class="right"></div>
+                    </div>
+                    <div class="cube" id="wall-2-2-painting-frame-7">
+                        <div class="front" id="painting">
+                            <div class="painting-description">
+                                <p>Continuidad del Tres sobre el Cuatro N.7, 2023</p>
+                                <p>Técnica mixta sobre papel</p>
+                                <p>50 x 70 cm</p>
+                            </div>
+                            <img class="room-img" src="images/room2/wb/7.jpg" id="work-7" alt="">
+                        </div>
+                        <div class="left"></div>
+                        <div class="right"></div>
+                        <div class="top"></div>
+                        <div class="bottom"></div>
+                    </div>
+                    <div class="cube" id="wall-2-2-painting-frame-8">
+                        <div class="front" id="painting">
+                            <div class="painting-description">
+                                <p>Continuidad del Tres sobre el Cuatro N.8, 2023</p>
+                                <p>Técnica mixta sobre papel</p>
+                                <p>50 x 70 cm</p>
+                            </div>
+                            <img class="room-img" src="images/room2/wb/8.jpg" id="work-8" alt="">
+                        </div>
+                        <div class="left"></div>
+                        <div class="right"></div>
+                        <div class="top"></div>
+                        <div class="bottom"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="scene-obj" id="wallobj-2-4">
+                <div class="cube-group">
+                    <div class="cube" id="wall-2-4">
+                        <div class="front"></div>
+                        <div class="left"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="scene-obj" id="wallobj-2-5">
+                <div class="cube-group">
+                    <div class="cube" id="wall-2-5">
+                        <div class="front"></div>
+                        <div class="right"></div>
+                    </div>
+                </div>
+                <div class="cube" id="wall-2-5-painting-frame-9">
+                    <div class="front" id="painting">
+                        <div class="painting-description">
+                            <p>Continuidad del Tres sobre el Cuatro N.9, 2023</p>
+                            <p>Técnica mixta sobre papel</p>
+                            <p>50 x 70 cm</p>
+                        </div>
+                        <img class="room-img" src="images/room2/wb/9.jpg" id="work-9" alt="">
+                    </div>
+                    <div class="left"></div>
+                    <div class="right"></div>
+                    <div class="top"></div>
+                    <div class="bottom"></div>
+                </div>
+            </div>
+            <div class="scene-obj" id="wallobj-2-6">
+                <div class="cube-group">
+                    <div class="cube" id="wall-2-6">
+                        <div class="front"></div>
+                    </div>
+                    <div class="cube" id="wall-2-6-painting-frame-10">
+                        <div class="front" id="painting">
+                            <div class="painting-description">
+                                <p>Continuidad del Tres sobre el Cuatro N.10, 2023</p>
+                                <p>Técnica mixta sobre papel</p>
+                                <p>50 x 70 cm</p>
+                            </div>
+                            <img class="room-img" src="images/room2/wb/10.jpg" id="work-10" alt="">
+                        </div>
+                        <div class="left"></div>
+                        <div class="right"></div>
+                        <div class="top"></div>
+                        <div class="bottom"></div>
+                    </div>
+                    <div class="cube" id="wall-2-6-painting-frame-11">
+                        <div class="front" id="painting">
+                            <div class="painting-description">
+                                <p>Continuidad del Tres sobre el Cuatro N.11, 2023</p>
+                                <p>Técnica mixta sobre papel</p>
+                                <p>50 x 70 cm</p>
+                            </div>
+                            <img class="room-img" src="images/room2/wb/11.jpg" id="work-11" alt="">
+                        </div>
+                        <div class="left"></div>
+                        <div class="right"></div>
+                        <div class="top"></div>
+                        <div class="bottom"></div>
+                    </div>
+                    <div class="cube" id="wall-2-6-painting-frame-12">
+                        <div class="front" id="painting">
+                            <div class="painting-description">
+                                <p>Continuidad del Tres sobre el Cuatro N.12, 2023</p>
+                                <p>Técnica mixta sobre papel</p>
+                                <p>50 x 70 cm</p>
+                            </div>
+                            <img class="room-img" src="images/room2/wb/12.jpg" id="work-12" alt="">
+                        </div>
+                        <div class="left"></div>
+                        <div class="right"></div>
+                        <div class="top"></div>
+                        <div class="bottom"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="scene-obj" id="wallobj-2-7">
+                <div class="cube-group">
+                    <div class="cube" id="wall-2-7">
+                        <div class="front"></div>
+                        <div class="left"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="scene-obj" id="wallobj-2-8">
+                <div class="cube-group">
+                    <div class="cube" id="wall-2-8">
+                        <div class="front">
+                            <a href="room.html" class="room-invisible-screen" id="wall-2-8-invisible-screen"></a>
+                            <div class="room-sign" id="wall-2-8-room1-sign">
+                                <div class="room-sign-arrow">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <path fill="none" stroke="currentColor" stroke-linecap="butt" stroke-linejoin="butt" stroke-width="56" d="M268 112l144 144-144 144M392 256H100"/>
+                                    </svg>
+                                </div>
+                                <p>ROOM 1</p>
+                            </div>
+                        </div>
+                        <div class="right"></div>
+                    </div>
+                    <div class="cube" id="wall-2-8-painting-frame-13">
+                        <div class="front" id="painting">
+                            <div class="painting-description">
+                                <p>Continuidad del Tres sobre el Cuatro N.13, 2023</p>
+                                <p>Técnica mixta sobre papel</p>
+                                <p>50 x 70 cm</p>
+                            </div>
+                            <img class="room-img" src="images/room2/wb/13.jpg" id="work-13" alt="">
+                        </div>
+                        <div class="left"></div>
+                        <div class="right"></div>
+                        <div class="top"></div>
+                        <div class="bottom"></div>
+                    </div>
+                    <div class="cube" id="wall-2-8-painting-frame-14">
+                        <div class="front" id="painting">
+                            <div class="painting-description">
+                                <p>Continuidad del Tres sobre el Cuatro N.14, 2023</p>
+                                <p>Técnica mixta sobre papel</p>
+                                <p>50 x 70 cm</p>
+                            </div>
+                            <img class="room-img" src="images/room2/wb/14.jpg" id="work-14" alt="">
+                        </div>
+                        <div class="left"></div>
+                        <div class="right"></div>
+                        <div class="top"></div>
+                        <div class="bottom"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="scene-obj" id="wallobj-2-9">
+                <div class="cube-group">
+                    <div class="cube" id="wall-2-9">
+                        <div class="front"></div>
+                    </div>
+                    <div class="cube" id="wall-2-9-painting-frame-15">
+                        <div class="front" id="painting">
+                            <div class="painting-description">
+                                <p>Continuidad del Tres sobre el Cuatro N.15, 2023</p>
+                                <p>Técnica mixta sobre papel</p>
+                                <p>50 x 70 cm</p>
+                            </div>
+                            <img class="room-img" src="images/room2/wb/15.jpg" id="work-15" alt="">
+                        </div>
+                        <div class="left"></div>
+                        <div class="right"></div>
+                        <div class="top"></div>
+                        <div class="bottom"></div>
+                    </div>
+                    <div class="cube" id="wall-2-9-painting-frame-16">
+                        <div class="front" id="painting">
+                            <div class="painting-description">
+                                <p>Continuidad del Tres sobre el Cuatro N.16, 2023</p>
+                                <p>Técnica mixta sobre papel</p>
+                                <p>50 x 70 cm</p>
+                            </div>
+                            <img class="room-img" src="images/room2/wb/16.jpg" id="work-16" alt="">
+                        </div>
+                        <div class="left"></div>
+                        <div class="right"></div>
+                        <div class="top"></div>
+                        <div class="bottom"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="room2.js"></script>
+</body>
+</html>

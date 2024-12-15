@@ -2,9 +2,10 @@
     Animation Controller module
 */
 export class AnimationController {
-    constructor(scene, mapPosition, config) {
+    constructor(scene, mapPosition, stateManager, config) {
         this.scene = scene;
         this.mapPosition = mapPosition;
+        this.stateManager = stateManager;
 
         // State variables
         this.currentWalk = 0;
@@ -16,7 +17,9 @@ export class AnimationController {
         // Configuration
         this.walkStep = config.walkStep || 0.3;
         this.walkStepKey = config.walkStepKey || 0.05;
-        this.smoothnessFactor = config.smoothnessFactor || 0.05;
+        this.smoothnessFactor = config.smoothnessFactor || 0.02;
+        this.wheelSmoothnessFactor = config.wheelSmoothnessFactor || 0.1;
+        this.keySmoothnessFactor = config.keySmoothnessFactor || 1;
         this.touchSmoothness = config.touchSmoothness || 0.02;
         this.cumulativeRoom = config.cumulativeRoom;
         this.room = config.room;
@@ -30,8 +33,8 @@ export class AnimationController {
     }
 
     setupEventListeners() {
-        document.addEventListener('wheel', (event) => this.onWheel(event));
-        document.addEventListener('touchstart', (event) => this.onTouchStart(event));
+        document.addEventListener('wheel', (event) => {if (!this.stateManager.isFrozen()) this.onWheel(event)});
+        document.addEventListener('touchstart', (event) => {if (!this.stateManager.isFrozen()) this.onTouchStart(event)});
         document.addEventListener('touchmove', (event) => this.onTouchMove(event));
         document.addEventListener('touchend', () => this.onTouchEnd());
         document.addEventListener('keydown', (event) => {this.onKey(event)});
@@ -46,34 +49,45 @@ export class AnimationController {
 
     animateWalk() {
         this.currentWalk += (this.targetWalk - this.currentWalk) * this.smoothnessFactor;
-
+    
         // Compute new position (take into account direction + number of spins)
         let newPos = -(-this.currentWalk % this.cumulativeRoom[this.cumulativeRoom.length - 1]);
         if (this.currentWalk > 0) {
             newPos = -((this.cumulativeRoom[this.cumulativeRoom.length - 1] - (this.currentWalk % this.cumulativeRoom[this.cumulativeRoom.length - 1])));
         }
         const index = this.cumulativeRoom.findIndex(num => num > -newPos);
-
+    
+        // Check if index changed from former index
+        if (index !== this.formerIndex) {
+            this.formerIndex = index; // Update formerIndex
+            setTimeout(() => {this.animateWalk();}, 400);
+            return;
+        }
+    
         // Update scene and map
         this.scene.style.transform = this.forwardTransformations(newPos, this.cumulativeRoom)[index];
         this.mapPosition.style.inset = this.forwardMap(newPos, this.cumulativeRoom)[index];
-
+    
         // Continue animation loop
-        if (Math.abs(this.targetWalk - this.currentWalk) > 0.05) {
-            requestAnimationFrame(() => this.animateWalk());
+        if (Math.abs(this.targetWalk - this.currentWalk) > 0.1) {
+            requestAnimationFrame(() => { this.animateWalk(); });
         } else {
             this.currentWalk = this.targetWalk;
             this.isAnimating = false;
         }
     }
+    
 
     onWheel(event) {
-        this.targetWalk += (event.deltaY > 0 ? 1 : -1) * this.walkStep;
-        this.startAnimation();
+        this.smoothnessFactor = this.wheelSmoothnessFactor;
+        if (!this.stateManager.isFrozen()) {
+            this.targetWalk += (event.deltaY < 0 ? 1 : -1) * this.walkStep;
+            this.startAnimation();
+        }
     }
 
     onKey(event) {
-        this.smoothnessFactor = 1
+        this.smoothnessFactor = this.keySmoothnessFactor;
         if (event.key == 'ArrowRight') {
             this.targetWalk += -1 * this.walkStepKey;
         }

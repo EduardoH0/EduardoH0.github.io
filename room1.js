@@ -1,5 +1,6 @@
 import { AnimationController } from './animationController.js';
 import { WorkZoom } from './imageZoom.js';
+import { StateManager } from './stateManager.js';
 
 const scene = document.getElementById('scene');
 const mapPosition = document.getElementById('map-position');
@@ -42,7 +43,9 @@ function forwardMap(cw, cr) {
     ]
 }
 
-const animationController = new AnimationController(scene, mapPosition, {
+const stateManager = new StateManager();
+
+const animationController = new AnimationController(scene, mapPosition, stateManager, {
     room: room,
     cumulativeRoom: cumulativeRoom,
     forwardTransformations: forwardTransformations,
@@ -50,4 +53,4 @@ const animationController = new AnimationController(scene, mapPosition, {
 });
 
 const workData = "images/room1/room1database.json"
-const workZoom = new WorkZoom(workData);
+const workZoom = new WorkZoom(workData, stateManager);

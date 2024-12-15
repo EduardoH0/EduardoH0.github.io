@@ -29,6 +29,7 @@
         <button class="close-img-wrapper" id="close-img-wrapper">
             <svg widht="100%" height="100%" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M100 100 L400 400 M100 400 L400 100"/></svg>
         </button>
+        <div class="sub-container-zoom-text" id="sub-container-zoom-text"></div>
         <div class="container-zoom-work-bottom">
             <div class="container-zoom-work-prev" id="container-zoom-work-prev">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M328 112L184 256l144 144"/></svg>
@@ -37,16 +38,32 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M184 112l144 144-144 144"/></svg>
             </div>
         </div>
-        <div class="sub-container-zoom-text" id="sub-container-zoom-text"></div>
+        <div class="sub-container-coverflow-work" id="sub-container-coverflow-work"></div>
+        <button class="activate-coverflow-work" id="activate-coverflow-work">
+            <svg viewBox="0 0 100 100">
+                <rect class="square top right"
+                    width="35" height="45" fill="transparent" stroke="black" stroke-width="0.2em"
+                    x="10" y="25" ry="5" rx="5">
+                </rect>
+                <rect class="square top right"
+                    width="35" height="45" fill="transparent" stroke="black" stroke-width="0.2em"
+                    x="55" y="25" ry="5" rx="5">
+                </rect>
+                <rect class="square top right"
+                    width="50" height="50" fill="white" stroke="black" stroke-width="0.2em"
+                    x="25" y="30" ry="5" rx="5">
+                </rect>
+            </svg>
+        </button>
     </div>
 
-    <div class="scene-container">
+    <div class="scene-container" id="scene-container">
         <div class="scene" id="scene">
             <div class="scene-obj" id="wallobj-1-1">
                 <div class="cube-group">
                     <div class="cube" id="wall-1-1">
                         <div class="front">
-                            <a href="index.html" class="room-invisible-screen" id="wall-1-1-invisible-screen"></a>
+                            <a href="room2.html" class="room-invisible-screen" id="wall-1-1-invisible-screen"></a>
                             <div class="room-sign" id="wall-1-1-room2-sign">
                                 <div class="room-sign-arrow">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -66,7 +83,7 @@
                                 <p>Mixta sobre cristal acrilico</p>
                                 <p>100 x 100 cm</p>
                             </div>
-                            <img class="room-img" src="images/room1//1.jpg" id="work-1" alt="">
+                            <img class="room-img" src="images/room1/1.jpg" id="work-1" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
