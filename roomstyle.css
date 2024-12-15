@@ -261,19 +261,71 @@ button {
 }
 
 
-/*WALL 2*/
-#wallobj-1-2 { transform: translateX(8.5em); }
+/*WALL 2 FAKE*/
+#wallobj-1-2 { transform: translateZ(-7em); }
 #wall-1-2 {
-    --cube-width: 8;
+    --cube-width: 20;
     --cube-left: calc(var(--cube-width) / 2); 
 }
-
 #wall-1-2-painting-frame-1-out {
-    --cube-height: 1.3;
-    --cube-width: 2;
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
     --cube-depth: 0.1;
-    --cube-bottom: 2.2;
-    --cube-left: calc(var(--cube-width)/2 + 1.8);
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 2);
+}
+
+#wall-1-2-painting-frame-2-out {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 5.5);
+}
+
+#wall-1-2-painting-frame-3-out {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 9);
+}
+
+#wall-1-2-painting-frame-4-out {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 12.5);
+}
+
+#wall-1-2-painting-frame-5-out {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 16);
+}
+
+#wallobj-1-9 {
+    transform: translateZ(-7em) rotateY(-90deg) translateZ(-20.25em); 
+}
+#wall-1-9 {
+    --cube-width: 6;
+    --cube-left: calc(var(--cube-width) / 2); 
+}
+#wall-1-9-painting-frame-6-out {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 2);
 }
 
 /*WALL 3*/
@@ -284,7 +336,6 @@ button {
     --cube-width: 1;
     --cube-left: 0.5
 }
-
 
 
 /*WALL 4*/
@@ -468,7 +519,9 @@ button {
 }
 .painting-description p {
     font-size: 0.02em;
-    line-height: 1em;
+    /* line-height: 1em; */
+    word-wrap: break-word;
+    margin: 0.5em 0;
 }
 
 #painting img{
@@ -929,7 +982,7 @@ button {
     transform: translateZ(2.25em) rotateY(180deg) translateZ(-9.25em) translateX(-11em); 
 }
 #wall-2-7 {
-    --cube-width: 1;
+    --cube-width: 1.3;
     --cube-left: calc(var(--cube-width) / 2);
 }
 
@@ -987,6 +1040,138 @@ button {
     --cube-left: calc(var(--cube-width)/2 + 5.2);
 }
 
+/* FAKE */
+
+/* WALL 10*/
+#wallobj-2-10 {
+    position: absolute;
+    transform: translateZ(2.25em) rotateY(-90deg) translateZ(-10.5em) translateX(9em); 
+}
+
+#wall-2-10 {
+    --cube-width: 10;
+    --cube-left: calc(var(--cube-width) / 2);
+}
+#wall-2-10-painting-frame-17-out {
+    --cube-height: 1;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 2);
+}
+#wall-2-10-painting-frame-18-out {
+    --cube-height: 2;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 5);
+}
+#wall-2-10-painting-frame-19-out {
+    --cube-height: 2;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 7.25);
+}
+
+/* WALL 11*/
+#wallobj-2-11 {
+    position: absolute;
+    transform: translateZ(2.25em) rotateY(180deg) translateZ(-27.75em) translateX(-15em); 
+}
+#wall-2-11 {
+    --cube-width: 15;
+    --cube-left: calc(var(--cube-width) / 2);
+}
+#wall-2-11-painting-frame-20-out {
+    --cube-height: 3.2;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    --cube-bottom: 1;
+    --cube-left: calc(var(--cube-width)/2 + 2.5);
+}
+#wall-2-11-painting-frame-21-out {
+    --cube-height: 2;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    --cube-bottom: 1.75;
+    --cube-left: calc(var(--cube-width)/2 + 6.5);
+}
+#wall-2-11-painting-frame-22-out {
+    --cube-height: 3.2;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    --cube-bottom: 1;
+    --cube-left: calc(var(--cube-width)/2 + 10.5);
+}
+
+/* WALL 12*/
+#wallobj-2-12 {
+    position: absolute;
+    transform: translateZ(2em) rotateY(90deg) translateX(-27.75em) translateZ(-0.25em); 
+}
+#wall-2-12 {
+    --cube-width: 18.5;
+    --cube-left: calc(var(--cube-width) / 2);
+}
+
+
+#wall-2-12-painting-frame-23-out {
+    --cube-height: 1;
+    --cube-width: 1;
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 1.5);
+}
+#wall-2-12-painting-frame-24-out {
+    --cube-height: 1;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 3.5);
+}
+#wall-2-12-painting-frame-25-out {
+    --cube-height: 2;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 6.5);
+}
+#wall-2-12-painting-frame-26-out {
+    --cube-height: 2;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 10);
+}
+#wall-2-12-painting-frame-27-out {
+    --cube-height: 2;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 12.25);
+}
+
+/* WALL 13*/
+#wallobj-2-13 {
+    position: absolute;
+    transform: translateZ(2em) rotateY(90deg) translateX(-28em) translateZ(15.25em); 
+}
+#wall-2-13 {
+    --cube-width: 8.5;
+    --cube-left: calc(var(--cube-width) / 2);
+}
+
+/* WALL 14*/
+#wallobj-2-14 {
+    position: absolute;
+    transform: translateZ(2.25em) rotateY(180deg) translateZ(-28em) translateX(-27.5em); 
+}
+#wall-2-14 {
+    --cube-width: 12;
+    --cube-left: calc(var(--cube-width) / 2);
+}
+
 
 #wall-2-8-room1-sign {
     position: absolute;
@@ -1007,7 +1192,7 @@ button {
 }
 #wall-2-8-room1-sign svg { transform: rotateZ(180deg); }
 #wall-2-8-invisible-screen {
-    --width: 3em;
+    --width: 2.7em;
     left: calc(-1 * (var(--width)));
 }
 
