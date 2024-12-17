@@ -1844,8 +1844,6 @@ nav ul{
 }
 nav ul li{
 	height: 50%;
-	/* display: inline-block; */
-	line-height: 80px;
 	margin: 0 5px;
 	border-radius: 3px;
 
@@ -1857,7 +1855,6 @@ nav ul li a{
 	font-size: 17px;
 	text-transform: uppercase;
 	padding: 10px 5px;
-	/* border-radius: 3px; */
 }
 
 nav ul li:has(a.active), nav ul li:hover{
