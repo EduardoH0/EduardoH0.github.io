@@ -1,12 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="welcome-page" lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Chema Herreros</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/icon32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/icon16.png">
+    <link rel="icon" type="image/png" sizes="144x144" href="icons/icon144.png">
+
+    <link rel="mask-icon" href="icons/faviconog.svg" color="black">
+
+    <link rel="apple-touch-icon" sizes="120x120" href="icons/touch120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/touch152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/touch180.png">
+
+    <link rel="manifest" href="icons/manifest.json">
+
+    <!-- Open Graph meta tags for WhatsApp preview -->
+    <meta property="og:url" content="https://chemaherreros.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Obra | Chema Herreros:">
+    <meta property="og:description" content="Materia y Sueño">
+    <meta property="og:image" content="https://chemaherreros.com/images/room4/15.jpg">
+
+    <!-- Meta Tags for Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="chemaherreros.com">
+    <meta property="twitter:url" content="https://chemaherreros.com/">
+    <meta name="twitter:title" content="Obra | Chema Herreros">
+    <meta name="twitter:description" content="Materia y Sueño">
+    <meta name="twitter:image" content="https://chemaherreros.com/images/room4/15.jpg">
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="welcome-page">
+
+    <div class="loading-element">
+        <div class="loading-icon">
+            <img class="loading-svg" src="icons/android512.png" alt="loading-icon" width="100px">
+        </div>
+    </div>
+
+    <nav class="nav">
+        <input type="checkbox" id="menu-check">
+        <label for="menu-check" class="menu-btn">
+            <svg class="hamburguer" viewBox="0 0 100 100">
+                <rect class="line top"
+                    width="80" height="8"
+                    x="10" y="20" rx="4">
+                </rect>
+                <rect class="line middle"
+                    width="80" height="8"
+                    x="10" y="45" rx="4">
+                </rect>
+                <rect class="line bottom"
+                    width="80" height="8"
+                    x="10" y="70" rx="4">
+                </rect>
+            </svg>
+        </label>
+        <ul>
+            <li><a href="obra.html">Obra</a></li>
+            <li><a href="texto.html">Texto</a></li>
+            <li><a href="biografia.html">Biografía</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+        <h1><a class="logo" href="index.html"><span>Chema Herreros</span></a></h1>
+    </nav>
+
     <div class="scene" id="scene">
         <div class="scene-obj" id="easel-1">
             <div class="cube-group" id="easel-1-front">
@@ -60,7 +121,7 @@
                 </div>
                 <div class="cube" id="easel-1-painting">
                     <div class="front">
-                        <img src="images/1.jpg" alt="">
+                        <img src="images/room4/9.jpg" alt="">
                     </div>
                     <div class="back"></div>
                     <div class="left"></div>
@@ -69,7 +130,6 @@
                     <div class="bottom"></div>
                 </div>
             </div>
-
 
             <div class="cube-group" id="easel-1-back">
                 <div class="cube" id="leg-back">
@@ -87,10 +147,10 @@
         <div class="scene-obj" id="ceiling-p">
             <div class="cube-group" id="ceiling-p-front">
                 <div class="cube" id="ceiling-p-painting">
-                    <div class="front">
+                    <a href="room2.html" class="front">
                         <!-- <img src="images/1p.jpg" alt=""> -->
-                        <img src="images/room2/wb/1.jpg" alt="">
-                    </div>
+                        <img src="images/room2/16.jpg" alt="">
+                    </a>
                     <div class="back"></div>
                     <div class="left"></div>
                     <div class="right"></div>
@@ -315,9 +375,9 @@
                     <div class="back"></div>
                     <div class="left"></div>
                     <div class="right"></div>
-                    <div class="top">
-                        <img src="images/2.jpg" alt="">
-                    </div>
+                    <a href="room1.html" class="top">
+                        <img src="images/room1/7.jpg" alt="">
+                    </a>
                     <div class="bottom"></div>
                 </div>
             </div>
@@ -336,13 +396,13 @@
                         <div class="fragile"></div>
                         <div class="parcel-icons">
                             <div class="umbrella">
-                                <img src="images/icon_umbrellal.PNG" alt="">
+                                <img src="images/scene/icon_umbrella.PNG" alt="">
                             </div>
                             <div class="glass">
-                                <img src="images/icon_glassl.PNG" alt="">
+                                <img src="images/scene/icon_glass.PNG" alt="">
                             </div>
                             <div class="upright">
-                                <img src="images/icon_uprightl.PNG" alt="">
+                                <img src="images/scene/icon_upright.PNG" alt="">
                             </div>
                         </div>
                     </div>
@@ -361,7 +421,7 @@
             <div class="cube-group" id="painting-parcel-1">
                 <div class="cube" id="box-painting">
                     <div class="front">
-                        <img src="images/16.jpg" alt="">
+                        <img src="images/room3/14.jpg" alt="">
                     </div>
                     <div class="back"></div>
                     <div class="left"></div>
@@ -372,7 +432,7 @@
             </div>
         </div>
 
-        <div class="scene-obj" id="container">
+        <div class="scene-obj" id="container-cylinder">
             <div class="cilinder-group">
               <div class="strips">
                 <div class="strip-1"></div>
@@ -411,54 +471,8 @@
             </div>
           </div>
 
-
-        <!-- <div class="scene-obj" id="easel-2">
-            <div class="cube-group" id="easel-2-front">
-                <div class="cube" id="leg-left">
-                    <div class="front"></div>
-                    <div class="back"></div>
-                    <div class="left"></div>
-                    <div class="right"></div>
-                    <div class="top"></div>
-                    <div class="bottom"></div>
-                </div>
-                <div class="cube" id="leg-right">
-                    <div class="front"></div>
-                    <div class="back"></div>
-                    <div class="left"></div>
-                    <div class="right"></div>
-                    <div class="top"></div>
-                    <div class="bottom"></div>
-                </div>
-                <div class="cube" id="bottom-bar">
-                    <div class="front"></div>
-                    <div class="back"></div>
-                    <div class="left"></div>
-                    <div class="right"></div>
-                    <div class="top"></div>
-                    <div class="bottom"></div>
-                </div>
-            </div>
-        </div> -->
-
-
-
-
-
-
-
-
-
-
-
-         <div class="floor">
-            <div class="center-reference"></div>
-         </div>
-        <!-- <div class="ball" id="ball"></div> -->
     </div>
 
-    <script type="module" src="main.js"></script>
+    <script type="module" src="js/welcomePage.js"></script>
 </body>
 </html>
-
-<!-- https://jsfiddle.net/0v8xteok/ -->

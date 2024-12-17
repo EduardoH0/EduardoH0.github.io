@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="room-page" lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0 minimum-scale=1.0">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <link rel="stylesheet" href="roomstyle.css">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Room 2</title>
 </head>
-<body>
+<body class="room-page">
 
     <div class="map">
         <div class="map-position" id="map-position-2"></div>
@@ -21,9 +20,14 @@
             <line x1="10" y1="9" x2="10" y2="10" stroke="black" stroke-width="0.2"/>
             <line x1="10" y1="13" x2="10" y2="21" stroke="black" stroke-width="0.2"/>
             <line x1="1" y1="21" x2="10" y2="21" stroke="black" stroke-width="0.2"/>
-            <!-- <line x1="19.5" y1="16" x2="1" y2="16" stroke="black" stroke-width="0.2"/> -->
         </svg>
     </div>
+    <a href="index.html" class="exit-room-btn" id="exit-room-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path d="M320 176v-40a40 40 0 00-40-40H88a40 40 0 00-40 40v240a40 40 0 0040 40h192a40 40 0 0040-40v-40M384 176l80 80-80 80M191 256h273" 
+                fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
+        </svg>
+    </a>
 
     <div class="container-zoom-work" id="container-zoom-work">
         <div class="sub-container-zoom-work" id="sub-container-zoom-work">
@@ -61,7 +65,7 @@
     </div>
 
     <div class="scene-container" id="scene-container">
-        <div class="scene" id="scene">
+        <div class="scene-room" id="scene">
             <div class="scene-obj" id="wallobj-2-1">
                 <div class="cube-group">
                     <div class="cube" id="wall-2-1">
@@ -74,7 +78,7 @@
                                 <p>Técnica mixta sobre papel</p>
                                 <p>50 x 70 cm</p>
                             </div>
-                            <img class="room-img" src="images/room2/wb/1.jpg" id="work-1" alt="">
+                            <img class="room-img" src="images/room2/1.jpg" id="work-1" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -88,7 +92,7 @@
                                 <p>T</p>
                                 <p>50 x 70 cm</p>
                             </div>
-                            <img class="room-img" src="images/room2/wb/2.jpg" id="work-2" alt="">
+                            <img class="room-img" src="images/room2/2.jpg" id="work-2" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -102,7 +106,7 @@
                                 <p>Técnica mixta sobre papel</p>
                                 <p>50 x 70 cm</p>
                             </div>
-                            <img class="room-img" src="images/room2/wb/3.jpg" id="work-3 alt="">
+                            <img class="room-img" src="images/room2/3.jpg" id="work-3 alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -116,7 +120,7 @@
                                 <p>Técnica mixta sobre papel</p>
                                 <p>50 x 70 cm</p>
                             </div>
-                            <img class="room-img" src="images/room2/wb/4.jpg" id="work-4" alt="">
+                            <img class="room-img" src="images/room2/4.jpg" id="work-4" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -130,7 +134,7 @@
                                 <p>Técnica mixta sobre papel</p>
                                 <p>50 x 70 cm</p>
                             </div>
-                            <img class="room-img" src="images/room2/wb/5.jpg" id="work-5" alt="">
+                            <img class="room-img" src="images/room2/5.jpg" id="work-5" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -143,7 +147,17 @@
             <div class="scene-obj" id="wallobj-2-2">
                 <div class="cube-group">
                     <div class="cube" id="wall-2-2">
-                        <div class="front"></div>
+                        <div class="front">
+                            <!-- <a href="room.html" class="room-invisible-screen" id="wall-2-5-invisible-screen"></a> -->
+                            <div class="room-sign" id="wall-2-2-room4-sign">
+                                <div class="room-sign-arrow">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <path fill="none" stroke="currentColor" stroke-linecap="butt" stroke-linejoin="butt" stroke-width="56" d="M268 112l144 144-144 144M392 256H100"/>
+                                    </svg>
+                                </div>
+                                <p>ROOM 4</p>
+                            </div>                            
+                        </div>
                         <div class="left"></div>
                     </div>
                     <div class="cube" id="wall-2-2-painting-frame-6">
@@ -153,7 +167,7 @@
                                 <p>Técnica mixta sobre papel</p>
                                 <p>50 x 70 cm</p>
                             </div>
-                            <img class="room-img" src="images/room2/wb/6.jpg" id="work-6" alt="">
+                            <img class="room-img" src="images/room2/6.jpg" id="work-6" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -175,7 +189,7 @@
                                 <p>Técnica mixta sobre papel</p>
                                 <p>50 x 70 cm</p>
                             </div>
-                            <img class="room-img" src="images/room2/wb/7.jpg" id="work-7" alt="">
+                            <img class="room-img" src="images/room2/7.jpg" id="work-7" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -189,7 +203,7 @@
                                 <p>Técnica mixta sobre papel</p>
                                 <p>50 x 70 cm</p>
                             </div>
-                            <img class="room-img" src="images/room2/wb/8.jpg" id="work-8" alt="">
+                            <img class="room-img" src="images/room2/8.jpg" id="work-8" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -209,7 +223,17 @@
             <div class="scene-obj" id="wallobj-2-5">
                 <div class="cube-group">
                     <div class="cube" id="wall-2-5">
-                        <div class="front"></div>
+                        <div class="front">
+                            <!-- <a href="room.html" class="room-invisible-screen" id="wall-2-5-invisible-screen"></a> -->
+                            <div class="room-sign" id="wall-2-5-room3-sign">
+                                <div class="room-sign-arrow">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <path fill="none" stroke="currentColor" stroke-linecap="butt" stroke-linejoin="butt" stroke-width="56" d="M268 112l144 144-144 144M392 256H100"/>
+                                    </svg>
+                                </div>
+                                <p>ROOM 3</p>
+                            </div>
+                        </div>
                         <div class="right"></div>
                     </div>
                 </div>
@@ -220,7 +244,7 @@
                             <p>Técnica mixta sobre papel</p>
                             <p>50 x 70 cm</p>
                         </div>
-                        <img class="room-img" src="images/room2/wb/9.jpg" id="work-9" alt="">
+                        <img class="room-img" src="images/room2/9.jpg" id="work-9" alt="">
                     </div>
                     <div class="left"></div>
                     <div class="right"></div>
@@ -240,7 +264,7 @@
                                 <p>Técnica mixta sobre papel</p>
                                 <p>50 x 70 cm</p>
                             </div>
-                            <img class="room-img" src="images/room2/wb/10.jpg" id="work-10" alt="">
+                            <img class="room-img" src="images/room2/10.jpg" id="work-10" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -254,7 +278,7 @@
                                 <p>Técnica mixta sobre papel</p>
                                 <p>50 x 70 cm</p>
                             </div>
-                            <img class="room-img" src="images/room2/wb/11.jpg" id="work-11" alt="">
+                            <img class="room-img" src="images/room2/11.jpg" id="work-11" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -268,7 +292,7 @@
                                 <p>Técnica mixta sobre papel</p>
                                 <p>50 x 70 cm</p>
                             </div>
-                            <img class="room-img" src="images/room2/wb/12.jpg" id="work-12" alt="">
+                            <img class="room-img" src="images/room2/12.jpg" id="work-12" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -308,7 +332,7 @@
                                 <p>Técnica mixta sobre papel</p>
                                 <p>50 x 70 cm</p>
                             </div>
-                            <img class="room-img" src="images/room2/wb/13.jpg" id="work-13" alt="">
+                            <img class="room-img" src="images/room2/13.jpg" id="work-13" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -322,7 +346,7 @@
                                 <p>Técnica mixta sobre papel</p>
                                 <p>50 x 70 cm</p>
                             </div>
-                            <img class="room-img" src="images/room2/wb/14.jpg" id="work-14" alt="">
+                            <img class="room-img" src="images/room2/14.jpg" id="work-14" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -343,7 +367,7 @@
                                 <p>Técnica mixta sobre papel</p>
                                 <p>50 x 70 cm</p>
                             </div>
-                            <img class="room-img" src="images/room2/wb/15.jpg" id="work-15" alt="">
+                            <img class="room-img" src="images/room2/15.jpg" id="work-15" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -357,7 +381,7 @@
                                 <p>Técnica mixta sobre papel</p>
                                 <p>50 x 70 cm</p>
                             </div>
-                            <img class="room-img" src="images/room2/wb/16.jpg" id="work-16" alt="">
+                            <img class="room-img" src="images/room2/16.jpg" id="work-16" alt="">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -526,6 +550,6 @@
         </div>
     </div>
 
-    <script type="module" src="room2.js"></script>
+    <script type="module" src="js/room2.js"></script>
 </body>
 </html>

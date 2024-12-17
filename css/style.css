@@ -1,0 +1,2187 @@
+:root{
+	--x: 0;
+	--y: 5;
+	--height-nav-bar: 80px;
+
+    --scene-height: 1em;
+    --scene-font-size: 170px;
+
+    --obj-ratio: 1em;
+    --obj-bottom: 0em;
+    --obj-left: 0em;
+
+    --plane-left: 0;
+
+    --cube-height: 4em;
+    --cube-width: 0.2em;
+    --cube-depth: 0.1em;
+    --cube-left: 0;
+    --cube-bottom: 0;
+    --cube-rotate-x: 0;
+    --cube-rotate-y: 0;
+    --cube-rotate-z: 0;
+
+    --container-zoom-color: rgba(143, 143, 143, 0.14);
+}
+
+*{
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	list-style: none;
+  	font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* _____________ WELCOME PAGE _____________ */
+html.welcome-page {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+body.welcome-page {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: var(--scene-font-size);
+    perspective: 10em;
+    perspective-origin: 50% calc(50% - 2em);
+    transition: perspective-origin 0.5s ease;
+
+    padding: 0;
+    margin: 0;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+@media screen and (max-height: 1000px) { html.welcome-page:root { --scene-font-size: 150px; } }
+@media screen and (max-height: 900px) { html.welcome-page:root { --scene-font-size: 130px; } }
+@media screen and (max-height: 800px) { html.welcome-page:root { --scene-font-size: 115px; } }
+@media screen and (max-height: 700px) { html.welcome-page:root { --scene-font-size: 100px; } }
+@media screen and (max-height: 600px) { html.welcome-page:root { --scene-font-size: 80px; } }
+@media screen and (max-height: 500px) { html.welcome-page:root { --scene-font-size: 70px; } }
+@media screen and (max-height: 400px) { html.welcome-page:root { --scene-font-size: 60px; } }
+
+@media screen and (max-width: 500px) { html.welcome-page:root { --scene-font-size: 90px; } }
+@media screen and (max-width: 400px) { html.welcome-page:root { --scene-font-size: 80px; } }
+@media screen and (max-width: 350px) { html.welcome-page:root { --scene-font-size: 65px; } }
+
+.scene {
+    position: fixed;
+    transform-style: preserve-3d;
+}
+
+/* _____________ ROOM PAGES _____________ */
+html.room-page:root {
+    --scene-font-size: 120px;
+}
+body.room-page {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (max-height: 1200px) { html.room-page:root { --scene-font-size: 110px; } }
+@media screen and (max-height: 1100px) { html.room-page:root { --scene-font-size: 100px; } }
+@media screen and (max-height: 1000px) { html.room-page:root { --scene-font-size: 90px; } }
+@media screen and (max-height: 900px) { html.room-page:root { --scene-font-size: 80px; } }
+@media screen and (max-height: 800px) { html.room-page:root { --scene-font-size: 75px; } }
+@media screen and (max-height: 700px) { html.room-page:root { --scene-font-size: 70px; } }
+@media screen and (max-height: 600px) { html.room-page:root { --scene-font-size: 60px; } }
+@media screen and (max-height: 550px) { html.room-page:root { --scene-font-size: 55px; } }
+@media screen and (max-height: 500px) { html.room-page:root { --scene-font-size: 50px; } }
+@media screen and (max-height: 450px) { html.room-page:root { --scene-font-size: 45px; } }
+@media screen and (max-height: 400px) { html.room-page:root { --scene-font-size: 40px; } }
+@media screen and (max-height: 350px) { html.room-page:root { --scene-font-size: 35px; } }
+@media screen and (max-height: 300px) { html.room-page:root { --scene-font-size: 30px; } }
+
+.scene-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: var(--scene-font-size);
+    perspective: 10em;
+    perspective-origin: 50% calc(50% - 2em);
+
+    padding: 0;
+    margin: 0;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.scene-room {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.4s linear;
+    pointer-events: none;
+    transform: translateX(-1em);
+}
+
+
+/* _____________ COMMON SCENE OBJ _____________ */
+.scene-obj {
+    transform-style: preserve-3d;
+    position: absolute;
+    
+    height: var(--obj-ratio);
+    width: var(--obj-ratio);
+
+    /* Object centered at the middle of the plane */
+    left: calc(-1 * var(--obj-ratio) / 2);
+    bottom: calc(-1 * var(--obj-ratio) / 2 - var(--scene-height));
+}
+
+/* _____________ CUBE CLASS _____________ */
+.cube-group {
+    position: absolute;
+    transform-style: preserve-3d;
+    height: 100%;
+    width: 100%;
+}
+
+.cube {
+    transform-style: preserve-3d;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    left: calc(var(--cube-left) * var(--obj-ratio) + var(--obj-left));
+    bottom: calc((var(--cube-height) / 2 + var(--cube-bottom)) * var(--obj-ratio) + var(--obj-bottom));
+    transform: rotateX(var(--cube-rotate-x)) rotateY(var(--cube-rotate-y)) rotateZ(var(--cube-rotate-z));
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cube .left,
+.cube .right,
+.cube .front,
+.cube .back,
+.cube .top,
+.cube .bottom {
+    position: absolute;
+    background: var(--cubeColor);
+}
+
+.cube .left,
+.cube .right {
+    height: calc(var(--cube-height) * var(--obj-ratio));
+    width: calc(var(--cube-depth)  * var(--obj-ratio));
+}
+
+.cube .front,
+.cube .back {
+    height: calc(var(--cube-height) * var(--obj-ratio));
+    width: calc(var(--cube-width) * var(--obj-ratio));
+}
+
+.cube .top,
+.cube .bottom {
+    height: calc(var(--cube-depth) * var(--obj-ratio));
+    width: calc(var(--cube-width) * var(--obj-ratio));
+}
+
+.cube .front { transform: translateZ(calc(var(--cube-depth) * var(--obj-ratio) / 2)); }
+.cube .right { transform: rotateY(270deg) translateZ(calc(var(--cube-width) * var(--obj-ratio) / 2)); }
+.cube .back { transform: rotateY(180deg) translateZ(calc(var(--cube-depth) * var(--obj-ratio) / 2)); }
+.cube .left { transform: rotateY(90deg) translateZ(calc(var(--cube-width) * var(--obj-ratio) / 2));}
+.cube .top { transform: rotateX(90deg) translateZ(calc(var(--cube-height) * var(--obj-ratio) / 2))}
+.cube .bottom { transform: rotateX(90deg) translateZ(calc(-1 * var(--cube-height) * var(--obj-ratio) / 2))}
+
+
+
+/* _____________ WELCOME PAGE CONTENT _____________ */
+.welcome-page .cube .left,
+.welcome-page .cube .right,
+.welcome-page .cube .front,
+.welcome-page .cube .back,
+.welcome-page .cube .top,
+.welcome-page .cube .bottom {
+    box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.321) inset;
+}
+
+#easel-1 {
+    --obj-ratio: 0.7em;
+    transform: translateZ(2em);
+}
+#ceiling-p {
+    --obj-ratio: 0.7em;
+    transform: translateZ(-2em) rotateY(180deg);
+}
+#easel-2-l {
+    --obj-ratio: 0.7em;
+    transform: rotateY(90deg) translateZ(2.2em) translateX(calc(var(--obj-ratio) * 1));
+}
+#easel-2-r {
+    --obj-ratio: 0.7em;
+    transform: rotateY(90deg) translateZ(2.2em) translateX(calc(var(--obj-ratio) * -1));
+}
+#box-parcel {
+    --obj-ratio: 0.7em;
+    transform: rotateY(-90deg) translateZ(2.2em);
+}
+#easel-1-front {
+	transform: translateZ(calc(var(--obj-ratio) * 1)) rotateX(10deg);
+}
+#easel-1-back {
+	transform: translateZ(calc(var(--obj-ratio) * -1)) rotateX(-24.5deg);
+}
+#ceiling-p-front {
+	transform: translateZ(calc(var(--obj-ratio) * 1));
+}
+#easel-2-left {
+    left: calc(var(--obj-ratio) * -0.4);
+    transform: rotateY(90deg) rotateX(-10deg);
+}
+#easel-2-right {
+    left: calc(var(--obj-ratio) * 0.4);
+    transform: rotateY(-90deg) rotateX(-10deg);
+}
+#easel-2-bottom {
+    transform: rotateX(90deg) rotateZ(90deg) translateZ(calc(var(--obj-ratio) * 0.2));
+}
+#box-parcel-1 {
+    transform: rotateY(-10deg);
+}
+#painting-parcel-1 {
+    left: calc(var(--obj-ratio) * -1.8);
+    transform: translateZ(calc(var(--obj-ratio) * 1.12)) rotateY(-10deg) rotateX(25deg);
+}
+
+#ceiling-p-painting {
+    --cube-height: 2;
+    --cube-width: 3;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cubeColor: rgb(255, 255, 255);
+}
+#string1, #string2 {
+    --cube-height: 5;
+    --cube-width: 0.01;
+    --cube-depth: 0.01;
+    --cube-bottom: 4;
+    --cubeColor: rgb(0, 0, 0);
+}
+#string1 { --cube-left: 1; }
+#string2 { --cube-left: -1; }
+
+#ceiling-p-painting .front {
+    object-fit: contain;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#ceiling-p-painting .front img {
+    width: 98%;
+    height: 98%;
+}
+
+
+#leg-left {
+    --cube-height: 4;
+    --cube-width: 0.2;
+    --cube-depth: 0.1;
+    --cube-left: -0.8;
+    --cube-rotate-z: 7deg;
+}
+
+#leg-right {
+    --cube-height: 4;
+    --cube-width: 0.2;
+    --cube-depth: 0.1;
+    --cube-left: 0.8;
+    --cube-rotate-z: -7deg;
+}
+
+#column-middle {
+    --cube-height: 4;
+    --cube-width: 0.2;
+    --cube-depth: 0.1;
+    --cube-bottom: 1.25;
+}
+
+#bottom-bar {
+    --cube-height: 0.25;
+    --cube-width: 1.8;
+    --cube-depth: 0.08;
+    --cube-bottom: 1;
+    --cube-left: 0;
+}
+
+#holder-bar {
+    --cube-height: 0.1;
+    --cube-width: 1.8;
+    --cube-depth: 0.3;
+    --cube-bottom: 1.5;
+    --cube-left: 0;
+    transform: translateZ(calc(var(--obj-ratio) * 0.15));
+}
+
+#top-bar {
+    --cube-height: 0.25;
+    --cube-width: 1.3;
+    --cube-depth: 0.08;
+    --cube-bottom: 3;
+    --cube-left: 0;
+}
+
+#leg-back {
+    --cube-height: 3.4;
+    --cube-width: 0.2;
+    --cube-depth: 0.1;
+}
+
+#easel-1-painting {
+    --cube-height: 3;
+    --cube-width: 3;
+    --cube-depth: 0.1;
+    --cube-bottom: 1.6;
+    transform: translateZ(calc(var(--obj-ratio) * 0.15));
+}
+
+
+#easel-1-front .cube > *,
+#easel-1-back .cube > * {
+    background-image: url('../images/textures/wood2_texture.jpg');
+    background-size: 1em 1em;
+}
+#easel-2-l .cube > *,
+#easel-2-r .cube > * {
+    background-image: url('../images/textures/wood1_texture.jpg');
+    background-size: 1em 1em;
+}
+
+#box-parcel-1 .cube > *,
+#box-parcel-1 .flap  {
+    background-image: url('../images/textures/boxpaper_texture.jpg');
+    background-size: 1.5em 1em;
+}
+
+#easel-1-painting > *,
+#easel-2-painting > * {
+    background: white !important;
+}
+
+
+#easel-1-painting > .front,
+#easel-2-painting > .top,
+#box-painting > .front,
+#ceiling-p-painting > .front {
+    box-shadow: 0 0 0.11em rgba(0, 0, 0, 0.215) !important;
+    cursor: pointer;
+}
+
+#easel-1-painting .front {
+    object-fit: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#easel-1-painting .front img {
+    width: 98%;
+    height: 98%;
+}
+
+#easel-2-front-leg-left {
+    --cube-height: 1.4;
+    --cube-width: 0.2;
+    --cube-depth: 0.1;
+    --cube-left: -0.8;
+    --cube-rotate-z: 7deg;
+}
+#easel-2-back-leg-left {
+    --cube-height: 1.4;
+    --cube-width: 0.2;
+    --cube-depth: 0.1;
+    --cube-left: 0.8;
+    --cube-rotate-z: -7deg;
+}
+#easel-2-front-bottom {
+    --cube-height: 0.8;
+    --cube-width: 0.1;
+    --cube-depth: 0.13;
+    --cube-left: 0.85;
+    --cube-bottom: -0.4;
+}
+#easel-2-back-bottom {
+    --cube-height: 0.8;
+    --cube-width: 0.1;
+    --cube-depth: 0.13;
+    --cube-left: -0.85;
+    --cube-bottom: -0.4;
+}
+#easel-2-top-left {
+    --cube-height: 0.2;
+    --cube-width: 0.09;
+    --cube-depth: 2;
+    --cube-left: -0.1;
+    --cube-bottom: 1.2;
+}
+#easel-2-top-right {
+    --cube-height: 0.2;
+    --cube-width: 0.09;
+    --cube-depth: 2;
+    --cube-left: 0.1;
+    --cube-bottom: 1.2;
+}
+#easel-2-top-front {
+    --cube-height: 1;
+    --cube-width: 0.08;
+    --cube-depth: 0.1;
+    --cube-bottom: 0.6;
+    transform: translateZ(calc(var(--obj-ratio) * 0.7)) rotateX(-10deg);
+}
+#easel-2-top-back {
+    --cube-height: 1;
+    --cube-width: 0.08;
+    --cube-depth: 0.1;
+    --cube-bottom: 0.9;
+    transform: translateZ(calc(var(--obj-ratio) * -0.7)) rotateX(-10deg);
+}
+#easel-2-top-top {
+    --cube-height: 0.1;
+    --cube-width: 0.2;
+    --cube-depth: 2;
+    --cube-bottom: 1.75;
+    --cube-rotate-x: -12deg;
+}
+#easel-2-painting {
+    --cube-height: 0.1;
+    --cube-width: 4;
+    --cube-depth: 2;
+    --cube-bottom: 1.9;
+    --cube-left: 1;
+    --cube-rotate-x: -12deg;
+    object-fit: contain;
+}
+#easel-2-painting .top {
+    object-fit: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#easel-2-painting .top img {
+    width: 98%;
+    height: 98%;
+}
+
+#big-box {
+    --cube-height: 1.4;
+    --cube-width: 2;
+    --cube-depth: 1.4;
+    --cube-left: -0.8;
+}
+
+#box-painting {
+    --coeff: 2.9;
+    --cube-height: 5/var(--coeff);
+    --cube-width: 7/var(--coeff);
+    --cube-depth: 0.1;
+    --cubeColor: white;
+}
+#box-painting .front {
+    object-fit: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#box-painting .front img {
+    width: 98%;
+    height: 98%;
+}
+
+#big-box .top {
+    transform-style: preserve-3d;
+    background: transparent;
+    transform: 
+        rotateX(90deg)
+        translateZ(calc(var(--cube-height) * var(--obj-ratio) / 2))
+}
+
+.flap {
+    position: absolute;
+    box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.321) inset;
+}
+
+#big-box .front,
+#big-box .back,
+#big-box .left,
+#big-box .right {
+    transform-style: preserve-3d;
+
+}
+#big-box .fragile {
+    position: absolute;
+    width: 100%;
+    height: 15%;
+    top: 4%;
+    background-color: rgba(255, 0, 0, 0.616);
+    transform: translateZ(0.001em);
+}
+
+#big-box .top #left-flap {
+    height: 50%;
+    width: 100%;
+    transform-origin: top;
+    transform: rotateX(40deg);
+}
+#big-box .top #right-flap {
+    height: 100%;
+    width: 100%;
+    clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+    transform-origin: bottom;
+    transform: rotateX(-10deg);
+}
+
+.parcel-icons {
+    transform-style: preserve-3d;
+    transform: translateZ(0.001em);
+    position: absolute;
+    height: 20%;
+    right: 5%;
+    top: 20%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.parcel-icons > * {
+    height: 100%;
+    display: flex;
+    object-fit: contain;
+}
+.parcel-icons > * img {
+    height: 100%;
+}
+
+#container-cylinder {
+    --obj-ratio: 0.5em;
+    --obj-left: 0.5em;
+    transform: translateX(-1.3em) translatez(1em) rotateX(-90deg) rotateZ(-55deg);
+}
+.cilinder-group {
+    transform-style: preserve-3d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateZ(-0.25em);
+}
+
+.strips {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.strips > * {
+    position: absolute;
+    background: rgb(166, 166, 166);
+    box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.321) inset;
+
+    height: 0.5em;
+    width: 0.06em;
+}
+
+.strip-8, .strip-9, .strip-12 {
+    background: linear-gradient(
+        to bottom, 
+        rgb(166, 166, 166) 0%,
+        rgb(166, 166, 166) 55%,
+        white 55%,
+        white 80%,
+        rgb(166, 166, 166) 80%,
+        rgb(166, 166, 166) 100%
+      );
+}
+.strip-10, .strip-11  {
+    background: linear-gradient(
+        to bottom, 
+        rgb(166, 166, 166) 0%,
+        rgb(166, 166, 166) 55%,
+        white 55%,
+        white 60%,
+        rgb(10, 110, 255) 60%,
+        rgb(10, 110, 255) 75%,
+        white 75%,
+        white 80%,
+        rgb(166, 166, 166) 80%,
+        rgb(166, 166, 166) 100%
+      );
+}
+
+.strips .bottom {
+    height: 0.4em;
+    width: 0.4em;
+    background: rgb(166, 166, 166);
+    box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.321) inset;
+    transform: rotateX(90deg) translateZ(-0.25em);
+    border-radius: 50%;
+    box-shadow: 0 0 0em rgba(0, 0, 0, 0.321) inset;
+}
+.strips .paint-bottom {
+    height: 0.38em;
+    width: 0.38em;
+    background: rgb(10, 110, 255);
+    transform: rotateX(90deg) translateZ(0em);
+    border-radius: 50%;
+}
+.strips .paint-top {
+    height: 0.39em;
+    width: 0.39em;
+    background: rgb(10, 110, 255);
+    transform: rotateX(90deg) rotateX(40deg);
+    border-radius: 50%;
+    clip-path: polygon(0 50%, 0 100%, 100% 100%, 100% 50%);
+}
+.strips .paint-top-top {
+    height: 0.25em;
+    width: 0.25em;
+    background: rgb(10, 110, 255);
+    transform: rotateX(90deg) translateZ(0.1em) translateY(0.1em) rotateX(40deg);
+    border-radius: 50%;
+    clip-path: polygon(0 50%, 0 100%, 100% 100%, 100% 50%);
+}
+
+.strips .paint-line {
+    height: 0.5em;
+    width: 0.1em;
+    transform: translateZ(0.19em);
+    background: rgb(10, 110, 255);
+}
+
+.cilinder-group .paint {
+    position: absolute;
+    background: rgba(10, 110, 255);
+    transform: translateZ(0.19em) translateY(-0.8em);
+    border-radius: 50%;
+    box-shadow: 
+      20px 10px 0 -8px rgb(10, 110, 255),
+      -25px 15px 0 -10px rgb(10, 110, 255),
+      10px 20px 0 -15px rgb(10, 110, 255);
+    width: 1em;
+    height: 1em;
+}
+
+#container-cylinder .strips {
+    transform: translateX(0) rotateY(0deg);
+    transition: transform 2s;
+  }
+  
+#container-cylinder .strips:hover:not(.paint) {
+    transform: translateX(0.4em) rotateY(-360deg);
+}
+
+.strip-1 { transform: rotateY(0deg) translateZ(0.2em); }
+.strip-2 { transform: rotateY(15deg) translateZ(0.2em); }
+.strip-3 { transform: rotateY(30deg) translateZ(0.2em); }
+.strip-4 { transform: rotateY(45deg) translateZ(0.2em); }
+.strip-5 { transform: rotateY(60deg) translateZ(0.2em); }
+.strip-6 { transform: rotateY(75deg) translateZ(0.2em); }
+.strip-7 { transform: rotateY(90deg) translateZ(0.2em); }
+.strip-8 { transform: rotateY(105deg) translateZ(0.2em); }
+.strip-9 { transform: rotateY(120deg) translateZ(0.2em); }
+.strip-10 { transform: rotateY(135deg) translateZ(0.2em); }
+.strip-11 { transform: rotateY(150deg) translateZ(0.2em); }
+.strip-12 { transform: rotateY(165deg) translateZ(0.2em); }
+.strip-13 { transform: rotateY(180deg) translateZ(0.2em); }
+.strip-14 { transform: rotateY(195deg) translateZ(0.2em); }
+.strip-15 { transform: rotateY(210deg) translateZ(0.2em); }
+.strip-16 { transform: rotateY(225deg) translateZ(0.2em); }
+.strip-17 { transform: rotateY(240deg) translateZ(0.2em); }
+.strip-18 { transform: rotateY(255deg) translateZ(0.2em); }
+.strip-19 { transform: rotateY(270deg) translateZ(0.2em); }
+.strip-20 { transform: rotateY(285deg) translateZ(0.2em); }
+.strip-21 { transform: rotateY(300deg) translateZ(0.2em); }
+.strip-22 { transform: rotateY(315deg) translateZ(0.2em); }
+.strip-23 { transform: rotateY(330deg) translateZ(0.2em); }
+.strip-24 { transform: rotateY(345deg) translateZ(0.2em); }
+
+
+
+
+
+
+/* _____________ ROOM PAGES _____________ */
+.map {
+    position: absolute;
+    z-index: 2;
+    width: 8em;
+    height: 7em;
+    bottom: 0.5em;
+    left: 0.5em;
+
+    display: flex;
+}
+
+.map-position {
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background-color: blue;
+    bottom: 15%;
+    left: 13%;
+}
+
+/* WALLS */
+[id^="wallobj"] {
+    --obj-ratio: 1em;
+}
+[id*="wall-"] {
+    --cube-height: 5;
+    --cube-depth: 0.5;
+    --cubeColor: white;
+}
+[id^="wall-"] > *{
+    box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.321) inset;
+}
+[id*="painting-frame"] {
+    --cubeColor: white;
+    --cubeColor: rgb(249, 249, 249);
+    transform: translateZ(calc(var(--obj-ratio) * 0.3));
+}
+
+/* ZOOM CONTAINER */
+.container-zoom-work{
+	position: fixed;
+	display: none;
+    height: 100%;
+	width: 100%;
+	z-index: 100;
+
+	background-color: var(--container-zoom-color);
+    backdrop-filter: blur(1em) saturate(30%);
+    -webkit-backdrop-filter: blur(1em) saturate(30%);
+}
+
+.sub-container-zoom-work{
+	position: absolute;
+	top: 10%;
+	height: 70%;
+	width: 80%;
+	max-width: 800px;
+	left: 50%;
+	transform: translateX(-50%);
+	visibility: visible;
+    z-index: 5;
+
+    overflow: visible;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.sub-container-zoom-work img{
+	width: 99%;
+	height: 99%;
+	object-fit: contain;
+}
+
+.close-img-wrapper {
+	position: absolute;
+	height: 45px;
+	width: 45px;
+	top: 10px;
+	right: 10px;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	
+	background-color: transparent;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color .3s ease-in;
+}
+.close-img-wrapper:hover {
+	background-color:#e9e8e8;
+}
+.close-img-wrapper svg {
+    width: 100%;
+	stroke: black;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 1.5em;
+}
+
+.container-zoom-work-bottom {
+	position: absolute;
+	top: 85%;
+	left: 50%;
+	transform: translate(-50%, 0);
+	height: 40px;
+	width: 260px;
+}
+
+.container-zoom-work-prev,
+.container-zoom-work-next{
+  	position: absolute;
+	height: 40px;
+	width: 40px;
+	cursor: pointer;
+  	user-select: none;
+  	z-index: 10;
+
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color .3s ease-in;
+    
+    transform: none;
+}
+.container-zoom-work-prev:hover,
+.container-zoom-work-next:hover {
+	background-color:#e9e8e8;
+}
+@media only screen and (hover: none) {
+    .container-zoom-work-prev:hover,
+    .container-zoom-work-next:hover {
+        background-color: transparent;
+    }
+}
+
+.click-animation-right { animation: clickArrowRight 0.3s ease-out; }
+.click-animation-left { animation: clickArrowLeft 0.3s ease-out; }
+
+@keyframes clickArrowRight {
+    0% { transform: translateX(0em); }
+    40% { transform: translateX(0.5em); }
+    100% { transform: translateX(0em); }
+}
+@keyframes clickArrowLeft {
+    0% { transform: translateX(0em); }
+    40% { transform: translateX(-0.5em); }
+    100% { transform: translateX(0em); }
+}
+
+.container-zoom-work-prev {
+	left: 0;
+}
+.container-zoom-work-next {
+	right: 0;
+}
+
+.container-zoom-work-prev path, .container-zoom-work-next path {
+	fill: none;
+	stroke: rgb(0, 0, 0);
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 15px;
+}
+
+.sub-container-zoom-text{
+	position: absolute;
+	top: 82%;
+	left: 50%;
+	transform: translate(-50%, 0);
+	text-align: center;
+	font-size: 14px;
+	overflow: hidden;   
+	padding-bottom: 10px;
+
+    max-width: 200px;
+}
+.sub-container-zoom-text p {
+    word-wrap: break-word;
+    margin: 0 0;
+}
+
+.activate-coverflow-work {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: transparent;
+	top: 84.5%;
+	left: calc(50% - 170px); 
+	transform: translate(-50%, 0);
+
+    border-radius: 1em;
+}
+.activate-coverflow-work:hover {
+	background-color:#e9e8e8;
+}
+@media only screen and (hover: none) {
+    .activate-coverflow-work:hover {
+        background-color: transparent;
+    }
+}
+@media screen and (max-width: 425px) {
+    .activate-coverflow-work {
+        top: 10px;
+        left: 10px;
+        transform: none;
+    }
+}
+.activate-coverflow-work svg {
+    width: 100%;
+}
+
+.sub-container-coverflow-work {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 20%;
+    padding: 0em 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 0.5em;
+    background: linear-gradient(to bottom, transparent, rgb(234, 234, 234) 15%);
+
+    z-index: 10;
+    overflow-x: hidden;
+
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in;
+}
+.coverflow-active { 
+    transform: translateY(0em);
+}
+
+.coverflow-work {
+    position: relative;
+    height: 90%;
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0; /* Prevents shrinking */
+    flex-grow: 0;   /* Prevents growing */
+
+    transform: translateY(0em);
+    transition: transform 0.2s ease-in;
+
+    overflow: hidden;
+}
+
+.coverflow-work:first-child{ 
+    padding-left: 4em;
+    margin-left: auto;
+}
+
+.coverflow-work:last-child {
+    padding-right: 4em;
+    margin-right: auto;
+}
+
+.coverflow-work:hover {
+    transform: translateY(-0.5em);
+}
+.coverflow-work-touch {
+    animation: clickCover 0.3s ease-in;
+}
+
+@media only screen and (hover: none) {
+    .coverflow-work:hover {
+        transform: translateY(0);
+    }
+}
+
+@keyframes clickCover {
+    0% {transform: translateY(0em);}
+    50% {transform: translateY(-0.5em);}
+    100% {transform: translateY(0em);}
+}
+
+.coverflow-work img {
+    width: 96%;
+    height: 96%;
+
+	object-fit: cover;
+}
+
+/* ROOM PAINTINGS */
+#painting {
+    transform-style: preserve-3d;
+    object-fit: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 0 0.02em rgba(0, 0, 0, 0.328);
+}
+
+#painting .painting-description {
+    position: absolute;
+    width: 0.3em;
+    height: 0.13em;
+    background-color: rgb(255, 255, 255);
+    bottom: 0;
+    left: calc(100% + 0.2em);
+    transform: translateZ(-0.07em);
+
+    text-align: left;
+    padding: 0.02em;
+    box-shadow: 0 0 0.02em rgba(0, 0, 0, 0.215);
+    overflow: hidden;
+}
+.painting-description p {
+    font-size: 0.02em;
+    line-height: 1.5em;
+    word-wrap: break-word;
+    margin: 0.1em 0;
+}
+
+#painting img{
+    --border-painting: 0.04em;
+    width: calc(100% - var(--border-painting));
+    height: calc(100% - var(--border-painting));
+
+    pointer-events: fill;
+    cursor: pointer;
+}
+
+/* ROOM DOORS */
+.room-invisible-screen {
+    position: absolute;
+    height: 100%;
+    width: var(--width);
+
+    pointer-events: all;
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+}
+.room-invisible-screen:hover {
+    background-color: rgba(215, 221, 225, 0.308);
+}
+
+/* ROOM SIGNS */
+.room-sign {
+    position: absolute;
+    height: 1em;
+    font-size: 0.18em;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    /* font-family:Arial, Helvetica, sans-serif; */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2em;
+}
+.room-sign > * {
+    box-shadow: none;
+}
+.room-sign-arrow { height: 100%; }
+.room-sign-arrow svg { height: 100%; }
+.room-invisible-screen:hover ~ .room-sign {
+    animation: RotateRoomSign 0.7s ease-in-out;
+}
+@keyframes RotateRoomSign {
+    0% {transform: rotatez(0deg);}
+    25% {transform: rotatez(-10deg);}
+    75% {transform: rotatez(8deg);}
+    100% {transform: rotatez(0deg);}
+}
+
+/* EXIT BUTTON*/
+.exit-room-btn {
+    position: fixed;
+    height: 2em;
+    width: 2em;
+    bottom: 5px;
+    right: 7px;
+
+    padding: 0.2em;
+    border-radius: 0.2em;
+    z-index: 10;
+}
+.exit-room-btn svg{
+    width: 100%;
+}
+.exit-room-btn:hover {
+    background-color: #e9e8e8;;
+}
+
+/* _____________ ROOM 1 _____________ */
+/*WALL 1*/
+#wallobj-1-1 {
+    transform: translateZ(2em);
+}
+#wall-1-1 {
+    --cube-width: 9;
+    --cube-left: calc(var(--cube-width) / 2); }
+
+#wall-1-1-painting-frame-1 {
+    --cube-height: 2;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 1.5);
+}
+
+#wall-1-1-painting-frame-2 {
+    --cube-height: 3.2;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    --cube-bottom: 1;
+    --cube-left: calc(var(--cube-width)/2 + 5);
+}
+#wall-1-1-invisible-screen {
+    --width: 3em;
+    right: calc(-1 * (var(--width)));
+}
+#wall-1-1-room2-sign {
+    top: 7em;
+    right: 1em;
+}
+
+/*WALL 2 FAKE*/
+#wallobj-1-2 { transform: translateZ(-7em); }
+#wall-1-2 {
+    --cube-width: 20;
+    --cube-left: calc(var(--cube-width) / 2); 
+}
+#wall-1-2-painting-frame-1-out {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 2);
+}
+
+#wall-1-2-painting-frame-2-out {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 5.5);
+}
+
+#wall-1-2-painting-frame-3-out {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 9);
+}
+
+#wall-1-2-painting-frame-4-out {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 12.5);
+}
+
+#wall-1-2-painting-frame-5-out {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 16);
+}
+
+#wallobj-1-9 {
+    transform: translateZ(-7em) rotateY(-90deg) translateZ(-20.25em); 
+}
+#wall-1-9 {
+    --cube-width: 6;
+    --cube-left: calc(var(--cube-width) / 2); 
+}
+#wall-1-9-painting-frame-6-out {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 2);
+}
+
+/*WALL 3*/
+#wallobj-1-3 {
+    transform: translateZ(2em) translateX(12em);
+}
+#wall-1-3 { 
+    --cube-width: 1;
+    --cube-left: 0.5
+}
+
+/*WALL 4*/
+#wallobj-1-4 { 
+    transform: translateZ(2.25em) rotateY(-90deg) translateZ(-13.25em); 
+}
+#wall-1-4 {
+    --cube-width: 10;
+    --cube-left: calc(var(--cube-width) / 2); 
+}
+
+#wall-1-4-painting-frame-3 {
+    --cube-height: 1;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 2);
+}
+#wall-1-4-painting-frame-4 {
+    --cube-height: 2;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 5);
+}
+#wall-1-4-painting-frame-5 {
+    --cube-height: 2;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 7.25);
+}
+
+/* WALL 5 */
+#wallobj-1-5 { 
+    transform: translateZ(12em) translateX(13em); 
+}
+#wall-1-5 {
+    --cube-width: 2;
+    --cube-left: calc(var(--cube-width) / 2);
+}
+
+/* WALL 6*/
+#wallobj-1-6 { 
+    transform: translateZ(12.25em) rotateY(-90deg) translateZ(-15.25em); 
+}
+#wall-1-6 {
+    --cube-width: 8.5;
+    --cube-left: calc(var(--cube-width) / 2); 
+}
+#wall-1-6-painting-frame-6 {
+    --cube-height: 1;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 3;
+    --cube-left: calc(var(--cube-width)/2 + 1.5);
+}
+#wall-1-6-painting-frame-7 {
+    --cube-height: 1;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 1.6;
+    --cube-left: calc(var(--cube-width)/2 + 1.5);
+}
+#wall-1-6-painting-frame-8 {
+    --cube-height: 2;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 4.5);
+}
+
+/* WALL 7 */
+#wallobj-1-7 { 
+    transform: translateZ(2em) rotateY(180deg) translateZ(-19em) translateX(-15em); 
+}
+#wall-1-7 {
+    --cube-width: 15;
+    --cube-left: calc(var(--cube-width) / 2); 
+}
+
+#wall-1-7-painting-frame-9 {
+    --cube-height: 3.2;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    --cube-bottom: 1;
+    --cube-left: calc(var(--cube-width)/2 + 2.5);
+}
+#wall-1-7-painting-frame-10 {
+    --cube-height: 2;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    --cube-bottom: 1.75;
+    --cube-left: calc(var(--cube-width)/2 + 6.5);
+}
+#wall-1-7-painting-frame-11 {
+    --cube-height: 3.2;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    --cube-bottom: 1;
+    --cube-left: calc(var(--cube-width)/2 + 10.5);
+}
+
+/* WALL 8 */
+#wallobj-1-8 { 
+    transform: translateZ(2em) rotateY(90deg) translateX(-18.75em) translateZ(-0.25em); 
+}
+#wall-1-8 {
+    --cube-width: 18.5;
+    --cube-left: calc(var(--cube-width) / 2); 
+}
+
+#wall-1-8-painting-frame-12 {
+    --cube-height: 1;
+    --cube-width: 1;
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 1.5);
+}
+#wall-1-8-painting-frame-13 {
+    --cube-height: 1;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 3.5);
+}
+#wall-1-8-painting-frame-14 {
+    --cube-height: 2;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 6.5);
+}
+#wall-1-8-painting-frame-15 {
+    --cube-height: 2;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 10);
+}
+#wall-1-8-painting-frame-16 {
+    --cube-height: 2;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 12.25);
+}
+#wall-1-8-painting-frame-17 {
+    --cube-height: 1;
+    --cube-width: 2.2;
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 15);
+}
+
+
+/* _____________ ROOM 2 _____________ */
+#map-position-2 {
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background-color: blue;
+    bottom: 15%;
+    left: 10%;
+}
+
+/*WALL 1*/
+#wallobj-2-1 {
+    transform: translateZ(2em);
+}
+#wall-2-1 {
+    --cube-width: 20;
+    --cube-left: calc(var(--cube-width) / 2);
+}
+
+#wall-2-1-painting-frame-1 {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 2);
+}
+
+#wall-2-1-painting-frame-2 {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 5.5);
+}
+
+#wall-2-1-painting-frame-3 {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 9);
+}
+
+#wall-2-1-painting-frame-4 {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 12.5);
+}
+
+#wall-2-1-painting-frame-5 {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 16);
+}
+
+/*WALL 2*/
+#wallobj-2-2 {
+    position: absolute;
+    transform: translateZ(2.25em) rotateY(-90deg) translateZ(-20.25em); 
+}
+#wall-2-2 {
+    --cube-width: 6;
+    --cube-left: calc(var(--cube-width) / 2);
+}
+#wall-2-2-painting-frame-6 {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 2);
+}
+#wall-2-2-room4-sign {
+    right: 1em;
+    top: 3.8em;
+}
+
+/*WALL 3*/
+#wallobj-2-3 {
+    position: absolute;
+    transform: translateZ(calc(2.25em + 9em)) rotateY(-90deg) translateZ(-20.25em); 
+}
+#wall-2-3 {
+    --cube-width: 10;
+    --cube-left: calc(var(--cube-width) / 2);
+}
+#wall-2-2-painting-frame-7 {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 2);
+}
+#wall-2-2-painting-frame-8 {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 5.5);
+}
+
+/* WALL 4*/
+#wallobj-2-4 {
+    position: absolute;
+    transform: translateZ(2.25em) rotateY(180deg) translateZ(-19.25em) translateX(-20em); 
+}
+#wall-2-4 {
+    --cube-width: 1;
+    --cube-left: calc(var(--cube-width) / 2);
+}
+
+/* WALL 5*/
+#wallobj-2-5 {
+    position: absolute;
+    transform: translateZ(2.25em) rotateY(180deg) translateZ(-19.25em) translateX(-16em); 
+}
+#wall-2-5 {
+    --cube-width: 5;
+    --cube-left: calc(var(--cube-width) / 2);
+}
+#wall-2-5-painting-frame-9 {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 1.5);
+}
+#wall-2-5-room3-sign {
+    left: 1em;
+    top: 3.8em;
+}
+#wall-2-5-room3-sign svg { transform: rotateZ(180deg); }
+
+
+/* WALL 6*/
+#wallobj-2-6 {
+    position: absolute;
+    transform: translateZ(2em) rotateY(90deg) translateX(-19.25em) translateZ(10.75em); 
+}
+#wall-2-6 {
+    --cube-width: 10;
+    --cube-left: calc(var(--cube-width) / 2);
+}
+#wall-2-6-painting-frame-10 {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 2);
+}
+#wall-2-6-painting-frame-11 {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 3;
+    --cube-left: calc(var(--cube-width)/2 + 6);
+}
+#wall-2-6-painting-frame-12 {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 1.5;
+    --cube-left: calc(var(--cube-width)/2 + 6);
+}
+
+/* WALL 7*/
+#wallobj-2-7 {
+    position: absolute;
+    transform: translateZ(2.25em) rotateY(180deg) translateZ(-9.25em) translateX(-11em); 
+}
+#wall-2-7 {
+    --cube-width: 1.3;
+    --cube-left: calc(var(--cube-width) / 2);
+}
+
+/* WALL 8*/
+#wallobj-2-8 {
+    position: absolute;
+    transform: translateZ(2.25em) rotateY(180deg) translateZ(-9.25em) translateX(-7em); 
+}
+#wall-2-8 {
+    --cube-width: 7;
+    --cube-left: calc(var(--cube-width) / 2);
+}
+
+#wall-2-8-painting-frame-13 {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 1);
+}
+#wall-2-8-painting-frame-14 {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 3.7);
+}
+#wall-2-8-room1-sign {
+    left: 1em;
+    top: 3.8em;
+}
+#wall-2-8-room1-sign svg { transform: rotateZ(180deg); }
+#wall-2-8-invisible-screen {
+    --width: 2.7em;
+    left: calc(-1 * (var(--width)));
+}
+
+/* WALL 9*/
+#wallobj-2-9 {
+    position: absolute;
+    transform: translateZ(2em) rotateY(90deg) translateX(-9.25em) translateZ(-0.25em); 
+}
+#wall-2-9 {
+    --cube-width: 9;
+    --cube-left: calc(var(--cube-width) / 2);
+}
+
+#wall-2-9-painting-frame-15 {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 1.8);
+}
+#wall-2-9-painting-frame-16 {
+    --coeff: 3.8;
+    --cube-height: calc(5 / var(--coeff));
+    --cube-width: calc(7 / var(--coeff));
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 5.2);
+}
+
+
+/* FAKE */
+
+/* WALL 10*/
+#wallobj-2-10 {
+    position: absolute;
+    transform: translateZ(2.25em) rotateY(-90deg) translateZ(-10.5em) translateX(9em); 
+}
+
+#wall-2-10 {
+    --cube-width: 10;
+    --cube-left: calc(var(--cube-width) / 2);
+}
+#wall-2-10-painting-frame-17-out {
+    --cube-height: 1;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 2);
+}
+#wall-2-10-painting-frame-18-out {
+    --cube-height: 2;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 5);
+}
+#wall-2-10-painting-frame-19-out {
+    --cube-height: 2;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 7.25);
+}
+
+/* WALL 11*/
+#wallobj-2-11 {
+    position: absolute;
+    transform: translateZ(2.25em) rotateY(180deg) translateZ(-27.75em) translateX(-15em); 
+}
+#wall-2-11 {
+    --cube-width: 15;
+    --cube-left: calc(var(--cube-width) / 2);
+}
+#wall-2-11-painting-frame-20-out {
+    --cube-height: 3.2;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    --cube-bottom: 1;
+    --cube-left: calc(var(--cube-width)/2 + 2.5);
+}
+#wall-2-11-painting-frame-21-out {
+    --cube-height: 2;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    --cube-bottom: 1.75;
+    --cube-left: calc(var(--cube-width)/2 + 6.5);
+}
+#wall-2-11-painting-frame-22-out {
+    --cube-height: 3.2;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    --cube-bottom: 1;
+    --cube-left: calc(var(--cube-width)/2 + 10.5);
+}
+
+/* WALL 12*/
+#wallobj-2-12 {
+    position: absolute;
+    transform: translateZ(2em) rotateY(90deg) translateX(-27.75em) translateZ(-0.25em); 
+}
+#wall-2-12 {
+    --cube-width: 18.5;
+    --cube-left: calc(var(--cube-width) / 2);
+}
+
+
+#wall-2-12-painting-frame-23-out {
+    --cube-height: 1;
+    --cube-width: 1;
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 1.5);
+}
+#wall-2-12-painting-frame-24-out {
+    --cube-height: 1;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2.5;
+    --cube-left: calc(var(--cube-width)/2 + 3.5);
+}
+#wall-2-12-painting-frame-25-out {
+    --cube-height: 2;
+    --cube-width: 2;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 6.5);
+}
+#wall-2-12-painting-frame-26-out {
+    --cube-height: 2;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 10);
+}
+#wall-2-12-painting-frame-27-out {
+    --cube-height: 2;
+    --cube-width: 1.5;
+    --cube-depth: 0.1;
+    --cube-bottom: 2;
+    --cube-left: calc(var(--cube-width)/2 + 12.25);
+}
+
+/* WALL 13*/
+#wallobj-2-13 {
+    position: absolute;
+    transform: translateZ(2em) rotateY(90deg) translateX(-28em) translateZ(15.25em); 
+}
+#wall-2-13 {
+    --cube-width: 8.5;
+    --cube-left: calc(var(--cube-width) / 2);
+}
+
+/* WALL 14*/
+#wallobj-2-14 {
+    position: absolute;
+    transform: translateZ(2.25em) rotateY(180deg) translateZ(-28em) translateX(-27.5em); 
+}
+#wall-2-14 {
+    --cube-width: 12;
+    --cube-left: calc(var(--cube-width) / 2);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* _____________ LOADING ELEMENT _____________ */
+.loading-element{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 20;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+	transition: opacity 1s ease;
+	pointer-events: none;
+}
+.loading-svg{
+	animation: rotate 3s linear infinite;
+}
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+.fade-out{
+	opacity: 0;
+}
+
+
+
+/* _____________ NAVIGATION MENU _____________ */
+nav{
+	position: fixed;
+	top: 0;
+	background: linear-gradient(to top, #ffffff00 0%, #ffffffda 20%, #ffffffda 20%);
+	width: 100%;
+	height: var(--height-nav-bar);
+	z-index: 1;
+}
+nav ul{
+	position: absolute;
+	height: 100%;
+	right: 0;
+	margin-right: 20px;
+	background: #8a0b0b00;
+
+	display: flex;
+	align-items: center;
+}
+nav ul li{
+	height: 50%;
+	/* display: inline-block; */
+	line-height: 80px;
+	margin: 0 5px;
+	border-radius: 3px;
+
+	display: flex;
+	align-items: center;
+}
+nav ul li a{
+	color: rgb(0, 0, 0);
+	font-size: 17px;
+	text-transform: uppercase;
+	padding: 10px 5px;
+	/* border-radius: 3px; */
+}
+
+nav ul li:has(a.active), nav ul li:hover{
+	background: #e9e8e8;
+	transition: .5s;
+}
+
+h1{
+	position: relative;
+	width: fit-content;
+	color: rgb(0, 0, 0);
+	font-size: 33px;
+	padding: 20px 20px;
+	font-weight: bold;
+	text-decoration: none;
+	z-index: 1;
+}
+h1 a{
+	text-decoration: none;
+	color: #000000;
+	padding-right: 20px;
+}
+.logo span:hover{
+	color: #636363;
+	transition: .5s;
+}
+
+  
+/* _____________ MENU BUTTON _____________ */
+#menu-check{
+    display: none;
+}
+.menu-btn{
+	position: absolute;
+    width: 37px;
+    height: 40px;
+    right: 20px;
+	top: 17px;
+    cursor: pointer;
+	z-index: 2;
+	display: none;
+}
+.menu-btn .hamburguer{
+	background: transparent;
+}
+
+.hamburguer .line {
+	fill: black;
+	transition:
+	  transform 300ms ease-in 300ms,
+	  rotate 300ms ease-in,
+	  opacity 0ms 300ms;
+	;
+	transform-origin: center;
+  }
+#menu-check:checked ~ .menu-btn .hamburguer .line {
+	transition:
+		transform 300ms ease-in,
+		rotate 300ms ease-in 300ms,
+		opacity 0ms 300ms;
+	;
+}
+#menu-check:checked ~ .menu-btn .hamburguer .top{
+	transform: translateY(25px);
+}
+#menu-check:checked ~ .menu-btn .hamburguer .bottom{
+	transform: translateY(-25px);
+}
+#menu-check:checked ~ .menu-btn .hamburguer .top{
+	rotate: 45deg;
+}
+#menu-check:checked ~ .menu-btn .hamburguer .middle{
+	opacity: 0;
+}
+#menu-check:checked ~ .menu-btn .hamburguer .bottom{
+	rotate: -45deg;
+}
+
+
+@media (max-width: 952px){
+	h1{
+			font-size: 30px;
+	}
+	nav ul li a{
+			font-size: 16px;
+	}
+}
+@media (max-width: 858px){
+	h1{
+		font-size: 25px;
+	}
+	nav{
+		z-index: 1;
+	}
+	nav ul{
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			left: 0;
+			flex-direction: column;
+			background: #ffffffda;
+			top: calc(-100% - var(--height-nav-bar)); /* Hide initially the menu*/
+
+			transition: all .5s;
+			z-index: 0;
+			overflow-y: auto;
+			padding-top: var(--height-nav-bar);
+			gap: 30px;
+	}
+	nav ul li{
+		height: 30px;
+	}
+	nav ul li a{
+			font-size: 20px;
+	}
+	nav ul li:has(a.active), nav ul li:hover{
+		background: #d4d3d3;
+		transition: .5s;
+	}
+	.menu-btn{
+		display: flex;
+	}
+	#menu-check:checked ~ul{
+		top: 0px;
+	}
+}
+
+/* _____________ HIDE SCROLLING BARS _____________ */
+/* For WebKit browsers (e.g., Chrome, Safari) */
+.home-grid::-webkit-scrollbar {
+	display: none; /* Hide scrollbar for WebKit */
+  }
+/* For Firefox */
+.home-grid {
+scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* _______________________________________ */
+/* ______________ TEXT PAGE ______________ */
+/* _______________________________________ */
+.text-page .text-page-container{
+    position: absolute;
+    width: 99%;
+    /* height: 100%; */
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+.text-page .text-page-container .text{
+	/* border: 1px solid #ccc; */
+    overflow-x: hidden;
+    width: 900px;
+    margin-top: 100px;
+    -webkit-text-size-adjust: none;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.3em;
+    letter-spacing: .66px;
+}
+.text-page h2{
+    font-weight: 400;
+    line-height: 1.3em;
+    letter-spacing: .66px;
+	margin-bottom: 20px;
+}
+.text-page h3{
+    font-weight: 500;
+    line-height: 1.3em;
+    letter-spacing: .66px;
+    margin-bottom: 40px;
+}
+
+.text-page p{
+	margin-bottom: 20px;
+}
+.text-page p:last-child {
+    margin-top: 50px;
+    margin-bottom: 140px;
+}
+
+.text-page .link-patio{
+    text-decoration: underline;
+    list-style: none;
+    color: black;
+}
+
+.text-page .link-patio:hover{
+    color: blue;
+}
+
+@media (max-width: 1000px) {
+	.text-page .text-page-container .text{
+		width: 100%;
+        margin-left: 30px;
+        margin-right: 30px;
+	}
+}
+
+
+
+/* _______________________________________ */
+/* ______________ BIO PAGE ______________ */
+/* _______________________________________ */
+.bio-page .bio-container{
+    position: relative;
+    width: 99%;
+    /* height: 100%; */
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+.bio-page dl {
+    width: 1200px;
+    margin: 80px 30px;
+    -webkit-text-size-adjust: none;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.01em;
+    font-weight: normal;
+    color: #000000;
+    columns: 3;
+}
+
+.bio-page dd{
+	margin-left: 40px;
+}
+
+@media (max-width: 1000px) {
+    .bio-page dl{
+        width: 100%;
+        overflow: hidden;
+        columns: 2;
+    }
+}
+@media (max-width: 600px) {
+    .bio-page dl{
+        columns:1;
+    }
+}
+
+
+/* _______________________________________ */
+/* ______________ CONTACT PAGE ______________ */
+/* _______________________________________ */
+.contact-page .item{
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    width: 1050px;
+}
+
+.contact-page p {
+    overflow-wrap: break-word;
+    font-size: 17px;
+    margin-left: -5%;
+    letter-spacing: 0.01em;
+    font-weight: normal;
+    color: #000000;
+}
+.contact-page a{
+    color: #000000;
+    text-decoration: underline;
+}
+.contact-page a:hover{
+    color: blue;
+}
+.contact-page img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0.7;
+}
+
+@media (max-width: 1500px) {
+    .contact-page .item{
+        width: 70%;
+    }
+}
+@media (max-width: 800px) {
+    .contact-page p {
+        font-size: 15px;
+    }
+}

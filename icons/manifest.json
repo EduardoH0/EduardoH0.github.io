@@ -1,0 +1,27 @@
+{
+    "name": "Chema Herreros",
+    "short_name": "Chema Herreros",
+    "description": "",
+    "icons": [
+      {
+        "src": "android192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "android256.png",
+        "sizes": "256x256",
+        "type": "image/png"
+      },
+      {
+        "src": "android512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff"
+  }
+  

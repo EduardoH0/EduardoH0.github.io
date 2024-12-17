@@ -1,12 +1,15 @@
 export class WorkZoom {
     constructor(workPath, stateManager) {
         this.stateManager = stateManager;
+        this.isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+
 
         this.fetchWork(workPath)
             .then(data => {
                 this.workData = data;
             })
 
+        this.scene = document.getElementById('scene');
         this.roomImages = document.querySelectorAll('.room-img');
         this.mainContainer = document.getElementById('container-zoom-work');
         this.imageWrapper = document.getElementById('img-wrapper');
@@ -64,13 +67,7 @@ export class WorkZoom {
     setCoverflow(data) {
         const coverflowContainer = document.getElementById('sub-container-coverflow-work');
 
-        function isTouchDevice() {
-            return 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
-        }
-
-        if (isTouchDevice()) {
-            coverflowContainer.style.overflowX = 'auto';
-        }
+        if (this.isTouchDevice) { coverflowContainer.style.overflowX = 'auto'; }
 
         // Add scroll functionality on mouse wheel
         coverflowContainer.addEventListener('wheel', (event) => {
@@ -89,7 +86,7 @@ export class WorkZoom {
         const coverflowActivator = document.getElementById('activate-coverflow-work');
         
 
-        if (isTouchDevice()) {
+        if (this.isTouchDevice) {
             coverflowActivator.addEventListener('click', () => { coverflowContainer.classList.toggle('coverflow-active') });
             // Touch devices: click anywhere on the screen to hide Coverflow
             document.addEventListener('touchstart', (event) => {
@@ -111,9 +108,9 @@ export class WorkZoom {
             coverflowWork.addEventListener('click', () => { 
                 this.loadImage(index+1); 
                 this.currentImageIndex = index+1;
-                if(isTouchDevice()) { coverflowWork.classList.add('coverflow-work-touch') }
+                if(this.isTouchDevice) { coverflowWork.classList.add('coverflow-work-touch') }
             })
-            if (isTouchDevice()) {coverflowWork.addEventListener('animationend', () =>{ coverflowWork.classList.remove('coverflow-work-touch'); })}
+            if (this.isTouchDevice) {coverflowWork.addEventListener('animationend', () =>{ coverflowWork.classList.remove('coverflow-work-touch'); })}
 
             const imageContainer = document.createElement('img');
             imageContainer.src = image.src;
@@ -146,6 +143,7 @@ export class WorkZoom {
         this.closeBtn.addEventListener('click', () => {
             this.mainContainer.style.display = 'none'
             this.stateManager.setUnfreeze();
+            if (this.isTouchDevice) { this.scene.style.display = 'block'; }
         });
         // Add keydown event listener for the Escape key
         document.addEventListener('keydown', (event) => {
@@ -157,6 +155,7 @@ export class WorkZoom {
         this.roomImages.forEach(image => {
             image.addEventListener('click', () => {
                 this.stateManager.setFreeze(true);
+                if (this.isTouchDevice) { this.scene.style.display = 'none'; }  // avoid "A problem ocurred repeteadly" on Safari and other browsers (iphone)
                 const imageSrc = image.src;
                 this.mainContainer.style.display = 'flex';
                 this.imageWrapper.src = imageSrc;

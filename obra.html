@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="nav">
+        <input type="checkbox" id="menu-check">
+        <label for="menu-check" class="menu-btn">
+            <svg class="hamburguer" viewBox="0 0 100 100">
+                <rect class="line top"
+                    width="80" height="8"
+                    x="10" y="20" rx="4">
+                </rect>
+                <rect class="line middle"
+                    width="80" height="8"
+                    x="10" y="45" rx="4">
+                </rect>
+                <rect class="line bottom"
+                    width="80" height="8"
+                    x="10" y="70" rx="4">
+                </rect>
+            </svg>
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" class="menu-icon" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="36" d="M80 150h352M80 256h352M80 362h352"/></svg> -->
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" class="menu-x" viewBox="0 0 512 512"><path d="M100 100 L400 400 M100 400 L400 100"/></svg> -->
+        </label>
+        <ul>
+            <li><a class="active" href="obra.html">Obra</a></li>
+            <li><a href="texto.html">Texto</a></li>
+            <li><a href="biografia.html">Biografía</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+        <h1><a class="logo" href="index.html"><span>Chema Herreros</span></a></h1>
+    </nav>
+
+    <div class="main-container-work">
+        <div class="colection-container">
+            <button class="toggle-colection">
+                <svg class="layout" viewBox="0 0 100 100">
+                    <line x1="20" y1="40" x2="50" y2="70" stroke="black" stroke-width="7" stroke-linecap="round"/>
+                    <line x1="80" y1="40" x2="50" y2="70" stroke="black" stroke-width="7" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <div class="colection-name" id="colection-name"></div>
+        </div>
+        <div class="prev">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M328 112L184 256l144 144"/></svg>
+        </div>
+        <div class="next">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M184 112l144 144-144 144"/></svg>
+        </div>
+
+        <div class="main-sub-container-work">
+            <img class="img-wrapper" id="img-wrapper">
+        </div>
+        <div class="main-sub-container-text" id="main-sub-container-text"></div>
+    </div>
+
+    <script src="obrascript.js"></script>
+</body>
+</html>

@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="room-page" lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0 minimum-scale=1.0">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <link rel="stylesheet" href="roomstyle.css">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Room 1</title>
 </head>
-<body>
+<body class="room-page">
 
     <div class="map">
         <div class="map-position" id="map-position"></div>
@@ -21,6 +20,12 @@
             <line x1="19.5" y1="16" x2="1" y2="16" stroke="black" stroke-width="0.2"/>
         </svg>
     </div>
+    <a href="index.html" class="exit-room-btn" id="exit-room-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path d="M320 176v-40a40 40 0 00-40-40H88a40 40 0 00-40 40v240a40 40 0 0040 40h192a40 40 0 0040-40v-40M384 176l80 80-80 80M191 256h273" 
+                fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/>
+        </svg>
+    </a>
 
     <div class="container-zoom-work" id="container-zoom-work">
         <div class="sub-container-zoom-work" id="sub-container-zoom-work">
@@ -58,7 +63,7 @@
     </div>
 
     <div class="scene-container" id="scene-container">
-        <div class="scene" id="scene">
+        <div class="scene-room" id="scene">
             <div class="scene-obj" id="wallobj-1-1">
                 <div class="cube-group">
                     <div class="cube" id="wall-1-1">
@@ -475,6 +480,6 @@
     </div>
 
         
-    <script type="module" src="room1.js"></script>
+    <script type="module" src="js/room1.js"></script>
 </body>
 </html>
