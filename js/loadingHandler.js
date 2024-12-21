@@ -3,7 +3,7 @@ import { EVENTS } from "./events.js";
 export class LoadingHandler {
     constructor(selector = '.loading-element') {
         this.loadingDiv = document.querySelector(selector);
-        this.timeout = 2000;
+        this.timeout = 10000;
         this.timeoutId = null;
         this.timeoutFired = false;
         this.elements = null;
