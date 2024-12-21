@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chema Herreros</title>
     <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
 
@@ -24,8 +26,6 @@
                     x="10" y="70" rx="4">
                 </rect>
             </svg>
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" class="menu-icon" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="36" d="M80 150h352M80 256h352M80 362h352"/></svg> -->
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" class="menu-x" viewBox="0 0 512 512"><path d="M100 100 L400 400 M100 400 L400 100"/></svg> -->
         </label>
         <ul>
             <li><a class="active" href="obra.html">Obra</a></li>
@@ -36,29 +36,64 @@
         <h1><a class="logo" href="index.html"><span>Chema Herreros</span></a></h1>
     </nav>
 
-    <div class="main-container-work">
-        <div class="colection-container">
-            <button class="toggle-colection">
-                <svg class="layout" viewBox="0 0 100 100">
-                    <line x1="20" y1="40" x2="50" y2="70" stroke="black" stroke-width="7" stroke-linecap="round"/>
-                    <line x1="80" y1="40" x2="50" y2="70" stroke="black" stroke-width="7" stroke-linecap="round"/>
+    <div class="map-rooms-container">
+        <div class="map-rooms">
+            <a href="room1.html" class="map-room-1">
+                <p class="map-room-text" id="map-room-1-text">CRISTAL ACRILICO</p>
+                <svg viewbox="0 0 18.5 15" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="0" y1="15" x2="0" y2="8" stroke="black"/>
+                    <line x1="0" y1="5" x2="0" y2="4" stroke="black"/>
+                    <line x1="0" y1="4" x2="10" y2="4" stroke="black"/>
+                    <line x1="10" y1="4" x2="10" y2="0" stroke="black"/>
+                    <line x1="10" y1="0" x2="18.5" y2="0" stroke="black"/>
+                    <line x1="18.5" y1="0" x2="18.5" y2="15" stroke="black"/>
+                    <line x1="18.5" y1="15" x2="0" y2="15" stroke="black"/>
                 </svg>
-            </button>
-            <div class="colection-name" id="colection-name"></div>
+            </a>
+            <a href="room2.html" class="map-room-2">
+                <p class="map-room-text" id="map-room-2-text">PAPEL</p>
+                <svg viewbox="0 0 19 20" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="0" y1="20" x2="0" y2="0" stroke="black"/>
+                    <line x1="0" y1="0" x2="4" y2="0" stroke="black"/>
+                    <line x1="7" y1="0" x2="19" y2="0" stroke="black"/>
+                    <line x1="19" y1="0" x2="19" y2="1" stroke="black"/>
+                    <line x1="19" y1="4" x2="19" y2="9" stroke="black"/>
+                    <line x1="19" y1="9" x2="9" y2="9" stroke="black"/>
+                    <line x1="9" y1="9" x2="9" y2="10" stroke="black"/>
+                    <line x1="9" y1="13" x2="9" y2="20" stroke="black"/>
+                    <line x1="9" y1="20" x2="0" y2="20" stroke="black"/>
+                </svg>
+            </a>
+            <div class="map-room-3" id="map-room-3">
+                <p class="map-room-text" id="map-room-3-text">TELA</p>
+                <svg viewbox="0 0 8.5 24" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="0" y1="24" x2="0" y2="23" stroke="black"/>
+                    <line x1="0" y1="20" x2="0" y2="10" stroke="black"/>
+                    <line x1="0" y1="7" x2="0" y2="0" stroke="black"/>
+                    <line x1="0" y1="0" x2="8.5" y2="0" stroke="black"/>
+                    <line x1="8.5" y1="0" x2="8.5" y2="24" stroke="black"/>
+                    <line x1="8.5" y1="24" x2="0" y2="24" stroke="black"/>
+                </svg>
+            </div>
+            <div class="map-room-4" id="map-room-4">
+                <p class="map-room-text" id="map-room-4-text">MONTAJES</p>
+                <svg viewbox="0 0 19 19.001" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="0" y1="19" x2="0" y2="0" stroke="black"/>
+                    <line x1="0" y1="0" x2="19" y2="0" stroke="black"/>
+                    <line x1="19" y1="0" x2="19" y2="7" stroke="black"/>
+                    <line x1="19" y1="10" x2="19" y2="19" stroke="black"/>
+                    <line x1="19" y1="19" x2="7" y2="19" stroke="black"/>
+                    <line x1="4" y1="19" x2="0" y2="19" stroke="black"/>
+                </svg>
+            </div>
         </div>
-        <div class="prev">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M328 112L184 256l144 144"/></svg>
-        </div>
-        <div class="next">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M184 112l144 144-144 144"/></svg>
-        </div>
-
-        <div class="main-sub-container-work">
-            <img class="img-wrapper" id="img-wrapper">
-        </div>
-        <div class="main-sub-container-text" id="main-sub-container-text"></div>
     </div>
 
-    <script src="obrascript.js"></script>
+    <div class="warning-room" id="warning-room">
+        <p>Sala cerrada temporalmente por montaje de obras. Gracias por su comprensión</p>
+    </div>
+
+    <script type="module" src="js/obra.js"></script>
+
 </body>
 </html>

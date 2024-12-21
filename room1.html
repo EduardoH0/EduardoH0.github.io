@@ -4,11 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Room 1</title>
+    <title>Cristal Acrilico</title>
+
+    <link rel="preload" as="image" href="images/room1/1.jpg" type="image/jpeg">
+    <link rel="preload" as="image" href="images/room1/2.jpg" type="image/jpeg">
+    <link rel="preload" as="image" href="images/room1/16.jpg" type="image/jpeg">
+    <link rel="preload" as="image" href="images/room1/17.jpg" type="image/jpeg">
 </head>
 <body class="room-page">
 
-    <div class="map">
+    <div class="loading-element">
+        <div class="loading-icon">
+            <img class="loading-svg" src="icons/android512.png" alt="loading-icon" width="100px">
+        </div>
+    </div>
+
+    <a href="obra.html" class="map">
         <div class="map-position" id="map-position"></div>
         <svg  viewbox="0 0 20.5 17" xmlns="http://www.w3.org/2000/svg">
             <line x1="1" y1="16" x2="1" y2="7" stroke="black" stroke-width="0.2"/>
@@ -19,7 +30,7 @@
             <line x1="19.5" y1="1" x2="19.5" y2="16" stroke="black" stroke-width="0.2"/>
             <line x1="19.5" y1="16" x2="1" y2="16" stroke="black" stroke-width="0.2"/>
         </svg>
-    </div>
+    </a>
     <a href="index.html" class="exit-room-btn" id="exit-room-btn">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <path d="M320 176v-40a40 40 0 00-40-40H88a40 40 0 00-40 40v240a40 40 0 0040 40h192a40 40 0 0040-40v-40M384 176l80 80-80 80M191 256h273" 
@@ -75,7 +86,7 @@
                                         <path fill="none" stroke="currentColor" stroke-linecap="butt" stroke-linejoin="butt" stroke-width="56" d="M268 112l144 144-144 144M392 256H100"/>
                                     </svg>
                                 </div>
-                                <p>ROOM 2</p>
+                                <p>PAPELES</p>
                             </div>
                         </div>
                         <div class="left"></div>
@@ -88,7 +99,7 @@
                                 <p>Mixta sobre cristal acrilico</p>
                                 <p>100 x 100 cm</p>
                             </div>
-                            <img class="room-img" src="images/room1/1.jpg" id="work-1" alt="">
+                            <img class="room-img" src="images/room1/1.jpg" id="work-1" alt="" data-loading="important">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -102,7 +113,7 @@
                                 <p>Mixta sobre cristal acrilico</p>
                                 <p>150 x 100 cm</p>
                             </div>
-                            <img class="room-img" src="images/room1/2.jpg" id="work-2" alt="">
+                            <img class="room-img" src="images/room1/2.jpg" id="work-2" alt="" data-loading="important">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -453,7 +464,7 @@
                                 <p>Mixta sobre cristal acrilico</p>
                                 <p>100 x 75 cm</p>
                             </div>
-                            <img class="room-img" src="images/room1/16.jpg" id="work-16" alt="">
+                            <img class="room-img" src="images/room1/16.jpg" id="work-16" alt="" data-loading="important">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -467,7 +478,7 @@
                                 <p>Mixta sobre cristal acrilico</p>
                                 <p>50 x 100 cm</p>
                             </div>
-                            <img class="room-img" src="images/room1/17.jpg" id="work-17" alt="">
+                            <img class="room-img" src="images/room1/17.jpg" id="work-17" alt="" data-loading="important">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>

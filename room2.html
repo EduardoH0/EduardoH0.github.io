@@ -4,11 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Room 2</title>
+    <title>Papel</title>
+
+    <link rel="preload" as="image" href="images/room2/1.jpg" type="image/jpeg">
+    <link rel="preload" as="image" href="images/room2/2.jpg" type="image/jpeg">
+    <link rel="preload" as="image" href="images/room2/3.jpg" type="image/jpeg">
+    <link rel="preload" as="image" href="images/room2/15.jpg" type="image/jpeg">
+    <link rel="preload" as="image" href="images/room2/16.jpg" type="image/jpeg">
+
 </head>
 <body class="room-page">
 
-    <div class="map">
+    <div class="loading-element">
+        <div class="loading-icon">
+            <img class="loading-svg" src="icons/android512.png" alt="loading-icon" width="100px">
+        </div>
+    </div>
+
+    <a href="obra.html" class="map">
         <div class="map-position" id="map-position-2"></div>
         <svg  viewbox="0 0 21 22" xmlns="http://www.w3.org/2000/svg">
             <line x1="1" y1="21" x2="1" y2="1" stroke="black" stroke-width="0.2"/>
@@ -21,7 +34,7 @@
             <line x1="10" y1="13" x2="10" y2="21" stroke="black" stroke-width="0.2"/>
             <line x1="1" y1="21" x2="10" y2="21" stroke="black" stroke-width="0.2"/>
         </svg>
-    </div>
+    </a>
     <a href="index.html" class="exit-room-btn" id="exit-room-btn">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <path d="M320 176v-40a40 40 0 00-40-40H88a40 40 0 00-40 40v240a40 40 0 0040 40h192a40 40 0 0040-40v-40M384 176l80 80-80 80M191 256h273" 
@@ -78,7 +91,7 @@
                                 <p>Técnica mixta sobre papel</p>
                                 <p>50 x 70 cm</p>
                             </div>
-                            <img class="room-img" src="images/room2/1.jpg" id="work-1" alt="">
+                            <img class="room-img" src="images/room2/1.jpg" id="work-1" alt="" data-loading="important">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -92,7 +105,7 @@
                                 <p>T</p>
                                 <p>50 x 70 cm</p>
                             </div>
-                            <img class="room-img" src="images/room2/2.jpg" id="work-2" alt="">
+                            <img class="room-img" src="images/room2/2.jpg" id="work-2" alt="" data-loading="important">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -106,7 +119,7 @@
                                 <p>Técnica mixta sobre papel</p>
                                 <p>50 x 70 cm</p>
                             </div>
-                            <img class="room-img" src="images/room2/3.jpg" id="work-3 alt="">
+                            <img class="room-img" src="images/room2/3.jpg" id="work-3" alt="" data-loading="important">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -148,15 +161,15 @@
                 <div class="cube-group">
                     <div class="cube" id="wall-2-2">
                         <div class="front">
-                            <!-- <a href="room.html" class="room-invisible-screen" id="wall-2-5-invisible-screen"></a> -->
                             <div class="room-sign" id="wall-2-2-room4-sign">
                                 <div class="room-sign-arrow">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                         <path fill="none" stroke="currentColor" stroke-linecap="butt" stroke-linejoin="butt" stroke-width="56" d="M268 112l144 144-144 144M392 256H100"/>
                                     </svg>
                                 </div>
-                                <p>ROOM 4</p>
-                            </div>                            
+                                <p>MONTAJES</p>
+                            </div>
+                            <div class="red-band" id="red-band-wall-2-2"></div>                        
                         </div>
                         <div class="left"></div>
                     </div>
@@ -224,15 +237,15 @@
                 <div class="cube-group">
                     <div class="cube" id="wall-2-5">
                         <div class="front">
-                            <!-- <a href="room.html" class="room-invisible-screen" id="wall-2-5-invisible-screen"></a> -->
                             <div class="room-sign" id="wall-2-5-room3-sign">
                                 <div class="room-sign-arrow">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                         <path fill="none" stroke="currentColor" stroke-linecap="butt" stroke-linejoin="butt" stroke-width="56" d="M268 112l144 144-144 144M392 256H100"/>
                                     </svg>
                                 </div>
-                                <p>ROOM 3</p>
+                                <p>TELAS</p>
                             </div>
+                            <div class="red-band" id="red-band-wall-2-5"></div>
                         </div>
                         <div class="right"></div>
                     </div>
@@ -313,14 +326,14 @@
                 <div class="cube-group">
                     <div class="cube" id="wall-2-8">
                         <div class="front">
-                            <a href="room.html" class="room-invisible-screen" id="wall-2-8-invisible-screen"></a>
+                            <a href="room1.html" class="room-invisible-screen" id="wall-2-8-invisible-screen"></a>
                             <div class="room-sign" id="wall-2-8-room1-sign">
                                 <div class="room-sign-arrow">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                         <path fill="none" stroke="currentColor" stroke-linecap="butt" stroke-linejoin="butt" stroke-width="56" d="M268 112l144 144-144 144M392 256H100"/>
                                     </svg>
                                 </div>
-                                <p>ROOM 1</p>
+                                <p>CRISTAL ACRILICO</p>
                             </div>
                         </div>
                         <div class="right"></div>
@@ -367,7 +380,7 @@
                                 <p>Técnica mixta sobre papel</p>
                                 <p>50 x 70 cm</p>
                             </div>
-                            <img class="room-img" src="images/room2/15.jpg" id="work-15" alt="">
+                            <img class="room-img" src="images/room2/15.jpg" id="work-15" alt="" data-loading="important">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -381,7 +394,7 @@
                                 <p>Técnica mixta sobre papel</p>
                                 <p>50 x 70 cm</p>
                             </div>
-                            <img class="room-img" src="images/room2/16.jpg" id="work-16" alt="">
+                            <img class="room-img" src="images/room2/16.jpg" id="work-16" alt="" data-loading="important">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -402,7 +415,7 @@
                                 <p>Mixta sobre cristal acrilico</p>
                                 <p>50 x 75 cm</p>
                             </div>
-                            <img class="room-img-out" src="images/fake/3room1.jpg" id="work-17" alt="">
+                            <img class="room-img-out" src="images/fake/3room1.jpg" id="work-17" alt="" loading="lazy">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -416,7 +429,7 @@
                                 <p>Mixta sobre cristal acrilico</p>
                                 <p>100 x 75 cm</p>
                             </div>
-                            <img class="room-img-out" src="images/fake/4room1.jpg" id="work-18" alt="">
+                            <img class="room-img-out" src="images/fake/4room1.jpg" id="work-18" alt="" loading="lazy">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -430,7 +443,7 @@
                                 <p>Mixta sobre cristal acrilico</p>
                                 <p>100 x 75 cm</p>
                             </div>
-                            <img class="room-img-out" src="images/fake/5room1.jpg" id="work-19" alt="">
+                            <img class="room-img-out" src="images/fake/5room1.jpg" id="work-19" alt="" loading="lazy">
                         </div>
                         <div class="left"></div>
                         <div class="right"></div>
@@ -451,7 +464,7 @@
                                 <p>Mixta sobre cristal acrilico</p>
                                 <p>150 x 100 cm</p>
                             </div>
-                            <img class="room-img-out" src="images/fake/9room1.jpg" id="work-20" alt="">
+                            <img class="room-img-out" src="images/fake/9room1.jpg" id="work-20" alt="" loading="lazy">
                         </div>
                     </div>
                     <div class="cube" id="wall-2-11-painting-frame-21-out">
@@ -461,7 +474,7 @@
                                 <p>Mixta sobre cristal acrilico</p>
                                 <p>100 x 100 cm</p>
                             </div>
-                            <img class="room-img-out" src="images/fake/10room1.jpg" id="work-21" alt="">
+                            <img class="room-img-out" src="images/fake/10room1.jpg" id="work-21" alt="" loading="lazy">
                         </div>
                     </div>
                     <div class="cube" id="wall-2-11-painting-frame-22-out">
@@ -471,7 +484,7 @@
                                 <p>Mixta sobre cristal acrilico</p>
                                 <p>150 x 100 cm</p>
                             </div>
-                            <img class="room-img-out" src="images/fake/11room1.jpg" id="work-22" alt="">
+                            <img class="room-img-out" src="images/fake/11room1.jpg" id="work-22" alt="" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -488,7 +501,7 @@
                                 <p>Mixta sobre cristal acrilico</p>
                                 <p>50 x 50 cm</p>
                             </div>
-                            <img class="room-img-out" src="images/fake/12room1.jpg" id="work-23" alt="">
+                            <img class="room-img-out" src="images/fake/12room1.jpg" id="work-23" alt="" loading="lazy">
                         </div>
                     </div>
                     <div class="cube" id="wall-2-12-painting-frame-24-out">
@@ -498,7 +511,7 @@
                                 <p>Mixta sobre cristal acrilico</p>
                                 <p>50 x 75 cm</p>
                             </div>
-                            <img class="room-img-out" src="images/fake/13room1.jpg" id="work-24" alt="">
+                            <img class="room-img-out" src="images/fake/13room1.jpg" id="work-24" alt="" loading="lazy">
                         </div>
                     </div>
                     <div class="cube" id="wall-2-12-painting-frame-25-out">
@@ -508,7 +521,7 @@
                                 <p>Mixta sobre cristal acrilico</p>
                                 <p>100 x 100 cm</p>
                             </div>
-                            <img class="room-img-out" src="images/fake/14room1.jpg" id="work-25" alt="">
+                            <img class="room-img-out" src="images/fake/14room1.jpg" id="work-25" alt="" loading="lazy">
                         </div>
                     </div>
                     <div class="cube" id="wall-2-12-painting-frame-26-out">
@@ -518,7 +531,7 @@
                                 <p>Mixta sobre cristal acrilico</p>
                                 <p>100 x 75 cm</p>
                             </div>
-                            <img class="room-img-out" src="images/fake/15room1.jpg" id="work-26" alt="">
+                            <img class="room-img-out" src="images/fake/15room1.jpg" id="work-26" alt="" loading="lazy">
                         </div>
                     </div>
                     <div class="cube" id="wall-2-12-painting-frame-27-out">
@@ -528,7 +541,7 @@
                                 <p>Mixta sobre cristal acrilico</p>
                                 <p>100 x 75 cm</p>
                             </div>
-                            <img class="room-img-out" src="images/fake/16room1.jpg" id="work-27" alt="">
+                            <img class="room-img-out" src="images/fake/16room1.jpg" id="work-27" alt="" loading="lazy">
                         </div>
                     </div>
                 </div>

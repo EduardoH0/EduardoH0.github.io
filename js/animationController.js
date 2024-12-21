@@ -103,23 +103,28 @@ export class AnimationController {
     }
 
     onTouchMove(event) {
-        if (!this.isDragging) return;
+        const eventZoom = event.scale ? event.scale : event.touches.length;
+        
+        if (eventZoom==1) {
 
-        const deltaX = event.touches[0].clientX - this.startX;
-        this.currentWalk += deltaX * this.touchSmoothness;
+            if (!this.isDragging) return;
 
-        // Compute new position (take into account direction + number of spins)
-        let newPos = -(-this.currentWalk % this.cumulativeRoom[this.cumulativeRoom.length - 1]);
-        if (this.currentWalk > 0) {
-            newPos = -((this.cumulativeRoom[this.cumulativeRoom.length - 1] - (this.currentWalk % this.cumulativeRoom[this.cumulativeRoom.length - 1])));
+            const deltaX = event.touches[0].clientX - this.startX;
+            this.currentWalk += deltaX * this.touchSmoothness;
+
+            // Compute new position (take into account direction + number of spins)
+            let newPos = -(-this.currentWalk % this.cumulativeRoom[this.cumulativeRoom.length - 1]);
+            if (this.currentWalk > 0) {
+                newPos = -((this.cumulativeRoom[this.cumulativeRoom.length - 1] - (this.currentWalk % this.cumulativeRoom[this.cumulativeRoom.length - 1])));
+            }
+            const index = this.cumulativeRoom.findIndex(num => num > -newPos);
+
+            // Update scene and map
+            this.scene.style.transform = this.forwardTransformations(newPos, this.cumulativeRoom)[index];
+            this.mapPosition.style.inset = this.forwardMap(newPos, this.cumulativeRoom)[index];
+
+            this.startX = event.touches[0].clientX; // Update start position
         }
-        const index = this.cumulativeRoom.findIndex(num => num > -newPos);
-
-        // Update scene and map
-        this.scene.style.transform = this.forwardTransformations(newPos, this.cumulativeRoom)[index];
-        this.mapPosition.style.inset = this.forwardMap(newPos, this.cumulativeRoom)[index];
-
-        this.startX = event.touches[0].clientX; // Update start position
     }
 
     onTouchEnd() {
