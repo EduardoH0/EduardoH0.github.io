@@ -267,8 +267,9 @@ body.room-page {
 }
 
 #ceiling-p-painting {
-    --cube-height: 2;
-    --cube-width: 3;
+    --coeff: 0.4;
+    --cube-height: calc(var(--coeff) * 5);
+    --cube-width: calc(var(--coeff) * 7);
     --cube-depth: 0.1;
     --cube-bottom: 2;
     --cubeColor: rgb(255, 255, 255);
@@ -718,8 +719,123 @@ body.room-page {
 .strip-23 { transform: rotateY(330deg) translateZ(0.2em); }
 .strip-24 { transform: rotateY(345deg) translateZ(0.2em); }
 
+/* TURNTABLE */
+#turntable-container{
+    --obj-ratio: 1em;
+    transform: translateZ(-2.5em) translateX(1em) rotateY(-20deg);
+}
 
+#turntable {
+    --cube-height: 0.2;
+    --cube-width: 1.4;
+    --cube-depth: 1.1;
+}
+#turntable > * {
+    background-image: url('../images/textures/wood3_texture.jpg');
+    background-size: 1.5em 1em;
+}
+#turntable .top {
+    transform-style: preserve-3d;
+}
+#turntable-lid-group {
+    transition: all 0.3s ease-in;
+    transform: translateZ(calc(var(--obj-ratio) * 1.1 / 2)) translateY(calc(-1 * var(--obj-ratio) * 0.2));
+}
+#turntable-container:hover #turntable-lid-group {
+    transform: translateZ(calc(var(--obj-ratio) * 1.1 / 2)) translateY(calc(-1 * var(--obj-ratio) * 0.2)) rotateX(-30deg);
+}
 
+#turntable-lid {
+    --cube-height: 0.2;
+    --cube-width: 1.4;
+    --cube-depth: 1.1;
+    transform: translateZ(calc(-1 * var(--obj-ratio) * var(--cube-depth) / 2));
+}
+
+#vinyl {
+    position: absolute;
+    height: 95%;
+    aspect-ratio: 1 / 1;
+    right: 3%;
+    top: 3%;
+    border-radius: 50%;
+
+    background: 
+    linear-gradient(30deg, transparent 40%, transparent 40%) no-repeat 100% 0,
+    linear-gradient(60deg, transparent 60%, rgba(206, 206, 206, 0.052) 60%) no-repeat 0 100%,
+    repeating-radial-gradient(#2a2928 0 3px, #555555 3px, #2a2928 4px);
+    background-size: 50% 100%, 100% 50%, 100% 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    --Zvinyl: calc(var(--obj-ratio) * 0.02); 
+    transform: translateZ(var(--Zvinyl));
+    animation: vinylRotation 5s infinite linear;
+}
+
+#vinyl-label {
+    width: 30%;
+    height: 30%;
+    border-radius: 50%;
+    background: linear-gradient(to right, rgb(225, 9, 146) 50%, yellow 50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#vinyl-label::after{
+    content: "";
+    position: absolute;
+    width: 5%;
+    height: 5%;
+    background-color: black;
+    border-radius: 50%;
+}
+
+@keyframes vinylRotation {
+    from { transform: translateZ(var(--Zvinyl)) rotateZ(0deg); }
+    to { transform: translateZ(var(--Zvinyl)) rotateZ(360deg); }
+}
+
+#turntable-arm {
+    transform-style: preserve-3d;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    --Ztranslation: 0.06em;
+    --rotation: 20deg;
+    transform: translateZ(var(--Ztranslation)) rotateZ(var(--rotation));
+    animation: needleMovement 1s infinite linear;
+}
+@keyframes needleMovement {
+    25% {transform: translateZ(var(--Ztranslation)) rotateZ(calc(var(--rotation) + 0.4deg));}
+    75% {transform: translateZ(var(--Ztranslation)) rotateZ(calc(var(--rotation) - 0.4deg));}
+}
+#part-1 {
+    --cube-height: 0.2;
+    --cube-width: 0.2;
+    --cube-depth: 0.1;
+    --cube-bottom: 0.2;
+    --cube-left: 0.15;
+    --cubeColor: rgb(40, 40, 40);
+}
+#part-2 {
+    --cube-height: 0.4;
+    --cube-width: 0.04;
+    --cube-depth: 0.04;
+    --cube-bottom: 0.4;
+    --cube-left: 0.15;
+    --cubeColor: gray;
+}
+#part-3 {
+    --cube-height: 0.2;
+    --cube-width: 0.08;
+    --cube-depth: 0.08;
+    --cube-bottom: 0.8;
+    --cube-left: 0.15;
+    --cubeColor: rgb(9, 165, 17);
+}
 
 
 

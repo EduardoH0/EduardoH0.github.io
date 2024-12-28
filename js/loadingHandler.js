@@ -3,7 +3,7 @@ import { EVENTS } from "./events.js";
 export class LoadingHandler {
     constructor(selector = '.loading-element') {
         this.loadingDiv = document.querySelector(selector);
-        this.timeout = 10000;
+        this.timeout = 4000;
         this.timeoutId = null;
         this.timeoutFired = false;
         this.elements = null;
@@ -76,9 +76,6 @@ export class LoadingHandler {
     checkAllElementsLoaded() {
         this.loadedCount++;
         if (this.loadedCount === this.totalElements) {
-
-            console.log('All elements loaded')
-            console.log(`N elements: ${this.totalElements}`)
 
             this.elements.forEach((el) => {
                 el.removeEventListener('load', this.checkAllElementsLoaded);

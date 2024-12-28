@@ -3,8 +3,7 @@ import { WorkZoom } from './imageZoom.js';
 import { StateManager } from './stateManager.js';
 import { LoadingHandler } from './loadingHandler.js';
 
-// new LoadingHandler().checkElementLoading('img[data-loading="important"]')
-new LoadingHandler().init()
+new LoadingHandler().checkElementLoading('img[data-loading="important"]')
 
 const scene = document.getElementById('scene');
 const mapPosition = document.getElementById('map-position-2');

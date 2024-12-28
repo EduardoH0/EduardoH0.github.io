@@ -5,7 +5,6 @@ import { LoadingHandler } from './loadingHandler.js';
 
 new LoadingHandler().checkElementLoading('img[data-loading="important"]')
 
-
 const scene = document.getElementById('scene');
 const mapPosition = document.getElementById('map-position');
 

@@ -1,5 +1,6 @@
 import { LoadingHandler } from './loadingHandler.js';
 import { EVENTS } from "./events.js";
+import { SwitchPaintings } from './switchPaintings.js';
 
 
 class SceneController {
@@ -23,6 +24,8 @@ class SceneController {
         this.isAnimating = false;
 
         this.autoRotate = true;
+
+        this.SP = new SwitchPaintings();
     }
 
     init() {
@@ -52,8 +55,9 @@ class SceneController {
     }
 
     rotateScene() {
-        this.currentRotation = (this.currentRotation + 0.1) % 360; // Increment and wrap angle
+        this.currentRotation = (this.currentRotation + 0.1); // Increment
         this.targetRotation = this.currentRotation;
+        this.SP.switchImage(this.currentRotation); // Switch image on autoRotation
         this.scene.style.transform = `rotateY(${this.currentRotation}deg)`;
         this.animationFrameId = requestAnimationFrame(() => this.rotateScene());
     }
@@ -77,6 +81,7 @@ class SceneController {
             if (!this.isDragging) return;
             const deltaX = event.touches[0].clientX - this.startX;
             this.currentRotation += deltaX * this.touchSmoothnessFactor;
+            this.SP.switchImage(this.currentRotation); // switch Image on Rotation
             this.scene.style.transform = `rotateY(${this.currentRotation}deg)`;
             this.startX = event.touches[0].clientX;
         }
@@ -102,6 +107,7 @@ class SceneController {
     animateRotation() {
         this.currentRotation += (this.targetRotation - this.currentRotation) * this.smoothnessFactor; // Easing factor
         this.scene.style.transform = `rotateY(${this.currentRotation}deg)`;
+        this.SP.switchImage(this.currentRotation);  // switch Image on Rotation
 
         // Adjust perspective-origin dynamically
         const adjustedRotation = (((this.currentRotation % 360) + 360) % 360);
